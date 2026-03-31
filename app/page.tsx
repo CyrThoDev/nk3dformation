@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { FORMATIONS } from "@/data/formations";
+import type { Formation, CategorieFormation } from "@/types/formation";
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
@@ -9,7 +12,6 @@ const C = {
   navyLt:   "#E8F0FA",
   orange:   "#E8762A",
   orangeLt: "#FFF0E6",
-  orangeMd: "#F5A05A",
   bg:       "#F6F8FC",
   white:    "#FFFFFF",
   text:     "#0D1B2E",
@@ -18,73 +20,35 @@ const C = {
   border:   "#E4EAF3",
 };
 
-// ── Data formations ───────────────────────────────────────────────────────────
-const CATEGORIES = [
-  {
-    id: "catia-v5", label: "CATIA V5", tag: "Fondamentaux & Avancé",
-    formations: [
-      { code: "V5F",        title: "Fondamentaux – Conception mécanique de base", days: 5 },
-      { code: "V5-GDR",     title: "Mise en plan", days: 1 },
-      { code: "V5-GS1",     title: "Initiation modélisation de surface", days: 1 },
-      { code: "V5-V5E",     title: "Pièces et Assemblages Avancés", days: 5 },
-      { code: "V5-SMD",     title: "Conception d'une pièce de tôlerie", days: 1 },
-      { code: "V5-FTA",     title: "Functional Tolerancing & Annotations", days: 1 },
-      { code: "xxxxx",      title: "Consultation V5", days: 3 },
-      { code: "V5-UPDATES", title: "Nouveautés CATIA V5", days: null },
-    ],
-  },
-  {
-    id: "catia-metier", label: "CATIA V5 Métier", tag: "Électrique & Tôlerie",
-    formations: [
-      { code: "V5-ELI", title: "Conception électrique", days: null },
-      { code: "V5-EHF", title: "Mise en plat de harnais", days: null },
-      { code: "V5-EWR", title: "Routage de fils", days: null },
-      { code: "V5-EC1", title: "Conception de harnais électrique", days: null },
-      { code: "V5-ASL", title: "Conception d'une pièce de tôlerie aéronautique", days: null },
-    ],
-  },
-  {
-    id: "catia-dmu", label: "CATIA V5 DMU", tag: "Maquette numérique",
-    formations: [
-      { code: "V5-DMN", title: "DMU Navigator", days: 1 },
-      { code: "V5-KIN", title: "DMU Cinématique", days: 1 },
-      { code: "V5-SPA", title: "DMU Space Analysis", days: 1 },
-      { code: "V5-FIT", title: "DMU Simulation de montage", days: 1 },
-    ],
-  },
-  {
-    id: "3dexperience", label: "3DEXPERIENCE", tag: "Plateforme Dassault",
-    formations: [
-      { code: "3DX-GTX",  title: "Passerelle vers la 3DEXPERIENCE", days: null },
-      { code: "3DX-3DMT", title: "Transition vers la 3DExperience pour les concepteurs", days: 2 },
-      { code: "3DX-3DF",  title: "Les fondamentaux de la conception volumique", days: 5 },
-      { code: "3DX-SMD",  title: "Création de pièces de tôleries", days: 2 },
-      { code: "3DX-FTA",  title: "Functional Tolerancing & Annotations", days: null },
-      { code: "3DX-ELG",  title: "Conception de composants électriques 3D", days: 3 },
-      { code: "3DX-GDR",  title: "Mise en plan", days: null },
-      { code: "3DX-PDG",  title: "Conception de pièces avancées", days: null },
-      { code: "3DX-ASD",  title: "Assemblages avancés", days: null },
-      { code: "3DX-GS1",  title: "Wireframe et conception surfacique", days: null },
-    ],
-  },
-  {
-    id: "composer", label: "COMPOSER", tag: "Documentation & Animation",
-    formations: [
-      { code: "3DVIA-CPS",  title: "CATIA V5 COMPOSER", days: 3 },
-      { code: "3DVIA-Play", title: "CATIA V5 COMPOSER PLAYER", days: 1 },
-      { code: "3DV-ANIM",   title: "Animation et simulation", days: null },
-      { code: "3DV-DOC",    title: "Documentation technique", days: null },
-      { code: "3DV-SYNC",   title: "Utilisation et administration de COMPOSER SYNC", days: null },
-    ],
-  },
-  {
-    id: "general", label: "Mécanique générale", tag: "Prérequis & Bases",
-    formations: [
-      { code: "PRE-3D", title: "Prérequis à la conception 3D", days: null },
-    ],
-  },
-];
+// ── Catégories construites dynamiquement depuis FORMATIONS ────────────────────
+// Plus besoin de CATEGORIES dupliqué — tout vient de data/formations.ts
+const CATEGORY_META: Record<CategorieFormation, { label: string; tag: string; order: number }> = {
+  "catia-v5":     { label: "CATIA V5",           tag: "Fondamentaux & Avancé",        order: 1 },
+  "catia-metier": { label: "CATIA V5 Métier",     tag: "Électrique & Tôlerie",         order: 2 },
+  "catia-dmu":    { label: "CATIA V5 DMU",        tag: "Maquette numérique",           order: 3 },
+  "3dexperience": { label: "3DEXPERIENCE",        tag: "Plateforme Dassault",          order: 4 },
+  "composer":     { label: "COMPOSER",            tag: "Documentation & Animation",    order: 5 },
+  "general":      { label: "Mécanique générale",  tag: "Prérequis & Bases",            order: 6 },
+};
 
+interface CategoryGroup {
+  id: CategorieFormation;
+  label: string;
+  tag: string;
+  formations: Formation[];
+}
+
+const CATEGORIES: CategoryGroup[] = Object.entries(CATEGORY_META)
+  .sort(([, a], [, b]) => a.order - b.order)
+  .map(([id, meta]) => ({
+    id: id as CategorieFormation,
+    label: meta.label,
+    tag: meta.tag,
+    formations: FORMATIONS.filter((f) => f.categorie === id),
+  }))
+  .filter((cat) => cat.formations.length > 0);
+
+// ── Autres données ────────────────────────────────────────────────────────────
 const STATS = [
   { value: "12+",  label: "Ans d'expérience" },
   { value: "340+", label: "Stagiaires formés" },
@@ -133,7 +97,7 @@ function SectionTitle({ children, center }: { children: React.ReactNode; center?
   );
 }
 
-// ── SVG Wireframe déco ────────────────────────────────────────────────────────
+// ── SVG déco ──────────────────────────────────────────────────────────────────
 function MeshDeco({ style = {} }: { style?: React.CSSProperties }) {
   return (
     <svg aria-hidden="true" width="480" height="380" viewBox="0 0 480 380"
@@ -159,20 +123,20 @@ function WireframeSVG() {
     <svg width="300" height="230" viewBox="0 0 300 230" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g stroke={C.navy} strokeWidth="1.1" opacity="0.75">
         <polygon points="55,158 195,158 195,88 55,88" fill={C.navyLt} fillOpacity="0.6" />
-        <polygon points="55,88 105,48 245,48 195,88"  fill={C.navyLt} fillOpacity="0.4" />
+        <polygon points="55,88 105,48 245,48 195,88" fill={C.navyLt} fillOpacity="0.4" />
         <polygon points="195,88 245,48 245,108 195,158" fill={C.navyLt} fillOpacity="0.25" />
-        <line x1="55"  y1="88"  x2="195" y2="88"  strokeDasharray="5,4" opacity="0.4" />
-        <line x1="195" y1="88"  x2="245" y2="48"  strokeDasharray="5,4" opacity="0.4" />
+        <line x1="55" y1="88" x2="195" y2="88" strokeDasharray="5,4" opacity="0.4" />
+        <line x1="195" y1="88" x2="245" y2="48" strokeDasharray="5,4" opacity="0.4" />
         <ellipse cx="125" cy="123" rx="26" ry="16" stroke={C.orange} strokeWidth="1.3" />
-        <ellipse cx="125" cy="123" rx="15" ry="9"  stroke={C.orange} strokeDasharray="3,3" opacity="0.5" strokeWidth="1" />
+        <ellipse cx="125" cy="123" rx="15" ry="9" stroke={C.orange} strokeDasharray="3,3" opacity="0.5" strokeWidth="1" />
       </g>
       <g stroke={C.navyMid} strokeWidth="0.7">
-        <line x1="55"  y1="173" x2="195" y2="173" />
-        <line x1="55"  y1="170" x2="55"  y2="176" />
+        <line x1="55" y1="173" x2="195" y2="173" />
+        <line x1="55" y1="170" x2="55" y2="176" />
         <line x1="195" y1="170" x2="195" y2="176" />
         <text x="125" y="187" textAnchor="middle" fontSize="9" fill={C.textMd} fontFamily="monospace">140.00 mm</text>
       </g>
-      {([[55,88],[195,88],[195,158],[55,158],[105,48],[245,48],[245,108]] as [number,number][]).map(([x,y],i)=>(
+      {([[55,88],[195,88],[195,158],[55,158],[105,48],[245,48],[245,108]] as [number,number][]).map(([x,y],i) => (
         <circle key={i} cx={x} cy={y} r="3" fill={C.white} stroke={C.orange} strokeWidth="1.1" />
       ))}
       <text x="248" y="44" fontSize="8" fill={C.textLt} fontFamily="'Barlow Condensed',sans-serif" letterSpacing="0.08em">CATIA V5 — Part Design</text>
@@ -184,21 +148,21 @@ function WireframeSVG() {
 function IconClock() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
     </svg>
   );
 }
 function IconArrow() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
     </svg>
   );
 }
 function IconCheck() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-      <polyline points="20 6 9 17 4 12"/>
+      <polyline points="20 6 9 17 4 12" />
     </svg>
   );
 }
@@ -229,15 +193,15 @@ function Nav() {
         <div style={{ width: 34, height: 34, borderRadius: 8, background: `linear-gradient(135deg, ${C.navy}, ${C.navyMid})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 900, fontSize: 12, color: C.white }}>NK</span>
         </div>
-        <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 15, color: scrolled ? C.navy : C.navy, letterSpacing: "0.02em" }}>
+        <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 15, color: C.navy }}>
           NK <span style={{ color: C.orange }}>3D</span> Formation
         </span>
       </div>
       <ul style={{ display: "flex", gap: 36, listStyle: "none", margin: 0, padding: 0 }}>
-        {["Formations", "Méthode", "Contact"].map(l => (
+        {["formations", "méthode", "contact"].map(l => (
           <li key={l}>
-            <button onClick={() => scrollTo(l.toLowerCase())} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 500, color: C.textMd, letterSpacing: "0.02em" }}>
-              {l}
+            <button onClick={() => scrollTo(l)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 500, color: C.textMd, textTransform: "capitalize" }}>
+              {l.charAt(0).toUpperCase() + l.slice(1)}
             </button>
           </li>
         ))}
@@ -252,7 +216,7 @@ function Nav() {
   );
 }
 
-// ── Hero (light) ──────────────────────────────────────────────────────────────
+// ── Hero ──────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
     <section style={{
@@ -264,7 +228,6 @@ function Hero() {
       <div style={{ position: "absolute", right: "40%", top: "15%", width: 320, height: 320, borderRadius: "50%", background: C.orange, opacity: 0.05, filter: "blur(60px)", pointerEvents: "none" }} />
       <Container>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", padding: "60px 0" }}>
-          {/* Left */}
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 14px", borderRadius: 20, background: C.orangeLt, border: `1px solid rgba(232,118,42,0.25)`, marginBottom: 24 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: C.orange, display: "inline-block" }} />
@@ -281,17 +244,12 @@ function Hero() {
               Formations certifiantes en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie.
             </p>
             <div style={{ display: "flex", gap: 14 }}>
-              <button onClick={() => document.getElementById("formations")?.scrollIntoView({ behavior: "smooth" })} style={{
-                padding: "14px 32px", borderRadius: 10, border: "none",
-                background: C.navy, color: C.white,
-                fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 14,
-                cursor: "pointer", boxShadow: `0 4px 20px rgba(10,45,92,0.22)`,
-              }}>Voir les formations →</button>
-              <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{
-                padding: "14px 28px", borderRadius: 10,
-                border: `1.5px solid ${C.border}`, background: C.white, color: C.navy,
-                fontFamily: "'Montserrat',sans-serif", fontWeight: 600, fontSize: 14, cursor: "pointer",
-              }}>Demander un devis</button>
+              <button onClick={() => document.getElementById("formations")?.scrollIntoView({ behavior: "smooth" })} style={{ padding: "14px 32px", borderRadius: 10, border: "none", background: C.navy, color: C.white, fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", boxShadow: `0 4px 20px rgba(10,45,92,0.22)` }}>
+                Voir les formations →
+              </button>
+              <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{ padding: "14px 28px", borderRadius: 10, border: `1.5px solid ${C.border}`, background: C.white, color: C.navy, fontFamily: "'Montserrat',sans-serif", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>
+                Demander un devis
+              </button>
             </div>
             <div style={{ display: "flex", gap: 24, marginTop: 44, alignItems: "center" }}>
               {["OPCO finançable", "CPF éligible", "Sur site ou centre"].map(t => (
@@ -302,7 +260,6 @@ function Hero() {
               ))}
             </div>
           </div>
-          {/* Right – carte mockup CATIA */}
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ background: C.white, borderRadius: 20, border: `1px solid ${C.border}`, boxShadow: "0 16px 60px rgba(10,45,92,0.11)", padding: 28, width: "100%", maxWidth: 420 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
@@ -350,38 +307,52 @@ function StatsBar() {
   );
 }
 
-// ── Formation Card (light) ────────────────────────────────────────────────────
-function FormationCard({ code, title, days }: { code: string; title: string; days: number | null }) {
+// ── Formation Card — cliquable via Link ───────────────────────────────────────
+function FormationCard({ formation }: { formation: Formation }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: hovered ? C.navyLt : C.white,
-        border: `1px solid ${hovered ? C.orange : C.border}`,
-        borderRadius: 10, padding: "1rem 1.25rem",
-        display: "flex", alignItems: "flex-start", justifyContent: "space-between",
-        gap: "1rem", transition: "all 0.22s", cursor: "pointer",
-        transform: hovered ? "translateY(-2px)" : "none",
-        boxShadow: hovered ? "0 6px 20px rgba(232,118,42,0.10)" : "0 1px 4px rgba(10,45,92,0.05)",
-      }}
+    <Link
+      href={`/formations/${formation.slug}`}
+      style={{ textDecoration: "none", display: "block" }}
     >
-      <div style={{ flex: 1 }}>
-        <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: "0.7rem", fontWeight: 700, color: C.orange, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.3rem" }}>{code}</div>
-        <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.875rem", fontWeight: 500, color: C.text, lineHeight: 1.4 }}>{title}</div>
-      </div>
-      {days && (
-        <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", flexShrink: 0, background: C.orangeLt, border: "1px solid rgba(232,118,42,0.3)", borderRadius: 100, padding: "0.2rem 0.65rem", color: C.orange, fontFamily: "'Montserrat',sans-serif", fontSize: "0.72rem", fontWeight: 600 }}>
-          <IconClock />{days}j
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          background: hovered ? C.navyLt : C.white,
+          border: `1px solid ${hovered ? C.orange : C.border}`,
+          borderRadius: 10, padding: "1rem 1.25rem",
+          display: "flex", alignItems: "flex-start", justifyContent: "space-between",
+          gap: "1rem", transition: "all 0.22s", cursor: "pointer",
+          transform: hovered ? "translateY(-2px)" : "none",
+          boxShadow: hovered ? "0 6px 20px rgba(232,118,42,0.10)" : "0 1px 4px rgba(10,45,92,0.05)",
+        }}
+      >
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: "0.68rem", fontWeight: 700, color: C.orange, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.3rem" }}>
+            {formation.code}
+          </div>
+          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.875rem", fontWeight: 500, color: C.text, lineHeight: 1.4 }}>
+            {formation.titre}
+          </div>
         </div>
-      )}
-    </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+          {formation.days && (
+            <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", background: C.orangeLt, border: "1px solid rgba(232,118,42,0.3)", borderRadius: 100, padding: "0.2rem 0.65rem", color: C.orange, fontFamily: "'Montserrat',sans-serif", fontSize: "0.72rem", fontWeight: 600 }}>
+              <IconClock />{formation.days}j
+            </div>
+          )}
+          <span style={{ color: hovered ? C.orange : C.textLt, transition: "color 0.2s" }}>
+            <IconArrow />
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
 
-// ── Category Section (light) ──────────────────────────────────────────────────
-function CategorySection({ category, index }: { category: typeof CATEGORIES[0]; index: number }) {
+// ── Category Section ──────────────────────────────────────────────────────────
+function CategorySection({ category, index }: { category: CategoryGroup; index: number }) {
   const [open, setOpen] = useState(index < 2);
   return (
     <div style={{ borderBottom: `1px solid ${C.border}` }}>
@@ -407,7 +378,9 @@ function CategorySection({ category, index }: { category: typeof CATEGORIES[0]; 
       </button>
       {open && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "0.65rem", paddingBottom: "1.75rem" }}>
-          {category.formations.map((f) => <FormationCard key={f.code} {...f} />)}
+          {category.formations.map((f) => (
+            <FormationCard key={f.slug} formation={f} />
+          ))}
         </div>
       )}
     </div>
@@ -421,13 +394,15 @@ function FormationsSection() {
       <MeshDeco style={{ bottom: -40, left: -60, opacity: 0.2 }} />
       <Container>
         <div style={{ marginBottom: "3.5rem" }}>
-          <SectionLabel>Catalogue complet</SectionLabel>
+          <SectionLabel>Catalogue complet — {FORMATIONS.length} formations</SectionLabel>
           <SectionTitle>Nos <span style={{ color: C.orange }}>formations</span></SectionTitle>
           <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "1rem", color: C.textMd, maxWidth: 500, lineHeight: 1.6 }}>
             Formations adaptées à tous les niveaux, du débutant à l'expert métier. Durées indicatives, ajustables selon vos besoins.
           </p>
         </div>
-        {CATEGORIES.map((cat, i) => <CategorySection key={cat.id} category={cat} index={i} />)}
+        {CATEGORIES.map((cat, i) => (
+          <CategorySection key={cat.id} category={cat} index={i} />
+        ))}
       </Container>
     </section>
   );
@@ -625,19 +600,19 @@ function Footer() {
   );
 }
 
-
 // ── App ───────────────────────────────────────────────────────────────────────
 export default function NK3DFormationPage() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+        body { background: #F6F8FC; }
         ::placeholder { color: #8A9AB0; }
         button { transition: filter 0.2s, transform 0.15s; }
         button:active { transform: scale(0.98); }
         a { transition: opacity 0.2s; }
-        a:hover { opacity: 0.7; }
       `}</style>
       <Nav />
       <main>
