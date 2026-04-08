@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FORMATIONS } from "@/data/formations";
 import type { Formation, CategorieFormation } from "@/types/formation";
+import { Nav } from "@/components/nk3d/layout/Nav";
+import Hero from "@/components/nk3d/sections/Hero";
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
@@ -74,7 +76,7 @@ const TESTIMONIALS = [
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function Container({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 28px", ...style }}>{children}</div>;
+  return <div >{children}</div>;
 }
 
 function SectionLabel({ children, center }: { children: React.ReactNode; center?: boolean }) {
@@ -167,127 +169,9 @@ function IconCheck() {
   );
 }
 
-// ── Nav ───────────────────────────────────────────────────────────────────────
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-  return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      height: 66, display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "0 36px",
-      background: scrolled ? "rgba(255,255,255,0.94)" : "transparent",
-      backdropFilter: scrolled ? "blur(14px)" : "none",
-      borderBottom: scrolled ? `1px solid ${C.border}` : "none",
-      boxShadow: scrolled ? "0 2px 16px rgba(10,45,92,0.07)" : "none",
-      transition: "all 0.35s",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <div style={{ width: 34, height: 34, borderRadius: 8, background: `linear-gradient(135deg, ${C.navy}, ${C.navyMid})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 900, fontSize: 12, color: C.white }}>NK</span>
-        </div>
-        <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 15, color: C.navy }}>
-          NK <span style={{ color: C.orange }}>3D</span> Formation
-        </span>
-      </div>
-      <ul style={{ display: "flex", gap: 36, listStyle: "none", margin: 0, padding: 0 }}>
-        {["formations", "méthode", "contact"].map(l => (
-          <li key={l}>
-            <button onClick={() => scrollTo(l)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 500, color: C.textMd, textTransform: "capitalize" }}>
-              {l.charAt(0).toUpperCase() + l.slice(1)}
-            </button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={() => scrollTo("contact")} style={{
-        padding: "9px 22px", borderRadius: 8, border: "none",
-        background: C.orange, color: C.white,
-        fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13, cursor: "pointer",
-        boxShadow: "0 3px 12px rgba(232,118,42,0.35)",
-      }}>Demander un devis</button>
-    </nav>
-  );
-}
 
-// ── Hero ──────────────────────────────────────────────────────────────────────
-function Hero() {
-  return (
-    <section style={{
-      minHeight: "100vh", display: "flex", alignItems: "center",
-      background: `linear-gradient(160deg, ${C.white} 55%, ${C.navyLt} 100%)`,
-      position: "relative", overflow: "hidden", paddingTop: 66,
-    }}>
-      <MeshDeco style={{ top: -40, right: -60 }} />
-      <div style={{ position: "absolute", right: "40%", top: "15%", width: 320, height: 320, borderRadius: "50%", background: C.orange, opacity: 0.05, filter: "blur(60px)", pointerEvents: "none" }} />
-      <Container>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", padding: "60px 0" }}>
-          <div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 14px", borderRadius: 20, background: C.orangeLt, border: `1px solid rgba(232,118,42,0.25)`, marginBottom: 24 }}>
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: C.orange, display: "inline-block" }} />
-              <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: C.orange }}>
-                Organisme certifié Qualiopi
-              </span>
-            </div>
-            <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900, fontSize: "clamp(34px, 4vw, 58px)", lineHeight: 1.08, color: C.navy, marginBottom: 22 }}>
-              Expert en formation<br />
-              <span style={{ color: C.orange }}>CAO CATIA</span>{" & "}
-              <span style={{ color: C.orange }}>3DEXPERIENCE</span>
-            </h1>
-            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 16, lineHeight: 1.75, color: C.textMd, maxWidth: 460, marginBottom: 38 }}>
-              Formations certifiantes en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie.
-            </p>
-            <div style={{ display: "flex", gap: 14 }}>
-              <button onClick={() => document.getElementById("formations")?.scrollIntoView({ behavior: "smooth" })} style={{ padding: "14px 32px", borderRadius: 10, border: "none", background: C.navy, color: C.white, fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", boxShadow: `0 4px 20px rgba(10,45,92,0.22)` }}>
-                Voir les formations →
-              </button>
-              <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{ padding: "14px 28px", borderRadius: 10, border: `1.5px solid ${C.border}`, background: C.white, color: C.navy, fontFamily: "'Montserrat',sans-serif", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>
-                Demander un devis
-              </button>
-            </div>
-            <div style={{ display: "flex", gap: 24, marginTop: 44, alignItems: "center" }}>
-              {["OPCO finançable", "CPF éligible", "Sur site ou centre"].map(t => (
-                <div key={t} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ width: 16, height: 16, borderRadius: "50%", background: C.navyLt, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: C.navyMid, fontWeight: 700 }}>✓</span>
-                  <span style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.textMd, fontWeight: 500 }}>{t}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ background: C.white, borderRadius: 20, border: `1px solid ${C.border}`, boxShadow: "0 16px 60px rgba(10,45,92,0.11)", padding: 28, width: "100%", maxWidth: 420 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                <div style={{ display: "flex", gap: 6 }}>
-                  {[C.orange, C.navyMid, C.border].map((c, i) => <div key={i} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-                </div>
-                <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLt }}>CATIA V5 r21 — Part Design</span>
-                <span style={{ color: C.textLt, fontSize: 10 }}>●●●</span>
-              </div>
-              <div style={{ background: `linear-gradient(135deg, ${C.navyLt}, #EEF4FF)`, borderRadius: 12, padding: "24px 16px", display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${C.border}`, marginBottom: 20, position: "relative", overflow: "hidden" }}>
-                <MeshDeco style={{ top: -20, right: -20, width: 220, height: 180, opacity: 0.3 }} />
-                <WireframeSVG />
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
-                {STATS.slice(0, 3).map((s, i) => (
-                  <div key={i} style={{ textAlign: "center", borderRight: i < 2 ? `1px solid ${C.border}` : "none" }}>
-                    <p style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 18, color: C.orange, margin: 0 }}>{s.value}</p>
-                    <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 10, color: C.textLt, margin: "2px 0 0" }}>{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
+
 
 // ── Stats bar ─────────────────────────────────────────────────────────────────
 function StatsBar() {
@@ -604,18 +488,9 @@ function Footer() {
 export default function NK3DFormationPage() {
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { background: #F6F8FC; }
-        ::placeholder { color: #8A9AB0; }
-        button { transition: filter 0.2s, transform 0.15s; }
-        button:active { transform: scale(0.98); }
-        a { transition: opacity 0.2s; }
-      `}</style>
+     
       <Nav />
-      <main>
+      <main >
         <Hero />
         <StatsBar />
         <FormationsSection />

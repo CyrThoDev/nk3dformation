@@ -310,7 +310,7 @@ export function FormationDetail({ formation }: { formation: Formation }) {
 
         {/* Hero */}
         <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "40px 0 0" }}>
-          <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 28px" }}>
+          <div >
 
             {/* Breadcrumb */}
             <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: C.textLt, marginBottom: 28 }}>
@@ -370,7 +370,7 @@ export function FormationDetail({ formation }: { formation: Formation }) {
         </div>
 
         {/* Contenu */}
-        <div style={{ maxWidth: 1160, margin: "0 auto", padding: "48px 28px 80px" }}>
+        <div >
           <InfoCards formation={formation} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 320px", gap: 48, alignItems: "start" }}>
             <div>

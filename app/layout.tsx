@@ -32,7 +32,11 @@ export default function RootLayout({
       lang="fr"
       className={`${montserrat.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full ">
+  <div className=" min-h-full  bg-white">
+    {children}
+  </div>
+</body>
     </html>
   );
 }
