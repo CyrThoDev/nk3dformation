@@ -16,7 +16,7 @@ export function Process() {
 
           {/* ── Col gauche ───────────────────────────────── */}
           <div className="flex flex-col justify-center">
-            <SectionLabel>Notre méthode</SectionLabel>
+            <SectionLabel>Ma méthode</SectionLabel>
 
             <SectionTitle>
               Un accompagnement<br />100% sur-mesure

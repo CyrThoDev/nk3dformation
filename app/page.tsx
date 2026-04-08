@@ -19,7 +19,7 @@ export default function NK3DFormationPage() {
         <FormationsSection />
         <Process />
         <Testimonials />
-        {/* <Contact /> */}
+        <Contact />
       </main>
     </>
   );
