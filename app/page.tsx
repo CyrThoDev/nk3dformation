@@ -8,6 +8,7 @@ import { Process } from "@/components/nk3d/sections/Process";
 import { Testimonials } from "@/components/nk3d/sections/Testimonials";
 
 import { Contact } from "@/components/nk3d/sections/Contact";
+import { Footer } from "@/components/nk3d/layout/Footer";
 
 export default function NK3DFormationPage() {
   return (
@@ -21,6 +22,7 @@ export default function NK3DFormationPage() {
         <Testimonials />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }

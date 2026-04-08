@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="order-1 lg:order-1 lg:flex lg:flex-col">
             <div className="relative w-full min-h-70 sm:min-h-95 lg:min-h-0 lg:flex-1 overflow-hidden rounded-xl lg:rounded-2xl shadow-[0_20px_64px_rgba(10,45,92,0.18)]">
               <Image
-                src="/images/hero.jpg"
+                src="/images/hero.webp"
                 alt="Formation CATIA et 3DEXPERIENCE"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

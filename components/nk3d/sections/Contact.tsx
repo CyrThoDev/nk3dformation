@@ -169,6 +169,7 @@ export function Contact() {
           src="/images/nicolas.png"
           alt="Photo de Nicolas"
           fill
+          sizes="160px"
           className="object-cover"
         />
       </div>

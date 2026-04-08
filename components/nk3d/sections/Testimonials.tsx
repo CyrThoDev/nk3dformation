@@ -30,7 +30,7 @@ export function Testimonials() {
       <Container>
         <div className="text-center mb-14">
           <SectionLabel center>Témoignages</SectionLabel>
-          <SectionTitle center>Ce que disent nos stagiaires</SectionTitle>
+          <SectionTitle center>Ce que disent mes stagiaires</SectionTitle>
         </div>
 
         {/* ── Carousel wrapper ───────────────────── */}
