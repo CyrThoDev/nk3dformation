@@ -17,19 +17,27 @@ const CATEGORIES = Object.entries(CATEGORY_META)
   }))
   .filter((cat) => cat.formations.length > 0);
 
-export function FormationsSection() {
+export const FormationsSection = () => {
   return (
-    <section id="formations" className="bg-bg py-[88px] relative overflow-hidden">
-      <MeshDeco className="-bottom-10 -left-14 opacity-20" />
-      <Container>
+    <section
+      id="formations"
+      className="relative overflow-hidden bg-bg py-[88px] "
+    >
+      <MeshDeco className="absolute bottom-[-40px] left-[-60px] opacity-20" />
+
+      <Container className="max-w-7xl mx-auto">
         <div className="mb-14">
-          <SectionLabel>Catalogue complet — {FORMATIONS.length} formations</SectionLabel>
+          <SectionLabel>
+            Catalogue complet — {FORMATIONS.length} formations
+          </SectionLabel>
+
           <SectionTitle>
             Nos <span className="text-orange">formations</span>
           </SectionTitle>
-          <p className="font-montserrat text-[16px] text-text-md max-w-[500px] leading-[1.6]">
-            Formations adaptées à tous les niveaux, du débutant à l'expert métier.
-            Durées indicatives, ajustables selon vos besoins.
+
+          <p className="max-w-[500px] font-montserrat text-base leading-[1.6] text-text-md">
+            Formations adaptées à tous les niveaux, du débutant à l'expert
+            métier. Durées indicatives, ajustables selon vos besoins.
           </p>
         </div>
 

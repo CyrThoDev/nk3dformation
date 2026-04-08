@@ -6,6 +6,7 @@ import { FORMATIONS } from "@/data/formations";
 import type { Formation, CategorieFormation } from "@/types/formation";
 import { Nav } from "@/components/nk3d/layout/Nav";
 import Hero from "@/components/nk3d/sections/Hero";
+import { FormationsSection } from "@/components/nk3d/sections/FormationSection";
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const C = {
@@ -55,14 +56,13 @@ const STATS = [
   { value: "12+",  label: "Ans d'expérience" },
   { value: "340+", label: "Stagiaires formés" },
   { value: "96%",  label: "Taux de satisfaction" },
-  { value: "100%", label: "Finançable OPCO" },
+ 
 ];
 
 const PROCESS = [
   { n: "01", title: "Audit de besoins",       desc: "Analyse de votre contexte métier et du niveau de vos équipes." },
   { n: "02", title: "Programme sur-mesure",   desc: "Contenu adapté à vos logiciels, vos pièces, vos enjeux industriels." },
   { n: "03", title: "Formation présentielle", desc: "Sessions sur site ou dans notre centre équipé en workstations CAO." },
-  { n: "04", title: "Suivi post-formation",   desc: "Support technique 30 jours après la fin de la formation inclus." },
 ];
 
 const TESTIMONIALS = [
@@ -271,26 +271,7 @@ function CategorySection({ category, index }: { category: CategoryGroup; index: 
   );
 }
 
-// ── Formations Section ────────────────────────────────────────────────────────
-function FormationsSection() {
-  return (
-    <section id="formations" style={{ background: C.bg, padding: "88px 0", position: "relative", overflow: "hidden" }}>
-      <MeshDeco style={{ bottom: -40, left: -60, opacity: 0.2 }} />
-      <Container>
-        <div style={{ marginBottom: "3.5rem" }}>
-          <SectionLabel>Catalogue complet — {FORMATIONS.length} formations</SectionLabel>
-          <SectionTitle>Nos <span style={{ color: C.orange }}>formations</span></SectionTitle>
-          <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "1rem", color: C.textMd, maxWidth: 500, lineHeight: 1.6 }}>
-            Formations adaptées à tous les niveaux, du débutant à l'expert métier. Durées indicatives, ajustables selon vos besoins.
-          </p>
-        </div>
-        {CATEGORIES.map((cat, i) => (
-          <CategorySection key={cat.id} category={cat} index={i} />
-        ))}
-      </Container>
-    </section>
-  );
-}
+
 
 // ── Process ───────────────────────────────────────────────────────────────────
 function Process() {
@@ -494,12 +475,12 @@ export default function NK3DFormationPage() {
         <Hero />
         <StatsBar />
         <FormationsSection />
-        <Process />
+        {/* <Process /> */}
         <Testimonials />
         <CtaFinal />
         <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
