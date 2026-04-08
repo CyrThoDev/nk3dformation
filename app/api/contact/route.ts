@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // ── Rate limiting en mémoire (3 requêtes / minute / IP) ──────────────────────
 const rateMap = new Map<string, { count: number; resetAt: number }>();
 
@@ -192,6 +190,8 @@ export async function POST(req: NextRequest) {
         : "Demande d'information — Consulting",
     message: message.trim(),
   };
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     await resend.emails.send({
