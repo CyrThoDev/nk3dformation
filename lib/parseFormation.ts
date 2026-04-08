@@ -8,6 +8,8 @@ export interface FormationData {
   publicConcerne: string;
   prerequis: string;
   programme: string[];
+  niveau?: string;
+  format?: string;
 }
 
 /**
