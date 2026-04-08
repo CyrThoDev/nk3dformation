@@ -24,7 +24,7 @@ export function FormationCard({ formation }: { formation: Formation }) {
         `}
       >
         <div className="flex-1">
-          <div className="font-barlow-condensed text-[11px] font-bold text-orange tracking-[0.1em] uppercase mb-1">
+          <div className="font-eurostile-extended text-[11px] font-bold text-orange tracking-[0.1em] uppercase mb-1">
             {formation.code}
           </div>
           <div className="font-montserrat text-[14px] font-medium text-text leading-[1.4]">

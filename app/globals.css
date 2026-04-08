@@ -1,9 +1,60 @@
 @import "tailwindcss";
 
+/* ── Montserrat (variable font local) ───────────────── */
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── Eurostile (local) ───────────────────────────────── */
+@font-face {
+  font-family: "Eurostile";
+  src: url("/fonts/eurostile/EuroStyleNormal.woff2") format("woff2"),
+       url("/fonts/eurostile/EuroStyleNormal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Eurostile";
+  src: url("/fonts/eurostile/EurostileBold.woff2") format("woff2"),
+       url("/fonts/eurostile/EurostileBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Eurostile";
+  src: url("/fonts/eurostile/Eurostile-Oblique.woff2") format("woff2"),
+       url("/fonts/eurostile/Eurostile-Oblique.woff") format("woff");
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Eurostile Extended";
+  src: url("/fonts/eurostile/EurostileExtended-Roman.woff2") format("woff2"),
+       url("/fonts/eurostile/EurostileExtended-Roman.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* ── Typographies ───────────────────────────────── */
   --font-montserrat: "Montserrat", sans-serif;
-  --font-barlow-condensed: "Barlow Condensed", sans-serif;
+  --font-eurostile: "Eurostile", sans-serif;
+  --font-eurostile-extended: "Eurostile Extended", sans-serif;
 
   /* ── Palette NK 3D ──────────────────────────────── */
   --color-navy:      #0A2D5C;

@@ -27,7 +27,7 @@ export function CategorySection({ category, index }: { category: CategoryGroup; 
             <div className="font-montserrat text-[20px] font-extrabold text-navy leading-none">
               {category.label}
             </div>
-            <div className="font-barlow-condensed text-[12px] text-text-lt tracking-[0.08em] uppercase mt-1">
+            <div className="font-eurostile-extended text-[12px] text-text-lt tracking-[0.08em] uppercase mt-1">
               {category.tag}
             </div>
           </div>

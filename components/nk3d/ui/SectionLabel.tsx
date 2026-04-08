@@ -7,7 +7,7 @@ interface SectionLabelProps {
 
 export function SectionLabel({ children, center }: SectionLabelProps) {
   return (
-    <p className={`font-barlow-condensed font-bold text-[11px] tracking-[0.2em] uppercase text-orange mb-2.5 ${center ? "text-center" : "text-left"}`}>
+    <p className={`font-eurostile-extended font-bold text-[11px] tracking-[0.2em] uppercase text-orange mb-2.5 ${center ? "text-center" : "text-left"}`}>
       {children}
     </p>
   );

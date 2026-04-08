@@ -82,7 +82,7 @@ function Container({ children, style = {} }: { children: React.ReactNode; style?
 function SectionLabel({ children, center }: { children: React.ReactNode; center?: boolean }) {
   return (
     <p style={{
-      fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 11,
+      fontFamily: "'Eurostile Extended', sans-serif", fontWeight: 700, fontSize: 11,
       letterSpacing: "0.2em", textTransform: "uppercase", color: C.orange,
       marginBottom: 10, textAlign: center ? "center" : "left",
     }}>{children}</p>
@@ -141,7 +141,7 @@ function WireframeSVG() {
       {([[55,88],[195,88],[195,158],[55,158],[105,48],[245,48],[245,108]] as [number,number][]).map(([x,y],i) => (
         <circle key={i} cx={x} cy={y} r="3" fill={C.white} stroke={C.orange} strokeWidth="1.1" />
       ))}
-      <text x="248" y="44" fontSize="8" fill={C.textLt} fontFamily="'Barlow Condensed',sans-serif" letterSpacing="0.08em">CATIA V5 — Part Design</text>
+      <text x="248" y="44" fontSize="8" fill={C.textLt} fontFamily="'Eurostile Extended',sans-serif" letterSpacing="0.08em">CATIA V5 — Part Design</text>
     </svg>
   );
 }
@@ -213,7 +213,7 @@ function FormationCard({ formation }: { formation: Formation }) {
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: "0.68rem", fontWeight: 700, color: C.orange, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.3rem" }}>
+          <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: "0.68rem", fontWeight: 700, color: C.orange, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.3rem" }}>
             {formation.code}
           </div>
           <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "0.875rem", fontWeight: 500, color: C.text, lineHeight: 1.4 }}>
@@ -248,7 +248,7 @@ function CategorySection({ category, index }: { category: CategoryGroup; index: 
           <div style={{ width: 3, height: 28, background: C.orange, borderRadius: 2, flexShrink: 0 }} />
           <div>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "1.25rem", fontWeight: 800, color: C.navy, lineHeight: 1 }}>{category.label}</div>
-            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: "0.75rem", color: C.textLt, letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.2rem" }}>{category.tag}</div>
+            <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: "0.75rem", color: C.textLt, letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.2rem" }}>{category.tag}</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -292,7 +292,7 @@ function Process() {
           <div>
             {PROCESS.map((p, i) => (
               <div key={i} style={{ display: "flex", gap: 18, padding: "20px 0", borderBottom: i < PROCESS.length - 1 ? `1px solid ${C.border}` : "none" }}>
-                <div style={{ flexShrink: 0, width: 42, height: 42, borderRadius: 10, background: C.navyLt, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 800, fontSize: 14, color: C.navyMid }}>{p.n}</div>
+                <div style={{ flexShrink: 0, width: 42, height: 42, borderRadius: 10, background: C.navyLt, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Eurostile Extended',sans-serif", fontWeight: 800, fontSize: 14, color: C.navyMid }}>{p.n}</div>
                 <div>
                   <h4 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 14, color: C.navy, marginBottom: 4 }}>{p.title}</h4>
                   <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, color: C.textMd, lineHeight: 1.65, margin: 0 }}>{p.desc}</p>

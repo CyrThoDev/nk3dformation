@@ -19,7 +19,7 @@ export function WireframeSVG() {
       {([[55,88],[195,88],[195,158],[55,158],[105,48],[245,48],[245,108]] as [number,number][]).map(([x,y],i) => (
         <circle key={i} cx={x} cy={y} r="3" fill="white" stroke="#E8762A" strokeWidth="1.1" />
       ))}
-      <text x="248" y="44" fontSize="8" fill="#8A9AB0" fontFamily="'Barlow Condensed',sans-serif" letterSpacing="0.08em">CATIA V5 — Part Design</text>
+      <text x="248" y="44" fontSize="8" fill="#8A9AB0" fontFamily="'Eurostile Extended',sans-serif" letterSpacing="0.08em">CATIA V5 — Part Design</text>
     </svg>
   );
 }

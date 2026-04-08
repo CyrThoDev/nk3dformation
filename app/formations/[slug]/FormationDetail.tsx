@@ -139,7 +139,7 @@ function InfoCards({ formation }: { formation: Formation }) {
         <div key={label} style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(10,45,92,0.05)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
             <span style={{ color: C.orange }}>{icon}</span>
-            <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt }}>{label}</span>
+            <span style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt }}>{label}</span>
           </div>
           <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 600, color: C.text, lineHeight: 1.3 }}>{val}</div>
         </div>
@@ -177,7 +177,7 @@ function Programme({ programme }: { programme: Formation["programme"] }) {
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {programme.map((p, i) => (
           <div key={i} style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 16, alignItems: "start", padding: "14px 16px", background: C.white, border: `1px solid ${C.border}`, borderRadius: 10, boxShadow: "0 1px 4px rgba(10,45,92,0.04)" }}>
-            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 11, fontWeight: 700, color: C.orange, letterSpacing: "0.06em", textTransform: "uppercase", paddingTop: 2 }}>{p.jour}</div>
+            <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 11, fontWeight: 700, color: C.orange, letterSpacing: "0.06em", textTransform: "uppercase", paddingTop: 2 }}>{p.jour}</div>
             <div>
               <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 700, color: C.navy, marginBottom: 3 }}>{p.titre}</div>
               <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.textMd, lineHeight: 1.5 }}>{p.contenu}</div>
@@ -202,7 +202,7 @@ function PublicPrerequis({ formation }: { formation: Formation }) {
           { label: "Prérequis",   val: formation.prerequis },
         ].map(({ label, val }) => (
           <div key={label} style={{ padding: "16px 18px", background: C.white, border: `1px solid ${C.border}`, borderRadius: 10, boxShadow: "0 1px 4px rgba(10,45,92,0.04)" }}>
-            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt, marginBottom: 8 }}>{label}</div>
+            <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt, marginBottom: 8 }}>{label}</div>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, color: C.textMd, lineHeight: 1.65 }}>{val}</div>
           </div>
         ))}
@@ -268,7 +268,7 @@ function Sidebar({ formation, associees }: { formation: Formation; associees: Fo
       {/* Formations associées */}
       {associees.length > 0 && (
         <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 16, padding: "20px 24px", boxShadow: "0 2px 12px rgba(10,45,92,0.05)" }}>
-          <p style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textLt, marginBottom: 14 }}>
+          <p style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textLt, marginBottom: 14 }}>
             Formations associées
           </p>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -278,7 +278,7 @@ function Sidebar({ formation, associees }: { formation: Formation; associees: Fo
                 borderBottom: i < associees.length - 1 ? `1px solid ${C.border}` : "none",
                 textDecoration: "none",
               }}>
-                <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, color: C.orange, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{f.code}</div>
+                <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, color: C.orange, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{f.code}</div>
                 <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.navy, fontWeight: 500, lineHeight: 1.4 }}>{f.titre}</div>
               </Link>
             ))}
@@ -296,8 +296,7 @@ export function FormationDetail({ formation }: { formation: Formation }) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { background: ${C.bg}; }
         a { transition: opacity 0.2s; }
@@ -324,7 +323,7 @@ export function FormationDetail({ formation }: { formation: Formation }) {
             {/* Titre + boutons */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 32, alignItems: "start", marginBottom: 36, paddingBottom: 36, borderBottom: `1px solid ${C.border}` }}>
               <div>
-                <div style={{ display: "inline-block", padding: "3px 12px", borderRadius: 20, background: C.orangeLt, color: "#B85A10", fontFamily: "'Barlow Condensed',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
+                <div style={{ display: "inline-block", padding: "3px 12px", borderRadius: 20, background: C.orangeLt, color: "#B85A10", fontFamily: "'Eurostile Extended',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
                   {formation.categorieLabel}
                 </div>
                 <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 900, fontSize: "clamp(22px, 3vw, 34px)", color: C.navy, lineHeight: 1.15, marginBottom: 12 }}>
