@@ -45,6 +45,8 @@ function buildEmail(data: {
   message: string;
 }): string {
   const { nom, prenom, email, telephone, sujet, message } = data;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  const logoUrl = siteUrl ? `${siteUrl}/images/LOGOTYPE_FOND_CLAIR.png` : null;
   const rows = [
     ["Nom", nom],
     ["Prénom", prenom],
@@ -83,7 +85,10 @@ function buildEmail(data: {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <span style="font-family:'Arial',sans-serif;font-weight:900;font-size:20px;color:#FFFFFF;letter-spacing:.05em;">NK <span style="color:#E8762A;">3D</span> Formation</span>
+                  ${logoUrl
+                    ? `<img src="${logoUrl}" alt="NK 3D Formation" height="40" style="display:block;height:40px;width:auto;" />`
+                    : `<span style="font-family:'Arial',sans-serif;font-weight:900;font-size:20px;color:#FFFFFF;letter-spacing:.05em;">NK <span style="color:#E8762A;">3D</span> Formation</span>`
+                  }
                 </td>
                 <td align="right">
                   <span style="font-family:'Arial',sans-serif;font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:.12em;text-transform:uppercase;">Nouvelle demande</span>
@@ -192,11 +197,14 @@ export async function POST(req: NextRequest) {
   };
 
   const resend = new Resend(process.env.RESEND_API_KEY);
+  const to = process.env.CONTACT_EMAIL ?? "nicolas@nk3dformation.fr";
+  // Utilise l'expéditeur de test tant que le domaine nk3dformation.fr n'est pas vérifié dans Resend
+  const from = "onboarding@resend.dev";
 
   try {
     await resend.emails.send({
-      from: "NK3D Formation <contact@nk3dformation.fr>",
-      to: process.env.CONTACT_EMAIL ?? "nicolas@nk3dformation.fr",
+      from,
+      to,
       replyTo: cleanData.email || undefined,
       subject: `[${cleanData.sujet}] ${cleanData.prenom} ${cleanData.nom}`,
       html: buildEmail(cleanData),
@@ -204,9 +212,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Resend error:", err);
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("Resend error:", msg);
     return NextResponse.json(
-      { error: "Erreur d'envoi. Réessayez plus tard." },
+      { error: msg },
       { status: 500 }
     );
   }

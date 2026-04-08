@@ -85,6 +85,9 @@ export function Contact() {
       } else {
         const data = await res.json();
 
+        if (data.error) {
+          console.error("API error:", data.error);
+        }
         if (data.errors) {
           const map: Record<string, string> = {};
           (data.errors as string[]).forEach((msg: string) => {
