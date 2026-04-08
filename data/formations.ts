@@ -12,8 +12,8 @@ import type { Formation } from "../types/formation";
 export const FORMATIONS: Formation[] = [
   // ── CATIA V5 Fondamentaux ──────────────────────────────────────────────
   {
-    slug: "v5f",
-    code: "V5F",
+    slug: "v5-v5f",
+    code: "V5-V5F",
     categorie: "catia-v5",
     categorieLabel: "CATIA V5",
     titre: "Fondamentaux – Conception mécanique de base",
@@ -72,7 +72,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Utilisateurs CATIA V5 ayant des bases en modélisation 3D.",
     prerequis: "Maîtrise du Part Design CATIA V5 (V5F ou équivalent).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-fta"],
+    formationsAssociees: ["v5-v5f", "v5-fta"],
   },
 
   // ── CATIA V5 Surfacique ────────────────────────────────────────────────
@@ -102,7 +102,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs CATIA V5 souhaitant aborder la modélisation de forme.",
     prerequis: "Bonne maîtrise du Part Design (V5F ou V5-V5E recommandé).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-v5e"],
+    formationsAssociees: ["v5-v5f", "v5-v5e"],
   },
 
   // ── CATIA V5 Avancé ────────────────────────────────────────────────────
@@ -136,7 +136,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs CATIA V5 expérimentés souhaitant approfondir leurs compétences.",
     prerequis: "Maîtrise solide du Part Design et Assembly Design (V5F ou 2 ans de pratique).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-gs1", "v5-fta"],
+    formationsAssociees: ["v5-v5f", "v5-gs1", "v5-fta"],
   },
 
   // ── CATIA V5 Tôlerie ──────────────────────────────────────────────────
@@ -166,7 +166,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs et techniciens travaillant sur des pièces en tôle.",
     prerequis: "Bases CATIA V5 Part Design (V5F ou équivalent).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-asl"],
+    formationsAssociees: ["v5-v5f", "v5-asl"],
   },
 
   // ── CATIA V5 FTA ──────────────────────────────────────────────────────
@@ -175,7 +175,7 @@ export const FORMATIONS: Formation[] = [
     code: "V5-FTA",
     categorie: "catia-v5",
     categorieLabel: "CATIA V5",
-    titre: "Functional Tolerancing & Annotations",
+    titre: "Tolérancements 3D et annotations fonctionnelles",
     description:
       "Annoter directement le modèle 3D avec le tolérancement fonctionnel ISO selon la norme GPS, en vue d'un bureau d'études sans dessin 2D.",
     duree: "1 jour (7h)",
@@ -197,6 +197,90 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Maîtrise du Part Design et bases en dessin technique / tolérancement.",
     pdfUrl: null,
     formationsAssociees: ["v5-gdr", "3dx-fta"],
+  },
+
+  // ── CATIA V5 Conception électrique ────────────────────────────────────
+  {
+    slug: "v5-eli",
+    code: "V5-ELI",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Conception de harnais électrique",
+    description: "Concevoir et gérer des harnais électriques avec CATIA V5 Electrical Harness Design.",
+    duree: "À définir",
+    days: null,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases CATIA V5 Part Design.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-ehf"],
+  },
+
+  // ── CATIA V5 Mise en plat de harnais ──────────────────────────────────
+  {
+    slug: "v5-ehf",
+    code: "V5-EHF",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Mise en plat de harnais",
+    description: "Générer et exploiter la mise en plat de harnais électriques avec CATIA V5.",
+    duree: "À définir",
+    days: null,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "V5-ELI ou équivalent.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-eli"],
+  },
+
+  // ── CATIA V5 Consultation ──────────────────────────────────────────────
+  {
+    slug: "v5-consultation",
+    code: "V5-Consultation",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Consultation V5",
+    description: "Session de consultation et d'accompagnement sur des problématiques spécifiques CATIA V5.",
+    duree: "3 jours (21h)",
+    days: 3,
+    niveau: "Tous niveaux",
+    format: "Présentiel / Distanciel",
+    financement: "Sur devis",
+    objectifs: [],
+    programme: [],
+    publicVise: "Utilisateurs CATIA V5 ayant des besoins spécifiques.",
+    prerequis: "Pratique de CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: [],
+  },
+
+  // ── CATIA V5 Nouveautés ────────────────────────────────────────────────
+  {
+    slug: "v5-updates",
+    code: "V5-UPDATES",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Nouveautés CATIA V5",
+    description: "Découvrir et maîtriser les nouvelles fonctionnalités des dernières versions de CATIA V5.",
+    duree: "À définir",
+    days: null,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "Utilisateurs CATIA V5 souhaitant se mettre à jour.",
+    prerequis: "Pratique de CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: [],
   },
 
   // ── DMU Navigator ─────────────────────────────────────────────────────
@@ -352,36 +436,6 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Aucun prérequis CAO requis. Notions de base en informatique.",
     pdfUrl: null,
     formationsAssociees: ["3dvia-play", "3dv-anim", "3dv-doc"],
-  },
-
-  // ── Prérequis conception 3D ────────────────────────────────────────────
-  {
-    slug: "pre-3d",
-    code: "PRE-3D",
-    categorie: "general",
-    categorieLabel: "Mécanique générale",
-    titre: "Prérequis à la conception 3D",
-    description:
-      "Acquérir les bases du dessin technique industriel et de la lecture de plan pour aborder sereinement toute formation CAO.",
-    duree: null,
-    days: null,
-    niveau: "Débutant",
-    format: "Présentiel / Distanciel",
-    financement: "OPCO · CPF",
-    objectifs: [
-      "Lire et interpréter un plan technique industriel",
-      "Comprendre les projections orthogonales",
-      "Maîtriser les conventions de cotation ISO",
-      "Identifier les types de vues et de coupes",
-    ],
-    programme: [
-      { jour: "Jour 1", titre: "Lecture de plan", contenu: "Projections, vues, coupes, conventions" },
-      { jour: "Jour 2", titre: "Cotation & tolérances", contenu: "Cotation ISO, tolérances, état de surface" },
-    ],
-    publicVise: "Toute personne souhaitant intégrer une formation CAO sans bases en dessin technique.",
-    prerequis: "Aucun prérequis.",
-    pdfUrl: null,
-    formationsAssociees: ["v5f", "3dx-3df"],
   },
 ];
 

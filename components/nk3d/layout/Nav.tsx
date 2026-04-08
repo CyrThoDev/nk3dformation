@@ -46,7 +46,7 @@ export function Nav() {
               alt="NK3D Formation"
               width={250}
               height={50}
-              className="h-12 w-auto sm:h-14 md:h-16 lg:h-20"
+              className="h-14 w-auto sm:h-16 md:h-18 lg:h-20"
               priority
             />
           </Link>
@@ -118,14 +118,14 @@ export function Nav() {
 
           <div className="fixed inset-x-0 top-[80px] z-[95]">
             <div className="mx-auto flex max-w-7xl justify-end px-4 sm:px-6 lg:px-8">
-              <div className="min-h-screen w-full bg-white p-6 sm:max-w-[420px]">
-                <ul className="m-0 flex list-none flex-col gap-5 p-0">
+              <div className="h-[calc(100vh-80px)] w-full bg-white p-6 flex flex-col items-center justify-center sm:max-w-105">
+                <ul className="m-0 flex list-none flex-col items-center gap-5 p-0">
                   {NAV_ITEMS.map((item) => (
                     <li key={item.target}>
                       <button
                         type="button"
                         onClick={() => scrollToSection(item.target)}
-                        className="bg-transparent text-left font-montserrat font-semibold capitalize text-navy"
+                        className="bg-transparent text-center font-montserrat font-semibold capitalize text-navy"
                       >
                         {item.label}
                       </button>
@@ -136,7 +136,7 @@ export function Nav() {
                 <button
                   type="button"
                   onClick={() => scrollToSection("contact")}
-                  className="mt-8 inline-flex items-center rounded-[10px] bg-orange px-5 py-3 font-montserrat font-semibold text-white"
+                  className="mt-8 flex items-center justify-center rounded bg-orange px-5 py-3 font-montserrat font-semibold text-white"
                 >
                   Demander un devis
                 </button>

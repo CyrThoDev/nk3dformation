@@ -6,8 +6,8 @@ import { SectionTitle } from "../ui/SectionTitle";
 
 export function Testimonials() {
   return (
-    <section className="bg-bg py-[88px] relative overflow-hidden">
-      <MeshDeco className="-top-5 -right-10 opacity-20" />
+    <section className="bg-bg py-14 md:py-20 lg:py-28 relative overflow-hidden">
+      <MeshDeco className="absolute -top-5 -right-10 opacity-20" />
       <Container>
         <div className="text-center mb-14">
           <SectionLabel center>Témoignages</SectionLabel>

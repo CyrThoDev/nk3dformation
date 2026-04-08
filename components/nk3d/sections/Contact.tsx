@@ -14,7 +14,7 @@ export function Contact() {
   const inputClass = "w-full bg-bg border border-border rounded-lg py-3 px-4 text-text text-[14px] font-montserrat outline-none focus:border-orange transition-colors";
 
   return (
-    <section id="contact" className="bg-bg py-[88px]">
+    <section id="contact" className="bg-bg py-14 md:py-20 lg:py-28">
       <Container className="max-w-[700px]">
         <div className="text-center mb-10">
           <SectionLabel center>Nous contacter</SectionLabel>
@@ -64,7 +64,7 @@ export function Contact() {
             </div>
             <button
               onClick={handleSubmit}
-              className="bg-navy border-none cursor-pointer text-white text-[14px] font-montserrat font-bold tracking-[0.06em] uppercase py-4 px-8 rounded-lg flex items-center justify-center gap-2 hover:bg-navy-mid transition-all shadow-[0_4px_16px_rgba(10,45,92,0.2)]"
+              className="bg-navy border-none cursor-pointer text-white text-[14px] font-montserrat font-bold tracking-[0.06em] uppercase py-4 px-8 rounded flex items-center justify-center gap-2 hover:bg-navy-mid transition-all shadow-[0_4px_16px_rgba(10,45,92,0.2)]"
             >
               <IconCheck /> Envoyer ma demande
             </button>

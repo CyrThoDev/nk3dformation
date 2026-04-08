@@ -1,22 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import type { Formation } from "@/types/formation";
-import { IconClock, IconArrow } from "../ui/Icons";
+import { IconClock } from "../ui/Icons";
 
 export function FormationCard({ formation }: { formation: Formation }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={`/formations/${formation.slug}`} className="no-underline block">
+    <div className="block h-full">
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className={`
-          rounded-[10px] p-4 px-5
+          h-full rounded-[10px] p-4 px-5
           flex items-start justify-between gap-4
-          border transition-all duration-200 cursor-pointer
+          border transition-all duration-200
           ${hovered
             ? "bg-navy-lt border-orange shadow-[0_6px_20px_rgba(232,118,42,0.10)] -translate-y-0.5"
             : "bg-white border-border shadow-[0_1px_4px_rgba(10,45,92,0.05)]"
@@ -38,11 +37,8 @@ export function FormationCard({ formation }: { formation: Formation }) {
               <IconClock />{formation.days}j
             </div>
           )}
-          <span className={`transition-colors duration-200 ${hovered ? "text-orange" : "text-text-lt"}`}>
-            <IconArrow />
-          </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

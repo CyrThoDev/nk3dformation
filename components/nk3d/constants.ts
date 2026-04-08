@@ -1,10 +1,10 @@
 import type { CategorieFormation } from "@/types/formation";
 
 export const STATS = [
-  { value: "12+",  label: "Ans d'expérience" },
-  { value: "340+", label: "Stagiaires formés" },
-  { value: "96%",  label: "Taux de satisfaction" },
-  { value: "100%", label: "Finançable OPCO" },
+  { value: "30+",  label: "années d'expérience" },
+  { value: "2500+", label: "Stagiaires formés" },
+  { value: "94%",  label: "Taux de satisfaction" },
+ 
 ] as const;
 
 export const PROCESS = [
@@ -35,5 +35,4 @@ export const CATEGORY_META: Record<CategorieFormation, { label: string; tag: str
   "catia-dmu":    { label: "CATIA V5 DMU",       tag: "Maquette numérique",        order: 3 },
   "3dexperience": { label: "3DEXPERIENCE",       tag: "Plateforme Dassault",       order: 4 },
   "composer":     { label: "COMPOSER",           tag: "Documentation & Animation", order: 5 },
-  "general":      { label: "Mécanique générale", tag: "Prérequis & Bases",         order: 6 },
 };

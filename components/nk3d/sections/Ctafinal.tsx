@@ -6,7 +6,7 @@ import { SectionLabel } from "../ui/SectionLabel";
 
 export function CtaFinal() {
   return (
-    <section className="bg-white py-20 pb-16">
+    <section className="bg-white py-14 md:py-20 lg:py-28">
       <Container>
         <div className="bg-gradient-to-br from-navy to-navy-mid rounded-[20px] p-14 px-16 grid grid-cols-[1fr_auto] gap-10 items-center relative overflow-hidden shadow-[0_12px_48px_rgba(10,45,92,0.18)]">
           <MeshDeco className="-top-5 right-20 opacity-15" />
@@ -27,11 +27,11 @@ export function CtaFinal() {
           <div className="flex flex-col gap-3 shrink-0">
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-7 py-3.5 rounded-[10px] border-none bg-orange text-white font-montserrat font-bold text-[14px] cursor-pointer whitespace-nowrap shadow-[0_4px_20px_rgba(232,118,42,0.5)] hover:brightness-110 transition-all"
+              className="px-7 py-3.5 rounded border-none bg-orange text-white font-montserrat font-bold text-[14px] cursor-pointer whitespace-nowrap shadow-[0_4px_20px_rgba(232,118,42,0.5)] hover:brightness-110 transition-all"
             >
               Demander un devis gratuit
             </button>
-            <button className="px-7 py-3 rounded-[10px] border border-white/25 bg-white/10 text-white/85 font-montserrat font-semibold text-[13px] cursor-pointer hover:bg-white/15 transition-all">
+            <button className="px-7 py-3 rounded border border-white/25 bg-white/10 text-white/85 font-montserrat font-semibold text-[13px] cursor-pointer hover:bg-white/15 transition-all">
               Appeler Nicolas
             </button>
           </div>

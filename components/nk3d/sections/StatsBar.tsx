@@ -1,22 +1,24 @@
 import { STATS } from "../constants";
 import { Container } from "../ui/Container";
 
+const DISPLAYED_STATS = STATS.slice(0, 3);
+
 export function StatsBar() {
   return (
-    <div className="bg-navy py-7">
+    <div className="bg-navy py-10 md:py-12">
       <Container>
-        <div className="grid grid-cols-4">
-          {STATS.map((s, i) => (
+        <div className="flex flex-col items-center gap-4 sm:grid sm:grid-cols-3 sm:items-stretch sm:gap-0">
+          {DISPLAYED_STATS.map((s, i) => (
             <div
               key={i}
-              className={`text-center px-4 ${i < 3 ? "border-r border-white/10" : ""}`}
+              className={`flex flex-col items-center gap-1 px-4 py-2 ${i < DISPLAYED_STATS.length - 1 ? "sm:border-r sm:border-white/10" : ""}`}
             >
-              <p className="font-montserrat font-black text-[32px] text-orange m-0 leading-none">
+              <span className="font-montserrat font-black text-[clamp(2rem,5vw,2.75rem)] leading-none text-orange">
                 {s.value}
-              </p>
-              <p className="font-montserrat text-[12px] text-white/60 mt-1 m-0">
+              </span>
+              <span className="font-eurostile-extended text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
                 {s.label}
-              </p>
+              </span>
             </div>
           ))}
         </div>
