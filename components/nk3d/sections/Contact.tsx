@@ -126,7 +126,7 @@ export function Contact() {
               Message envoyé !
             </h2>
             <p className="font-montserrat text-[14px] text-text-md">
-              Nicolas vous répondra sous 48h.
+             Je vous répondrai sous 48h.
             </p>
             <button
               onClick={() => setStatus("idle")}
