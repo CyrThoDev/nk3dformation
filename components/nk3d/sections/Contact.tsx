@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Container } from "../ui/Container";
 import { SectionLabel } from "../ui/SectionLabel";
 import { SectionTitle } from "../ui/SectionTitle";
-import { IconCheck } from "../ui/Icons";
+import { IconCheck, IconPhone, IconMail } from "../ui/Icons";
 
 type FormState = {
   nom: string;
@@ -220,6 +220,28 @@ export function Contact() {
           Réponse sous 48h
         </p>
       </div>
+    </div>
+
+    {/* ── Coordonnées ── */}
+    <div className="space-y-3 pt-2 border-t border-border">
+      <a
+        href="tel:+33665777151"
+        className="flex items-center gap-3 group"
+      >
+        <IconPhone className="h-4 w-4 shrink-0 text-orange" />
+        <span className="font-montserrat text-[14px] text-text-md group-hover:underline group-hover:text-navy transition-colors">
+          +33 6 65 77 71 51
+        </span>
+      </a>
+      <a
+        href="mailto:nicolas@nk3dformation.fr"
+        className="flex items-center gap-3 group"
+      >
+        <IconMail className="h-4 w-4 shrink-0 text-orange" />
+        <span className="font-montserrat text-[14px] text-text-md group-hover:underline group-hover:text-navy transition-colors">
+          nicolas@nk3dformation.fr
+        </span>
+      </a>
     </div>
 
   </div>

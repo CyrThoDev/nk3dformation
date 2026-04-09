@@ -27,9 +27,9 @@ export function Footer() {
             <Link href="/politique-confidentialite" className="font-montserrat text-[12px] text-text-lt no-underline hover:text-navy transition-colors">
               Politique de confidentialité
             </Link>
-            <a href="#contact" className="font-montserrat text-[12px] text-text-lt no-underline hover:text-navy transition-colors">
+            <Link href="/#contact" className="font-montserrat text-[12px] text-text-lt no-underline hover:text-navy transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
 
