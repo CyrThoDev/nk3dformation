@@ -46,7 +46,7 @@ function buildEmail(data: {
 }): string {
   const { nom, prenom, email, telephone, sujet, message } = data;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
-  const logoUrl = siteUrl ? `${siteUrl}/images/LOGOTYPE_FOND_CLAIR.png` : null;
+  const logoUrl = siteUrl ? `${siteUrl}/images/LOGOTYPE_FOND_FONCE.png` : null;
   const rows = [
     ["Nom", nom],
     ["Prénom", prenom],
@@ -197,18 +197,17 @@ export async function POST(req: NextRequest) {
   };
 
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const to = process.env.CONTACT_EMAIL ?? "nicolas@nk3dformation.fr";
-  // Utilise l'expéditeur de test tant que le domaine nk3dformation.fr n'est pas vérifié dans Resend
-  const from = "onboarding@resend.dev";
+const to = process.env.CONTACT_EMAIL ?? "nicolas@nk3dformation.fr";
+const from = "Nicolas - NK3D Formation <contact@nk3dformation.fr>";
 
-  try {
-    await resend.emails.send({
-      from,
-      to,
-      replyTo: cleanData.email || undefined,
-      subject: `[${cleanData.sujet}] ${cleanData.prenom} ${cleanData.nom}`,
-      html: buildEmail(cleanData),
-    });
+try {
+  await resend.emails.send({
+    from,
+    to,
+    replyTo: cleanData.email || undefined,
+    subject: `[${cleanData.sujet}] ${cleanData.prenom} ${cleanData.nom}`,
+    html: buildEmail(cleanData),
+  });
 
     return NextResponse.json({ ok: true });
   } catch (err) {
