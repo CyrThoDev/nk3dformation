@@ -11,7 +11,7 @@ export function FormationCard({ formation }: { formation: Formation }) {
           <div className="font-eurostile-extended text-[11px] font-bold text-orange tracking-[0.1em] uppercase mb-1">
             {formation.code}
           </div>
-          <div className="font-montserrat text-[14px] font-medium text-text leading-[1.4]">
+          <div className="font-montserrat text-base font-medium text-text leading-[1.4]">
             {formation.titre}
           </div>
         </div>

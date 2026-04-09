@@ -65,7 +65,7 @@ export default function Hero() {
             </p>
 
             {/* Desc */}
-            <p className="mb-6 mt-3 font-montserrat text-[15px] leading-7 text-text-md md:text-base md:leading-8">
+            <p className="mb-6 mt-3 font-montserrat text-base leading-7 text-text-md md:leading-8">
               Je conçois et anime des formations adaptées à votre contexte métier,
               votre niveau et vos outils.
             </p>

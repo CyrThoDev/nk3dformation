@@ -51,7 +51,7 @@ export const FormationsSection = () => {
         <div className="mt-14 flex flex-col items-center gap-4 rounded-2xl border border-orange/20 bg-orange/5 px-8 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
             <p className="font-montserrat font-bold text-navy text-[16px]">Vous ne trouvez pas votre formation ?</p>
-            <p className="font-montserrat text-[14px] text-text-md mt-1">Je construis des programmes sur mesure adaptés à vos outils et vos enjeux.</p>
+            <p className="font-montserrat text-base text-text-md mt-1">Je construis des programmes sur mesure adaptés à vos outils et vos enjeux.</p>
           </div>
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}

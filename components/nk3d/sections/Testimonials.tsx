@@ -75,7 +75,7 @@ export function Testimonials() {
                     </div>
 
                     {/* Texte */}
-                    <p className="font-montserrat text-[13px] leading-[1.8] text-text-md mb-5 italic">
+                    <p className="font-montserrat text-[15px] leading-[1.8] text-text-md mb-5 italic">
                       « {t.text} »
                     </p>
 
@@ -85,11 +85,11 @@ export function Testimonials() {
                         {t.initials}
                       </div>
                       <div>
-                        <p className="font-montserrat font-bold text-[13px] text-navy m-0">
+                        <p className="font-montserrat font-bold text-[15px] text-navy m-0">
                           {t.name}
                         </p>
                         {(t.role || t.company) && (
-                          <p className="font-montserrat text-[11px] text-text-lt m-0">
+                          <p className="font-montserrat text-[13px] text-text-lt m-0">
                             {t.role} {t.role && t.company && "·"} {t.company}
                           </p>
                         )}

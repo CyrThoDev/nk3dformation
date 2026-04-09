@@ -22,7 +22,7 @@ export function Process() {
               Un accompagnement<br />100% sur-mesure
             </SectionTitle>
 
-            <p className="mt-4 mb-6 max-w-[520px] font-montserrat text-[15px] leading-[1.8] text-text-md">
+            <p className="mt-4 mb-6 max-w-[520px] font-montserrat text-base leading-[1.8] text-text-md">
               Chaque formation est construite autour de vos outils, vos pièces et vos enjeux.
               Je m'adapte au niveau et au contexte de chaque équipe.
             </p>
@@ -51,11 +51,11 @@ export function Process() {
                 </div>
 
                 <div>
-                  <h4 className="font-montserrat font-bold text-[14px] text-navy mb-1">
+                  <h4 className="font-montserrat font-bold text-base text-navy mb-1">
                     {p.title}
                   </h4>
 
-                  <p className="font-montserrat text-[13px] text-text-md leading-[1.6]">
+                  <p className="font-montserrat text-[15px] text-text-md leading-[1.6]">
                     {p.desc}
                   </p>
                 </div>

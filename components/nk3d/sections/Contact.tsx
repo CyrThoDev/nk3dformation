@@ -109,7 +109,7 @@ export function Contact() {
   }
 
   const inputBase =
-    "w-full rounded-sm border bg-bg px-4 py-3 text-[14px] text-text font-montserrat outline-none transition-colors";
+    "w-full rounded-sm border bg-bg px-4 py-3 text-base text-text font-montserrat outline-none transition-colors";
   const inputCls = (k: string) =>
     `${inputBase} ${
       errors[k]
@@ -128,12 +128,12 @@ export function Contact() {
             <h2 className="mb-2 font-montserrat text-[22px] font-bold text-navy">
               Message envoyé !
             </h2>
-            <p className="font-montserrat text-[14px] text-text-md">
+            <p className="font-montserrat text-base text-text-md">
              Je vous répondrai sous 48h.
             </p>
             <button
               onClick={() => setStatus("idle")}
-              className="mt-6 rounded border border-navy px-6 py-2.5 font-montserrat text-[13px] font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+              className="mt-6 rounded border border-navy px-6 py-2.5 font-montserrat text-[15px] font-semibold text-navy transition-all hover:bg-navy hover:text-white"
             >
               Envoyer une autre demande
             </button>
@@ -150,7 +150,7 @@ export function Contact() {
           <div className="mb-10 text-center">
             <SectionLabel center>Me contacter</SectionLabel>
             <SectionTitle center>Demande de formation</SectionTitle>
-            <p className="mx-auto max-w-2xl font-montserrat text-[15px] leading-[1.6] text-text-md">
+            <p className="mx-auto max-w-2xl font-montserrat text-base leading-[1.6] text-text-md">
               Précisez votre besoin, je reviendrai vers vous sous 48h.
             </p>
           </div>
@@ -184,7 +184,7 @@ export function Contact() {
           Nicolas Kreutz
         </h3>
 
-        <p className="font-montserrat text-[14px] leading-6 text-text-md">
+        <p className="font-montserrat text-base leading-6 text-text-md">
           Formateur indépendant sur <strong>CATIA V5</strong>,{" "}
           <strong>3DEXPERIENCE</strong> et{" "}
           <strong>CATIA COMPOSER</strong>
@@ -193,8 +193,8 @@ export function Contact() {
     </div>
 
     {/* ── Description courte ── */}
-    <p className="font-montserrat text-[15px] leading-7 text-text-md">
-      J'accompagne les professionnels de l’industrie avec des formations
+    <p className="font-montserrat text-base leading-7 text-text-md">
+      J’accompagne les professionnels de l’industrie avec des formations
       concrètes, adaptées au niveau des participants et aux réalités du terrain.
     </p>
 
@@ -202,21 +202,21 @@ export function Contact() {
     <div className="space-y-3">
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-[14px] leading-6 text-text-md">
+        <p className="font-montserrat text-base leading-6 text-text-md">
           Formations 100% sur mesure
         </p>
       </div>
 
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-[14px] leading-6 text-text-md">
+        <p className="font-montserrat text-base leading-6 text-text-md">
           Présentiel ou distanciel
         </p>
       </div>
 
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-[14px] leading-6 text-text-md">
+        <p className="font-montserrat text-base leading-6 text-text-md">
           Réponse sous 48h
         </p>
       </div>
@@ -229,7 +229,7 @@ export function Contact() {
         className="flex items-center gap-3 group"
       >
         <IconPhone className="h-4 w-4 shrink-0 text-orange" />
-        <span className="font-montserrat text-[14px] text-text-md group-hover:underline group-hover:text-navy transition-colors">
+        <span className="font-montserrat text-base text-text-md group-hover:underline group-hover:text-navy transition-colors">
           +33 6 65 77 71 51
         </span>
       </a>
@@ -238,7 +238,7 @@ export function Contact() {
         className="flex items-center gap-3 group"
       >
         <IconMail className="h-4 w-4 shrink-0 text-orange" />
-        <span className="font-montserrat text-[14px] text-text-md group-hover:underline group-hover:text-navy transition-colors">
+        <span className="font-montserrat text-base text-text-md group-hover:underline group-hover:text-navy transition-colors">
           nicolas@nk3dformation.fr
         </span>
       </a>
@@ -389,7 +389,7 @@ export function Contact() {
               </div>
 
               {status === "error" && (
-                <p className="text-center font-montserrat text-[13px] text-red-500">
+                <p className="text-center font-montserrat text-[15px] text-red-500">
                   Une erreur est survenue. Réessayez ou contactez directement Nicolas.
                 </p>
               )}
@@ -397,7 +397,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="flex items-center justify-center gap-2 rounded bg-navy px-8 py-4 font-montserrat text-[14px] font-bold uppercase tracking-[0.06em] text-white shadow-[0_4px_16px_rgba(10,45,92,0.2)] transition-all hover:bg-navy-mid disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex items-center justify-center gap-2 rounded bg-navy px-8 py-4 font-montserrat text-base font-bold uppercase tracking-[0.06em] text-white shadow-[0_4px_16px_rgba(10,45,92,0.2)] transition-all hover:bg-navy-mid disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === "sending" ? (
                   <>
