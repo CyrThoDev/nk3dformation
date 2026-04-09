@@ -8,7 +8,7 @@ export function CtaFinal() {
   return (
     <section className="bg-white py-14 md:py-20 lg:py-28">
       <Container>
-        <div className="bg-gradient-to-br from-navy to-navy-mid rounded-[20px] p-14 px-16 grid grid-cols-[1fr_auto] gap-10 items-center relative overflow-hidden shadow-[0_12px_48px_rgba(10,45,92,0.18)]">
+        <div className="bg-gradient-to-br from-navy to-navy-mid rounded-2xl p-14 px-16 grid grid-cols-[1fr_auto] gap-10 items-center relative overflow-hidden shadow-[0_12px_48px_rgba(10,45,92,0.18)]">
           <MeshDeco className="-top-5 right-20 opacity-15" />
 
           {/* Texte */}

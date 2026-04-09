@@ -46,7 +46,7 @@ export function Process() {
                   i < PROCESS.length - 1 ? "border-b border-border" : ""
                 }`}
               >
-                <div className="shrink-0 w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-[10px] bg-navy-lt flex items-center justify-center font-eurostile-extended font-extrabold text-[13px] md:text-[14px] text-navy-mid">
+                <div className="shrink-0 w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-xl bg-navy-lt flex items-center justify-center font-eurostile-extended font-extrabold text-[13px] md:text-[14px] text-navy-mid">
                   {p.n}
                 </div>
 

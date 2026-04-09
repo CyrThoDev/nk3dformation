@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Formation, CategorieFormation } from "@/types/formation";
-import { IconArrow } from "../ui/Icons";
+import { IconChevron } from "../ui/Icons";
 import { FormationCard } from "./FormationCard";
 
 interface CategoryGroup {
@@ -39,13 +39,12 @@ export function CategorySection({ category }: { category: CategoryGroup; index: 
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <span className="bg-orange-lt border border-orange/30 rounded-full py-1 px-3 text-orange text-[12px] font-montserrat font-semibold">
-            <span className="sm:hidden">{category.formations.length}</span>
-            <span className="hidden sm:inline">{category.formations.length} formations</span>
+        <div className="flex items-center gap-3">
+          <span className="bg-orange-lt border border-orange/30 rounded-full py-1 px-3 text-orange text-[12px] font-montserrat font-semibold whitespace-nowrap">
+            {category.formations.length} formation{category.formations.length > 1 ? "s" : ""}
           </span>
-          <div className={`text-text-lt transition-transform duration-250 ${open ? "rotate-90" : ""}`}>
-            <IconArrow />
+          <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-white text-text-lt shadow-sm transition-transform duration-250 ${open ? "rotate-180" : ""}`}>
+            <IconChevron className="h-4 w-4" />
           </div>
         </div>
       </button>

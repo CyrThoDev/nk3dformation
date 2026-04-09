@@ -30,6 +30,22 @@ export function IconArrow(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function IconChevron(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
 export function IconCheck(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

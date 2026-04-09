@@ -13,7 +13,7 @@ export function FormationCard({ formation }: { formation: Formation }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className={`
-          h-full rounded-[10px] p-4 px-5
+          h-full rounded-xl p-4 px-5
           flex items-start justify-between gap-4
           border transition-all duration-200
           ${hovered

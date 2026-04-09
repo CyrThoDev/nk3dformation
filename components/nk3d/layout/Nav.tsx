@@ -70,7 +70,7 @@ export function Nav() {
             <button
               type="button"
               onClick={() => scrollToSection("contact")}
-              className="bg-orange px-8 py-3 font-montserrat font-semibold text-white transition hover:scale-[1.02]"
+              className="rounded bg-orange px-8 py-3 font-montserrat font-semibold text-white transition hover:scale-[1.02]"
             >
               Demander un devis
             </button>
