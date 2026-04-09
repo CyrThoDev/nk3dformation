@@ -10,7 +10,7 @@ export const STATS = [
 export const PROCESS = [
   { n: "01", title: "Audit de besoins",       desc: "Analyse de votre contexte métier et du niveau de vos équipes." },
   { n: "02", title: "Programme sur-mesure",   desc: "Contenu adapté à vos logiciels, vos pièces, vos enjeux industriels." },
-  { n: "03", title: "Formation présentielle", desc: "Sessions sur site ou dans notre centre équipé en workstations CAO." },
+  { n: "03", title: "Formation présentielle ou distancielle", desc: "Sessions sur vos site ou en distanciel." },
   { n: "04", title: "Suivi post-formation",   desc: "Support technique 30 jours après la fin de la formation inclus." },
 ] as const;
 

@@ -18,13 +18,13 @@ type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 const CONSULTING_CARDS: { Icon: IconComponent; title: string; desc: string }[] = [
   {
     Icon: IconSearch,
-    title: "Diagnostic CAO / PLM",
-    desc: "Analyse de vos processus, de votre arborescence et de vos pratiques pour identifier les points de friction.",
+    title: "Audit et diagnostic  CAO / PLM",
+    desc: "Analyse de vos processus et de vos méthodes de travail, afin d’identifier des besoins de support ou de formation.",
   },
   {
     Icon: IconLayers,
-    title: "Recommandations métier",
-    desc: "Conseils sur l'organisation des données, des flux et des configurations adaptés à votre contexte industriel.",
+    title: "Recommandations licences et métier",
+    desc: "Conseils sur l’utilisation de vos licences CATIA. Proposition de méthodologie sur certains ateliers.",
   },
   {
     Icon: IconSettings,
@@ -36,11 +36,7 @@ const CONSULTING_CARDS: { Icon: IconComponent; title: string; desc: string }[] =
     title: "Revue de maquettes",
     desc: "Audit de vos maquettes numériques et transmission des bonnes pratiques à vos équipes.",
   },
-  {
-    Icon: IconZap,
-    title: "Soutien en phase critique",
-    desc: "Intervention ponctuelle lors d'un lancement, d'un déploiement ou d'une montée en version délicate.",
-  },
+ 
   {
     Icon: IconMessageSquare,
     title: "Conseil à la carte",
