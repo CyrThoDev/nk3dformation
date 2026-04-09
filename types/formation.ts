@@ -10,8 +10,7 @@ export type CategorieFormation =
   | "catia-metier"
   | "catia-dmu"
   | "3dexperience"
-  | "composer"
-  | "general";
+  | "composer";
 
 export interface JourProgramme {
   jour: string;       // "Jour 1"

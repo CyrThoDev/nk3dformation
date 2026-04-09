@@ -12,8 +12,8 @@ import type { Formation } from "../types/formation";
 export const FORMATIONS: Formation[] = [
   // ── CATIA V5 Fondamentaux ──────────────────────────────────────────────
   {
-    slug: "v5f",
-    code: "V5F",
+    slug: "v5-v5f",
+    code: "V5-V5F",
     categorie: "catia-v5",
     categorieLabel: "CATIA V5",
     titre: "Fondamentaux – Conception mécanique de base",
@@ -72,7 +72,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Utilisateurs CATIA V5 ayant des bases en modélisation 3D.",
     prerequis: "Maîtrise du Part Design CATIA V5 (V5F ou équivalent).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-fta"],
+    formationsAssociees: ["v5-v5f", "v5-fta"],
   },
 
   // ── CATIA V5 Surfacique ────────────────────────────────────────────────
@@ -102,7 +102,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs CATIA V5 souhaitant aborder la modélisation de forme.",
     prerequis: "Bonne maîtrise du Part Design (V5F ou V5-V5E recommandé).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-v5e"],
+    formationsAssociees: ["v5-v5f", "v5-v5e"],
   },
 
   // ── CATIA V5 Avancé ────────────────────────────────────────────────────
@@ -136,7 +136,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs CATIA V5 expérimentés souhaitant approfondir leurs compétences.",
     prerequis: "Maîtrise solide du Part Design et Assembly Design (V5F ou 2 ans de pratique).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-gs1", "v5-fta"],
+    formationsAssociees: ["v5-v5f", "v5-gs1", "v5-fta"],
   },
 
   // ── CATIA V5 Tôlerie ──────────────────────────────────────────────────
@@ -166,7 +166,7 @@ export const FORMATIONS: Formation[] = [
     publicVise: "Concepteurs et techniciens travaillant sur des pièces en tôle.",
     prerequis: "Bases CATIA V5 Part Design (V5F ou équivalent).",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "v5-asl"],
+    formationsAssociees: ["v5-v5f", "v5-asl"],
   },
 
   // ── CATIA V5 FTA ──────────────────────────────────────────────────────
@@ -175,7 +175,7 @@ export const FORMATIONS: Formation[] = [
     code: "V5-FTA",
     categorie: "catia-v5",
     categorieLabel: "CATIA V5",
-    titre: "Functional Tolerancing & Annotations",
+    titre: "Tolérancements 3D et annotations fonctionnelles",
     description:
       "Annoter directement le modèle 3D avec le tolérancement fonctionnel ISO selon la norme GPS, en vue d'un bureau d'études sans dessin 2D.",
     duree: "1 jour (7h)",
@@ -197,6 +197,90 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Maîtrise du Part Design et bases en dessin technique / tolérancement.",
     pdfUrl: null,
     formationsAssociees: ["v5-gdr", "3dx-fta"],
+  },
+
+  // ── CATIA V5 Conception électrique ────────────────────────────────────
+  {
+    slug: "v5-eli",
+    code: "V5-ELI",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Conception de harnais électrique",
+    description: "Concevoir et gérer des harnais électriques avec CATIA V5 Electrical Harness Design.",
+    duree: "À définir",
+    days: 2,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases CATIA V5 Part Design.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-ehf"],
+  },
+
+  // ── CATIA V5 Mise en plat de harnais ──────────────────────────────────
+  {
+    slug: "v5-ehf",
+    code: "V5-EHF",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Mise en plat de harnais",
+    description: "Générer et exploiter la mise en plat de harnais électriques avec CATIA V5.",
+    duree: "À définir",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "V5-ELI ou équivalent.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-eli"],
+  },
+
+  // ── CATIA V5 Consultation ──────────────────────────────────────────────
+  {
+    slug: "v5-consultation",
+    code: "V5-Consultation",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Consultation V5",
+    description: "Session de consultation et d'accompagnement sur des problématiques spécifiques CATIA V5.",
+    duree: "3 jours (21h)",
+    days: 3,
+    niveau: "Tous niveaux",
+    format: "Présentiel / Distanciel",
+    financement: "Sur devis",
+    objectifs: [],
+    programme: [],
+    publicVise: "Utilisateurs CATIA V5 ayant des besoins spécifiques.",
+    prerequis: "Pratique de CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: [],
+  },
+
+  // ── CATIA V5 Nouveautés ────────────────────────────────────────────────
+  {
+    slug: "v5-updates",
+    code: "V5-UPDATES",
+    categorie: "catia-v5",
+    categorieLabel: "CATIA V5",
+    titre: "Nouveautés CATIA V5",
+    description: "Découvrir et maîtriser les nouvelles fonctionnalités des dernières versions de CATIA V5.",
+    duree: "À définir",
+    days: null,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "Utilisateurs CATIA V5 souhaitant se mettre à jour.",
+    prerequis: "Pratique de CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: [],
   },
 
   // ── DMU Navigator ─────────────────────────────────────────────────────
@@ -229,6 +313,28 @@ export const FORMATIONS: Formation[] = [
     formationsAssociees: ["v5-kin", "v5-spa"],
   },
 
+  // ── DMU Space Analysis ────────────────────────────────────────────────
+  {
+    slug: "v5-spa",
+    code: "V5-SPA",
+    categorie: "catia-dmu",
+    categorieLabel: "CATIA V5 DMU",
+    titre: "DMU Space Analysis",
+    description:
+      "Analyser les espaces et détecter les interférences statiques entre composants d'un assemblage avec CATIA V5 DMU Space Analysis.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-dmn", "v5-kin", "v5-fit"],
+  },
+
   // ── DMU Cinématique ───────────────────────────────────────────────────
   {
     slug: "v5-kin",
@@ -257,6 +363,28 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
     pdfUrl: null,
     formationsAssociees: ["v5-dmn", "v5-spa", "v5-fit"],
+  },
+
+  // ── DMU Fitting ───────────────────────────────────────────────────────
+  {
+    slug: "v5-fit",
+    code: "V5-FIT",
+    categorie: "catia-dmu",
+    categorieLabel: "CATIA V5 DMU",
+    titre: "DMU Fitting",
+    description:
+      "Simuler les séquences de montage et démontage de composants pour valider les accessibilités et les gammes d'assemblage avec CATIA V5 DMU Fitting.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-dmn", "v5-kin", "v5-spa"],
   },
 
   // ── 3DEXPERIENCE Fondamentaux ─────────────────────────────────────────
@@ -323,6 +451,72 @@ export const FORMATIONS: Formation[] = [
     formationsAssociees: ["3dx-3df", "3dx-gtx"],
   },
 
+  // ── 3DEXPERIENCE Tôlerie ─────────────────────────────────────────────
+  {
+    slug: "3dx-smd",
+    code: "3DX-SMD",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Création de pièces de tôleries",
+    description:
+      "Modéliser des pièces de tôlerie sur la plateforme 3DEXPERIENCE : pliage, dépliage et génération du développé.",
+    duree: "2 jours (14h)",
+    days: 2,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases 3DEXPERIENCE Part Design (3DX-3DF ou équivalent).",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-smd"],
+  },
+
+  // ── 3DEXPERIENCE FTA ──────────────────────────────────────────────────
+  {
+    slug: "3dx-fta",
+    code: "3DX-FTA",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Tolérance 3D et annotations fonctionnelles",
+    description:
+      "Annoter directement le modèle 3D avec le tolérancement fonctionnel ISO sur la plateforme 3DEXPERIENCE, en vue d'un bureau d'études sans dessin 2D.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise du Part Design 3DEXPERIENCE et bases en tolérancement.",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-fta"],
+  },
+
+  // ── 3DEXPERIENCE Électrique ───────────────────────────────────────────
+  {
+    slug: "3dx-elg",
+    code: "3DX-ELG",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Conception de composants électriques 3D",
+    description:
+      "Concevoir et intégrer des composants électriques 3D dans la plateforme 3DEXPERIENCE avec le rôle Electrical 3D Design.",
+    duree: "3 jours (21h)",
+    days: 3,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases 3DEXPERIENCE Part Design (3DX-3DF ou équivalent).",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-eli"],
+  },
+
   // ── COMPOSER Fondamentaux ─────────────────────────────────────────────
   {
     slug: "3dvia-cps",
@@ -354,34 +548,26 @@ export const FORMATIONS: Formation[] = [
     formationsAssociees: ["3dvia-play", "3dv-anim", "3dv-doc"],
   },
 
-  // ── Prérequis conception 3D ────────────────────────────────────────────
+  // ── COMPOSER Player ───────────────────────────────────────────────────
   {
-    slug: "pre-3d",
-    code: "PRE-3D",
-    categorie: "general",
-    categorieLabel: "Mécanique générale",
-    titre: "Prérequis à la conception 3D",
+    slug: "3dvia-play",
+    code: "3DVIA-PLAY",
+    categorie: "composer",
+    categorieLabel: "COMPOSER",
+    titre: "CATIA COMPOSER Player",
     description:
-      "Acquérir les bases du dessin technique industriel et de la lecture de plan pour aborder sereinement toute formation CAO.",
-    duree: null,
-    days: null,
+      "Exploiter et interagir avec des documents CATIA COMPOSER publiés via le Player : navigation, vues, animations et extraction d'informations.",
+    duree: "1 jour (7h)",
+    days: 1,
     niveau: "Débutant",
     format: "Présentiel / Distanciel",
     financement: "OPCO · CPF",
-    objectifs: [
-      "Lire et interpréter un plan technique industriel",
-      "Comprendre les projections orthogonales",
-      "Maîtriser les conventions de cotation ISO",
-      "Identifier les types de vues et de coupes",
-    ],
-    programme: [
-      { jour: "Jour 1", titre: "Lecture de plan", contenu: "Projections, vues, coupes, conventions" },
-      { jour: "Jour 2", titre: "Cotation & tolérances", contenu: "Cotation ISO, tolérances, état de surface" },
-    ],
-    publicVise: "Toute personne souhaitant intégrer une formation CAO sans bases en dessin technique.",
-    prerequis: "Aucun prérequis.",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Aucun prérequis. Idéal pour les utilisateurs finaux des livrables COMPOSER.",
     pdfUrl: null,
-    formationsAssociees: ["v5f", "3dx-3df"],
+    formationsAssociees: ["3dvia-cps"],
   },
 ];
 
