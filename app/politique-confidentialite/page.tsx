@@ -11,7 +11,7 @@ export default function PolitiqueConfidentialite() {
     <>
       <Nav />
       <main className="bg-white py-16 md:py-24">
-        <Container className="max-w-3xl">
+        <Container className="max-w-7xl mx-auto px-4 lg:px-6">
           <h1 className="font-montserrat font-black text-[clamp(24px,3vw,36px)] text-navy mb-2">
             Politique de confidentialité
           </h1>

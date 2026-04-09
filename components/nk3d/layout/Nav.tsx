@@ -6,7 +6,6 @@ import Image from "next/image";
 
 const NAV_ITEMS = [
   { label: "FORMATIONS", target: "formations" },
-  { label: "METHODE", target: "méthode" },
   { label: "CONSULTING", target: "consulting" },
   { label: "CONTACT", target: "contact" },
 ];
@@ -59,7 +58,7 @@ export function Nav() {
                   <button
                     type="button"
                     onClick={() => scrollToSection(item.target)}
-                    className="bg-transparent font-montserrat font-medium capitalize text-navy transition decoration-2 underline-offset-4 hover:text-orange hover:underline"
+                    className="bg-transparent font-montserrat text-sm font-medium capitalize text-navy transition decoration-2 underline-offset-4 hover:text-orange hover:underline"
                   >
                     {item.label}
                   </button>

@@ -313,6 +313,28 @@ export const FORMATIONS: Formation[] = [
     formationsAssociees: ["v5-kin", "v5-spa"],
   },
 
+  // ── DMU Space Analysis ────────────────────────────────────────────────
+  {
+    slug: "v5-spa",
+    code: "V5-SPA",
+    categorie: "catia-dmu",
+    categorieLabel: "CATIA V5 DMU",
+    titre: "DMU Space Analysis",
+    description:
+      "Analyser les espaces et détecter les interférences statiques entre composants d'un assemblage avec CATIA V5 DMU Space Analysis.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-dmn", "v5-kin", "v5-fit"],
+  },
+
   // ── DMU Cinématique ───────────────────────────────────────────────────
   {
     slug: "v5-kin",
@@ -341,6 +363,28 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
     pdfUrl: null,
     formationsAssociees: ["v5-dmn", "v5-spa", "v5-fit"],
+  },
+
+  // ── DMU Fitting ───────────────────────────────────────────────────────
+  {
+    slug: "v5-fit",
+    code: "V5-FIT",
+    categorie: "catia-dmu",
+    categorieLabel: "CATIA V5 DMU",
+    titre: "DMU Fitting",
+    description:
+      "Simuler les séquences de montage et démontage de composants pour valider les accessibilités et les gammes d'assemblage avec CATIA V5 DMU Fitting.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise de l'Assembly Design CATIA V5.",
+    pdfUrl: null,
+    formationsAssociees: ["v5-dmn", "v5-kin", "v5-spa"],
   },
 
   // ── 3DEXPERIENCE Fondamentaux ─────────────────────────────────────────
@@ -407,6 +451,72 @@ export const FORMATIONS: Formation[] = [
     formationsAssociees: ["3dx-3df", "3dx-gtx"],
   },
 
+  // ── 3DEXPERIENCE Tôlerie ─────────────────────────────────────────────
+  {
+    slug: "3dx-smd",
+    code: "3DX-SMD",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Création de pièces de tôleries",
+    description:
+      "Modéliser des pièces de tôlerie sur la plateforme 3DEXPERIENCE : pliage, dépliage et génération du développé.",
+    duree: "2 jours (14h)",
+    days: 2,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases 3DEXPERIENCE Part Design (3DX-3DF ou équivalent).",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-smd"],
+  },
+
+  // ── 3DEXPERIENCE FTA ──────────────────────────────────────────────────
+  {
+    slug: "3dx-fta",
+    code: "3DX-FTA",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Tolérance 3D et annotations fonctionnelles",
+    description:
+      "Annoter directement le modèle 3D avec le tolérancement fonctionnel ISO sur la plateforme 3DEXPERIENCE, en vue d'un bureau d'études sans dessin 2D.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Maîtrise du Part Design 3DEXPERIENCE et bases en tolérancement.",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-fta"],
+  },
+
+  // ── 3DEXPERIENCE Électrique ───────────────────────────────────────────
+  {
+    slug: "3dx-elg",
+    code: "3DX-ELG",
+    categorie: "3dexperience",
+    categorieLabel: "3DEXPERIENCE",
+    titre: "Conception de composants électriques 3D",
+    description:
+      "Concevoir et intégrer des composants électriques 3D dans la plateforme 3DEXPERIENCE avec le rôle Electrical 3D Design.",
+    duree: "3 jours (21h)",
+    days: 3,
+    niveau: "Intermédiaire",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Bases 3DEXPERIENCE Part Design (3DX-3DF ou équivalent).",
+    pdfUrl: null,
+    formationsAssociees: ["3dx-3df", "v5-eli"],
+  },
+
   // ── COMPOSER Fondamentaux ─────────────────────────────────────────────
   {
     slug: "3dvia-cps",
@@ -436,6 +546,28 @@ export const FORMATIONS: Formation[] = [
     prerequis: "Aucun prérequis CAO requis. Notions de base en informatique.",
     pdfUrl: null,
     formationsAssociees: ["3dvia-play", "3dv-anim", "3dv-doc"],
+  },
+
+  // ── COMPOSER Player ───────────────────────────────────────────────────
+  {
+    slug: "3dvia-play",
+    code: "3DVIA-PLAY",
+    categorie: "composer",
+    categorieLabel: "COMPOSER",
+    titre: "CATIA COMPOSER Player",
+    description:
+      "Exploiter et interagir avec des documents CATIA COMPOSER publiés via le Player : navigation, vues, animations et extraction d'informations.",
+    duree: "1 jour (7h)",
+    days: 1,
+    niveau: "Débutant",
+    format: "Présentiel / Distanciel",
+    financement: "OPCO · CPF",
+    objectifs: [],
+    programme: [],
+    publicVise: "",
+    prerequis: "Aucun prérequis. Idéal pour les utilisateurs finaux des livrables COMPOSER.",
+    pdfUrl: null,
+    formationsAssociees: ["3dvia-cps"],
   },
 ];
 

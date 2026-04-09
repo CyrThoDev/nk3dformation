@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute right-[40%] top-[15%] h-[320px] w-[320px] rounded-full bg-orange opacity-[0.05] blur-[60px]" />
 
       <div className="mx-auto w-full max-w-7xl px-4 lg:px-6">
-        <div className="grid grid-cols-1 items-stretch gap-4 pt-6 pb-12 md:pt-10 md:pb-16 lg:grid-cols-2 lg:gap-8 lg:pt-14 lg:pb-24">
+        <div className="grid grid-cols-1 items-stretch gap-4 pt-6 pb-12 md:pt-10 md:pb-16 lg:grid-cols-2 lg:gap-20 lg:pt-14 lg:pb-24">
 
           {/* IMAGE */}
           <div className="order-1 lg:order-1 lg:flex lg:flex-col">

@@ -16,7 +16,7 @@ export function CategorySection({ category }: { category: CategoryGroup; index: 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth >= 1024 && category.id === "catia-v5") {
+    if (window.innerWidth >= 1024 && category.id === "3dexperience") {
       setOpen(true);
     }
   }, [category.id]);
