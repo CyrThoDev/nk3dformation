@@ -46,7 +46,9 @@ function buildEmail(data: {
 }): string {
   const { nom, prenom, email, telephone, sujet, message } = data;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  console.log("SITE_URL:", siteUrl);
   const logoUrl = siteUrl ? `${siteUrl}/images/LOGO_COMBINE_FOND_FONCE.png` : null;
+  console.log("logoUrl:", logoUrl);
   const rows = [
     ["Nom", nom],
     ["Prénom", prenom],
