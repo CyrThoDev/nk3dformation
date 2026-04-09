@@ -185,7 +185,7 @@ export function Contact() {
         </h3>
 
         <p className="font-montserrat text-[14px] leading-6 text-text-md">
-          Formateur indépendant en <strong>CATIA V5</strong>,{" "}
+          Formateur indépendant sur <strong>CATIA V5</strong>,{" "}
           <strong>3DEXPERIENCE</strong> et{" "}
           <strong>CATIA COMPOSER</strong>
         </p>

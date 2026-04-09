@@ -33,8 +33,8 @@ export function FormationCard({ formation }: { formation: Formation }) {
 
         <div className="flex items-center gap-2 shrink-0">
           {formation.days && (
-            <div className="flex items-center gap-1.5 bg-orange-lt border border-orange/30 rounded-full py-1 px-2.5 text-orange font-montserrat text-[11px] font-semibold">
-              <IconClock />{formation.days}j
+            <div className="flex items-center gap-1 bg-orange-lt border border-orange/30 rounded-full py-1 px-2.5 text-orange font-montserrat text-[11px] font-semibold">
+              <div>{formation.days}</div>j
             </div>
           )}
         </div>

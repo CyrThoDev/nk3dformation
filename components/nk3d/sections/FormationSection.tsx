@@ -34,7 +34,7 @@ export const FormationsSection = () => {
           </SectionLabel>
 
           <SectionTitle>
-            Nos <span className="text-orange">formations</span>
+            L'ensemble<span className="text-orange"> des formations</span>
           </SectionTitle>
 
           <p className="max-w-[500px] font-montserrat text-base leading-[1.6] text-text-md">
