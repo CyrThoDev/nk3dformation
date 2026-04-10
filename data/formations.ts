@@ -523,7 +523,7 @@ export const FORMATIONS: Formation[] = [
     code: "3DVIA-CPS",
     categorie: "composer",
     categorieLabel: "COMPOSER",
-    titre: "CATIA V5 COMPOSER — Fondamentaux",
+    titre: "CATIA COMPOSER — Fondamentaux",
     description:
       "Créer de la documentation technique interactive et des animations 3D à partir de données CAO avec CATIA COMPOSER.",
     duree: "3 jours (21h)",
