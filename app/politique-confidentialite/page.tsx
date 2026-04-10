@@ -23,8 +23,8 @@ export default function PolitiqueConfidentialite() {
 
           <Section title="Responsable du traitement">
             <p className="font-montserrat text-[15px] text-text-md leading-[1.7]">
-              [Nom complet — ex: Nicolas Kreutz EI]<br />
-              [Adresse complète]<br />
+              Nicolas Kreutz<br />
+              4 rue des chalets, 31390 Lacaugne<br />
               Email : nicolas@nk3dformation.fr
             </p>
           </Section>
