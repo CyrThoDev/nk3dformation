@@ -1,5 +1,6 @@
-import FormationUploader from "@/components/FormationUploader";
+import { notFound } from "next/navigation";
 
+// TODO: page en construction — désactivée avant le lancement
 export default function AdminPage() {
-  return <FormationUploader />;
+  notFound();
 }

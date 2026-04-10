@@ -391,7 +391,7 @@ export function FormationDetail({ formation }: { formation: Formation }) {
 
       <footer style={{ background: C.white, borderTop: `1px solid ${C.border}`, padding: "24px 28px", textAlign: "center" }}>
         <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, color: C.textLt, margin: 0 }}>
-          © {new Date().getFullYear()} NK 3D Formation — Nicolas Kreutz · Organisme de formation certifié Qualiopi
+          © {new Date().getFullYear()} NK 3D Formation — Nicolas Kreutz · 
         </p>
       </footer>
     </>

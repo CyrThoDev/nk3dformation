@@ -4,6 +4,8 @@ import { Container } from "@/components/nk3d/ui/Container";
 
 export const metadata = {
   title: "Politique de confidentialité — NK 3D Formation",
+  description: "Politique de confidentialité et traitement des données personnelles du site NK 3D Formation.",
+  robots: { index: false },
 };
 
 export default function PolitiqueConfidentialite() {
