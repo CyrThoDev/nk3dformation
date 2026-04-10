@@ -4,6 +4,8 @@ import { Container } from "@/components/nk3d/ui/Container";
 
 export const metadata = {
   title: "Mentions légales — NK 3D Formation",
+  description: "Mentions légales du site NK 3D Formation — Nicolas Kreutz, formateur indépendant CATIA V5 & 3DEXPERIENCE.",
+  robots: { index: false },
 };
 
 export default function MentionsLegales() {
@@ -17,11 +19,11 @@ export default function MentionsLegales() {
           </h1>
 
           <Section title="Éditeur du site">
-            <Row label="Raison sociale" value="[Nom complet — ex: Nicolas Kreutz EI]" />
-            <Row label="Statut juridique" value="[Ex: Entrepreneur individuel]" />
-            <Row label="SIRET" value="[xxx xxx xxx xxxxx]" />
+            <Row label="Raison sociale" value="Nicolas Kreutz EI" />
+            <Row label="Statut juridique" value="Entrepreneur individuel" />
+            <Row label="SIRET" value="10162330400017" />
             <Row label="Numéro de déclaration d'activité (NDA)" value="[xx xx xxxxx xx]" />
-            <Row label="Adresse" value="[Adresse complète]" />
+            <Row label="Adresse" value="4 rue des chalets, 31390 Lacaugne" />
             <Row label="Email" value="nicolas@nk3dformation.fr" />
             <Row label="Site web" value="https://nk3dformation.fr" />
           </Section>

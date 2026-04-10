@@ -452,7 +452,7 @@ function FormationPDF({ data }: { data: FormationData }) {
         <View style={s.footer} fixed>
           <Text style={s.footerText}>nk3dformation.fr</Text>
           <Text style={s.footerBrand}>NK 3D Formation — Nicolas Kreutz</Text>
-          <Text style={s.footerText}>Organisme certifié Qualiopi</Text>
+         
         </View>
       </Page>
     </Document>

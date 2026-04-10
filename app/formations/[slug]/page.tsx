@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  // TODO: page en construction — désactivée avant le lancement
+  notFound();
   const { slug } = await params;
   const formation = getFormationBySlug(slug);
   if (!formation) notFound();

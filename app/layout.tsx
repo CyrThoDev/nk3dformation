@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "NK 3D Formation — Expert CATIA V5 & 3DEXPERIENCE",
   description:
-    "Formations certifiantes en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie. Organisme certifié Qualiopi.",
+    "Formations  en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie. ",
   icons: {
     icon: "/favicon.ico",
   },
