@@ -205,7 +205,7 @@ export const FORMATIONS: Formation[] = [
     code: "V5-ELI",
     categorie: "catia-v5",
     categorieLabel: "CATIA V5",
-    titre: "Conception de harnais électrique",
+    titre: "Conception de composants électriques et harnais électrique 3D",
     description: "Concevoir et gérer des harnais électriques avec CATIA V5 Electrical Harness Design.",
     duree: "À définir",
     days: 2,
@@ -457,7 +457,7 @@ export const FORMATIONS: Formation[] = [
     code: "3DX-SMD",
     categorie: "3dexperience",
     categorieLabel: "3DEXPERIENCE",
-    titre: "Création de pièces de tôleries",
+    titre: "Conception de pièce de tôlerie",
     description:
       "Modéliser des pièces de tôlerie sur la plateforme 3DEXPERIENCE : pliage, dépliage et génération du développé.",
     duree: "2 jours (14h)",
@@ -479,7 +479,7 @@ export const FORMATIONS: Formation[] = [
     code: "3DX-FTA",
     categorie: "3dexperience",
     categorieLabel: "3DEXPERIENCE",
-    titre: "Tolérance 3D et annotations fonctionnelles",
+    titre: "Tolérancements 3D et annotations fonctionnelles",
     description:
       "Annoter directement le modèle 3D avec le tolérancement fonctionnel ISO sur la plateforme 3DEXPERIENCE, en vue d'un bureau d'études sans dessin 2D.",
     duree: "1 jour (7h)",
@@ -501,7 +501,7 @@ export const FORMATIONS: Formation[] = [
     code: "3DX-ELG",
     categorie: "3dexperience",
     categorieLabel: "3DEXPERIENCE",
-    titre: "Conception de composants électriques 3D",
+    titre: "Conception de composants électriques et harnais électrique 3D",
     description:
       "Concevoir et intégrer des composants électriques 3D dans la plateforme 3DEXPERIENCE avec le rôle Electrical 3D Design.",
     duree: "3 jours (21h)",
