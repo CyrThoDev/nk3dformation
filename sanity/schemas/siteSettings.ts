@@ -4,8 +4,6 @@ export const siteSettingsSchema = defineType({
   name: "siteSettings",
   title: "Paramètres du site",
   type: "document",
-  // Singleton : on cache le bouton "Créer"
-  __experimental_actions: ["update", "publish"],
   groups: [
     { name: "hero", title: "Hero" },
     { name: "stats", title: "Stats" },
