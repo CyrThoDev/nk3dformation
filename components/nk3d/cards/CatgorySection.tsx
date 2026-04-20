@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { Formation, CategorieFormation } from "@/types/formation";
+import type { CategorieFormation } from "@/types/formation";
+import type { SanityFormationCard } from "@/types/sanity";
 import { IconChevron } from "../ui/Icons";
 import { FormationCard } from "./FormationCard";
 
@@ -9,7 +10,7 @@ interface CategoryGroup {
   id: CategorieFormation;
   label: string;
   tag: string;
-  formations: Formation[];
+  formations: SanityFormationCard[];
 }
 
 export function CategorySection({ category }: { category: CategoryGroup; index: number }) {

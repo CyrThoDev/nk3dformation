@@ -1,7 +1,6 @@
-import type { Formation } from "@/types/formation";
-import { IconClock } from "../ui/Icons";
+import type { SanityFormationCard } from "@/types/sanity";
 
-export function FormationCard({ formation }: { formation: Formation }) {
+export function FormationCard({ formation }: { formation: SanityFormationCard }) {
   return (
     <div className="block h-full">
       <div
