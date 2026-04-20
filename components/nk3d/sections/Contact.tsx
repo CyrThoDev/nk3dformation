@@ -6,6 +6,8 @@ import { Container } from "../ui/Container";
 import { SectionLabel } from "../ui/SectionLabel";
 import { SectionTitle } from "../ui/SectionTitle";
 import { IconCheck, IconPhone, IconMail } from "../ui/Icons";
+import { urlFor } from "@/sanity/lib/image";
+import type { SanitySettings } from "@/types/sanity";
 
 type FormState = {
   nom: string;
@@ -32,7 +34,14 @@ const SUJETS = [
   { value: "Consulting", label: "Demande d'information — Consulting" },
 ];
 
-export function Contact() {
+export function Contact({ settings }: { settings?: SanitySettings | null }) {
+  const contactNom       = settings?.contactNom       ?? "Nicolas Kreutz";
+  const contactTitre     = settings?.contactTitre     ?? "Formateur indépendant sur CATIA V5, 3DEXPERIENCE et CATIA COMPOSER";
+  const contactEmail     = settings?.contactEmail     ?? "nicolas@nk3dformation.fr";
+  const contactTelephone = settings?.contactTelephone ?? "+33 6 65 77 71 51";
+  const photoSrc = settings?.contactPhoto
+    ? urlFor(settings.contactPhoto).width(320).url()
+    : "/images/nicolas.png";
   const [form, setForm] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -166,8 +175,8 @@ export function Contact() {
       {/* Image */}
       <div className="relative w-full max-w-[160px] aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-white shrink-0">
         <Image
-          src="/images/nicolas.png"
-          alt="Photo de Nicolas"
+          src={photoSrc}
+          alt={`Photo de ${contactNom}`}
           fill
           sizes="160px"
           className="object-cover"
@@ -181,13 +190,11 @@ export function Contact() {
         </p>
 
         <h3 className="mb-2 font-montserrat text-[24px] md:text-[26px] font-bold leading-tight text-navy">
-          Nicolas Kreutz
+          {contactNom}
         </h3>
 
         <p className="font-montserrat text-base leading-6 text-text-md">
-          Formateur indépendant sur <strong>CATIA V5</strong>,{" "}
-          <strong>3DEXPERIENCE</strong> et{" "}
-          <strong>CATIA COMPOSER</strong>
+          {contactTitre}
         </p>
       </div>
     </div>
@@ -225,21 +232,21 @@ export function Contact() {
     {/* ── Coordonnées ── */}
     <div className="space-y-3 pt-2 border-t border-border">
       <a
-        href="tel:+33665777151"
+        href={`tel:${contactTelephone.replace(/\s/g, "")}`}
         className="flex items-center gap-3 group"
       >
         <IconPhone className="h-4 w-4 shrink-0 text-orange" />
         <span className="font-montserrat text-base text-text-md group-hover:underline group-hover:text-navy transition-colors">
-          +33 6 65 77 71 51
+          {contactTelephone}
         </span>
       </a>
       <a
-        href="mailto:nicolas@nk3dformation.fr"
+        href={`mailto:${contactEmail}`}
         className="flex items-center gap-3 group"
       >
         <IconMail className="h-4 w-4 shrink-0 text-orange" />
         <span className="font-montserrat text-base text-text-md group-hover:underline group-hover:text-navy transition-colors">
-          nicolas@nk3dformation.fr
+          {contactEmail}
         </span>
       </a>
     </div>
