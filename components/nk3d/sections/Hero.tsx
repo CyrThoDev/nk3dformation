@@ -2,8 +2,29 @@
 
 import Image from "next/image";
 import { MeshDeco } from "../ui/MeshDeco";
+import { urlFor } from "@/sanity/lib/image";
+import type { SanitySettings } from "@/types/sanity";
 
-export default function Hero() {
+type HeroProps = Pick<
+  SanitySettings,
+  "heroBadge" | "heroTitre" | "heroAccroche" | "heroDescription" | "heroReassurances" | "heroImage"
+>;
+
+export default function Hero({
+  heroBadge,
+  heroTitre,
+  heroAccroche,
+  heroDescription,
+  heroReassurances,
+  heroImage,
+}: HeroProps) {
+  const badge       = heroBadge       ?? "Certifié Dassault Systèmes";
+  const titre       = heroTitre       ?? "CATIA V5, 3DEXPERIENCE\u00a0& CATIA COMPOSER";
+  const accroche    = heroAccroche    ?? "Formations sur mesure pour l'industrie";
+  const description = heroDescription ?? "Je conçois et anime des formations adaptées à votre contexte métier, votre niveau et vos outils — du débutant à l'expert.";
+  const reassurances = heroReassurances ?? ["Accompagnement sur-mesure", "Flexibilité totale", "Interlocuteur unique"];
+  const imageSrc    = heroImage ? urlFor(heroImage).width(1920).url() : "/images/hero.webp";
+
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(160deg,#FFFFFF_60%,#E8F0FA_100%)]">
       <MeshDeco className="pointer-events-none absolute -right-16 -top-40 z-10 opacity-30" />
@@ -18,7 +39,7 @@ export default function Hero() {
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/5 px-4 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-orange" />
             <span className="font-eurostile-extended text-[10px] font-bold uppercase tracking-[0.18em] text-orange">
-              Certifié Dassault Systèmes
+              {badge}
             </span>
           </div>
 
@@ -36,18 +57,17 @@ export default function Hero() {
 
           {/* H1 */}
           <h1 className="font-eurostile font-bold uppercase tracking-tight leading-[1.05] text-navy text-[clamp(1.75rem,4vw,3rem)] max-w-3xl">
-            CATIA V5, 3DEXPERIENCE<br />& CATIA COMPOSER
+            {titre}
           </h1>
 
           {/* Accroche */}
           <p className="mt-4 font-montserrat font-semibold text-orange text-[clamp(0.95rem,1.8vw,1.05rem)]">
-            Formations sur mesure pour l'industrie
+            {accroche}
           </p>
 
           {/* Desc */}
           <p className="mt-3 mb-8 max-w-xl font-montserrat text-base leading-7 text-text-md">
-            Je conçois et anime des formations adaptées à votre contexte métier,
-            votre niveau et vos outils — du débutant à l'expert.
+            {description}
           </p>
 
           {/* CTA */}
@@ -68,7 +88,7 @@ export default function Hero() {
 
           {/* Réassurance */}
           <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2">
-            {["Accompagnement sur-mesure", "Flexibilité totale", "Interlocuteur unique"].map((item) => (
+            {reassurances.map((item) => (
               <div key={item} className="flex items-center gap-2">
                 <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-orange/10 text-[9px] font-bold text-orange">
                   ✓
@@ -84,14 +104,13 @@ export default function Hero() {
         {/* ── Image bannière ────────────────────────────── */}
         <div className="relative overflow-hidden shadow-[0_24px_72px_rgba(10,45,92,0.14)] -mx-4 w-screen md:mx-0 md:w-full md:mb-16 lg:mb-20" style={{ aspectRatio: "16/7" }}>
           <Image
-            src="/images/hero.webp"
+            src={imageSrc}
             alt="Formation CATIA et 3DEXPERIENCE"
             fill
             sizes="100vw"
             priority
             className="object-cover object-center"
           />
-          {/* Léger dégradé bas pour adoucir la transition */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-bg/30 to-transparent" />
         </div>
 

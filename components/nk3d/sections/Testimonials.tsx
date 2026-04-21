@@ -3,13 +3,13 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback } from "react";
 
-import { TESTIMONIALS } from "../constants";
 import { Container } from "../ui/Container";
 import { MeshDeco } from "../ui/MeshDeco";
 import { SectionLabel } from "../ui/SectionLabel";
 import { SectionTitle } from "../ui/SectionTitle";
+import type { SanityTestimonial } from "@/types/sanity";
 
-export function Testimonials() {
+export function Testimonials({ items }: { items: SanityTestimonial[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -56,9 +56,9 @@ export function Testimonials() {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
 
-              {TESTIMONIALS.map((t, i) => (
+              {items.map((t) => (
                 <div
-                  key={i}
+                  key={t._id}
                   className="
                     min-w-[85%]
                     sm:min-w-[60%]

@@ -1,11 +1,19 @@
 "use client";
 
-import { PROCESS } from "../constants";
 import { Container } from "../ui/Container";
 import { SectionLabel } from "../ui/SectionLabel";
 import { SectionTitle } from "../ui/SectionTitle";
+import type { SanityProcessStep } from "@/types/sanity";
 
-export function Process() {
+export function Process({
+  titre,
+  description,
+  steps,
+}: {
+  titre?: string;
+  description?: string;
+  steps: SanityProcessStep[];
+}) {
   return (
     <section
   id="méthode"
@@ -19,12 +27,11 @@ export function Process() {
             <SectionLabel>Ma méthode</SectionLabel>
 
             <SectionTitle>
-              Un accompagnement<br />100% sur-mesure
+              {titre ?? <>Un accompagnement<br />100% sur-mesure</>}
             </SectionTitle>
 
             <p className="mt-4 mb-6 max-w-[520px] font-montserrat text-base leading-[1.8] text-text-md">
-              Chaque formation est construite autour de vos outils, vos pièces et vos enjeux.
-              Je m'adapte au niveau et au contexte de chaque équipe.
+              {description ?? "Chaque formation est construite autour de vos outils, vos pièces et vos enjeux. Je m'adapte au niveau et au contexte de chaque équipe."}
             </p>
 
             <button
@@ -39,11 +46,11 @@ export function Process() {
 
           {/* ── Col droite — étapes ───────────────────────── */}
           <div className="flex flex-col">
-            {PROCESS.map((p, i) => (
+            {steps.map((p, i) => (
               <div
                 key={i}
                 className={`flex gap-4 py-4 md:py-5 ${
-                  i < PROCESS.length - 1 ? "border-b border-border" : ""
+                  i < steps.length - 1 ? "border-b border-border" : ""
                 }`}
               >
                 <div className="shrink-0 w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-xl bg-navy-lt flex items-center justify-center font-eurostile-extended font-extrabold text-[13px] md:text-[14px] text-navy-mid">
