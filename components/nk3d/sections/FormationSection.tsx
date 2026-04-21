@@ -36,9 +36,8 @@ export const FormationsSection = ({ formations }: { formations: SanityFormationC
             L'ensemble<span className="text-orange"> des formations</span>
           </SectionTitle>
 
-          <p className="max-w-[500px] font-montserrat text-base leading-[1.6] text-text-md">
-            Formations adaptées à tous les niveaux, du débutant à l'expert
-            métier. Durées indicatives, ajustables selon vos besoins.
+          <p className=" font-montserrat text-base  text-text-md">
+            Formations adaptées à tous les niveaux, du débutant à l'expert métier. Durées indicatives, ajustables selon vos besoins.
           </p>
         </div>
 
