@@ -13,6 +13,11 @@ export function FormationCard({ formation }: { formation: SanityFormationCard })
           <div className="font-montserrat text-base font-medium text-text leading-[1.4]">
             {formation.titre}
           </div>
+          {formation.categorieLabel && (
+            <div className="font-montserrat text-[11px] text-text-lt mt-1">
+              {formation.categorieLabel}
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-2 shrink-0">

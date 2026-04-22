@@ -7,10 +7,10 @@ export type NiveauFormation = "Débutant" | "Intermédiaire" | "Avancé" | "Tous
 export type FormatFormation = "Présentiel" | "Distanciel" | "Présentiel / Distanciel";
 export type CategorieFormation =
   | "catia-v5"
-  | "catia-metier"
-  | "catia-dmu"
+| "catia-dmu"
   | "3dexperience"
-  | "composer";
+  | "composer"
+  | "solidworks";
 
 export interface JourProgramme {
   jour: string;       // "Jour 1"

@@ -41,7 +41,7 @@ export const TESTIMONIALS_QUERY = groq`
 // ── Formations — liste complète (pour la home) ────────────────────────────────
 
 export const FORMATIONS_QUERY = groq`
-  *[_type == "formation"] | order(lower(code) asc) {
+  *[_type == "formation"] | order(orderRank asc) {
     _id,
     "slug": slug.current,
     code,
