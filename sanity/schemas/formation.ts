@@ -13,21 +13,35 @@ export const formationSchema = defineType({
   fields: [
     orderRankField({ type: "formation" }),
 
-    // ── Identifiants ──────────────────────────────────────────────────────
+    // ── Identification ────────────────────────────────────────────────────
     defineField({
-      name: "slug",
-      title: "Slug (URL)",
-      type: "slug",
-      group: "meta",
-      options: { source: "titre", maxLength: 80 },
+      name: "titre",
+      title: "Titre",
+      type: "string",
+      group: "infos",
       validation: (R) => R.required(),
     }),
     defineField({
       name: "code",
       title: "Code formation",
       type: "string",
-      group: "meta",
+      group: "infos",
       description: "Ex : V5-V5F, ELF, DMU…",
+      validation: (R) => R.required(),
+    }),
+    defineField({
+      name: "categorieLabel",
+      title: "Label catégorie",
+      type: "string",
+      group: "infos",
+      description: "Affiché sur la carte — ex : « CATIA V5 »",
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug (URL)",
+      type: "slug",
+      group: "infos",
+      options: { source: "titre", maxLength: 80 },
       validation: (R) => R.required(),
     }),
 
@@ -40,31 +54,17 @@ export const formationSchema = defineType({
       options: {
         list: [
           { title: "CATIA V5", value: "catia-v5" },
-{ title: "CATIA V5 DMU", value: "catia-dmu" },
+          { title: "CATIA V5 DMU", value: "catia-dmu" },
           { title: "3DEXPERIENCE", value: "3dexperience" },
           { title: "CATIA COMPOSER / 3DVIA", value: "composer" },
-          { title: "SolidWorks", value: "solidworks" },
+          { title: "SOLIDWORKS", value: "solidworks" },
         ],
         layout: "radio",
       },
       validation: (R) => R.required(),
     }),
-    defineField({
-      name: "categorieLabel",
-      title: "Label catégorie",
-      type: "string",
-      group: "meta",
-      description: "Affiché sur la carte — ex : «\u00a0CATIA V5\u00a0»",
-    }),
 
-    // ── Titre & description ───────────────────────────────────────────────
-    defineField({
-      name: "titre",
-      title: "Titre",
-      type: "string",
-      group: "infos",
-      validation: (R) => R.required(),
-    }),
+    // ── Modalités ────────────────────────────────────────────────────────
     defineField({
       name: "description",
       title: "Description courte",
@@ -73,8 +73,6 @@ export const formationSchema = defineType({
       group: "infos",
       description: "2-3 lignes affichées sur la carte et en SEO",
     }),
-
-    // ── Modalités ────────────────────────────────────────────────────────
     defineField({
       name: "duree",
       title: "Durée (texte)",
@@ -86,7 +84,7 @@ export const formationSchema = defineType({
       name: "days",
       title: "Durée (jours, numérique)",
       type: "number",
-      group: "meta",
+      group: "infos",
     }),
     defineField({
       name: "niveau",
