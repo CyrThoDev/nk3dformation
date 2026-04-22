@@ -20,7 +20,7 @@ export const client = createClient({
 export const sanityFetch = cache(
   async <T>(query: string, params?: Record<string, unknown>): Promise<T> => {
     return client.fetch<T>(query, params ?? {}, {
-      next: { revalidate: isProduction ? 3600 : 0 },
+      next: { revalidate: isProduction ? 30 : 0 },
     });
   }
 );
