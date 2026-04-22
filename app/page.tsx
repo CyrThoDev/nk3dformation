@@ -33,8 +33,8 @@ import { Testimonials } from "@/components/nk3d/sections/Testimonials";
 import { Contact } from "@/components/nk3d/sections/Contact";
 import { Footer } from "@/components/nk3d/layout/Footer";
 
-// Fallbacks statiques le temps que Sanity soit alimenté
 import { STATS, PROCESS, TESTIMONIALS } from "@/components/nk3d/constants";
+import { FORMATIONS } from "@/data/formations";
 
 export default async function NK3DFormationPage() {
   const [settings, testimonials, formations] = await Promise.all([
@@ -52,6 +52,25 @@ export default async function NK3DFormationPage() {
   const processSteps = settings?.processSteps?.length
     ? settings.processSteps
     : PROCESS.map((p) => ({ n: p.n, title: p.title, desc: p.desc }));
+
+  // Formations : Sanity en priorité, sinon fallback sur les données statiques
+  const formationItems: SanityFormationCard[] = formations?.length
+    ? formations
+    : FORMATIONS.map((f) => ({
+        _id: `formation-${f.slug}`,
+        slug: f.slug,
+        code: f.code,
+        categorie: f.categorie,
+        categorieLabel: f.categorieLabel,
+        titre: f.titre,
+        description: f.description,
+        duree: f.duree ?? null,
+        days: f.days ?? null,
+        niveau: f.niveau,
+        format: f.format,
+        financement: f.financement,
+        pdfUrl: null,
+      }));
 
   // Témoignages : Sanity en priorité, sinon fallback
   const testimonialItems = testimonials?.length
@@ -78,7 +97,7 @@ export default async function NK3DFormationPage() {
           heroImage={settings?.heroImage}
         />
         <StatsBar stats={stats} />
-        <FormationsSection formations={formations ?? []} />
+        <FormationsSection formations={formationItems} />
         <Process
           titre={settings?.processTitre}
           description={settings?.processDescription}

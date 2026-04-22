@@ -1,6 +1,8 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
+import { frFRLocale } from "@sanity/locale-fr-fr";
 import { schemaTypes } from "./sanity/schemas";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
@@ -15,13 +17,13 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S) =>
+      structure: (S, context) =>
         S.list()
           .title("Contenu")
           .items([
-            // Singleton : paramètres du site
+            // Singleton : contenu du site
             S.listItem()
-              .title("Paramètres du site")
+              .title("Contenu du site")
               .id("siteSettings")
               .child(
                 S.document()
@@ -29,11 +31,21 @@ export default defineConfig({
                   .documentId("siteSettings")
               ),
             S.divider(),
-            // Formations
+            // Formations — sous-menu par catégorie
             S.listItem()
               .title("Formations")
-              .schemaType("formation")
-              .child(S.documentTypeList("formation").title("Formations")),
+              .id("formations")
+              .child(
+                S.list()
+                  .title("Formations")
+                  .items([
+                    orderableDocumentListDeskItem({ type: "formation", title: "3DEXPERIENCE",        id: "formation-3dexperience", filter: "categorie == $cat", params: { cat: "3dexperience" }, S, context }),
+                    orderableDocumentListDeskItem({ type: "formation", title: "CATIA V5",             id: "formation-catia-v5",     filter: "categorie == $cat", params: { cat: "catia-v5"     }, S, context }),
+orderableDocumentListDeskItem({ type: "formation", title: "CATIA V5 DMU",         id: "formation-catia-dmu",    filter: "categorie == $cat", params: { cat: "catia-dmu"    }, S, context }),
+                    orderableDocumentListDeskItem({ type: "formation", title: "CATIA COMPOSER",       id: "formation-composer",     filter: "categorie == $cat", params: { cat: "composer"     }, S, context }),
+                    orderableDocumentListDeskItem({ type: "formation", title: "SolidWorks",           id: "formation-solidworks",   filter: "categorie == $cat", params: { cat: "solidworks"   }, S, context }),
+                  ])
+              ),
             S.divider(),
             // Témoignages
             S.listItem()
@@ -43,6 +55,7 @@ export default defineConfig({
           ]),
     }),
     visionTool({ defaultApiVersion: "2024-01-01" }),
+    frFRLocale(),
   ],
 
   schema: {

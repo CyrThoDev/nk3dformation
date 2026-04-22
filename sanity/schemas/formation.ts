@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { orderRankField } from "@sanity/orderable-document-list";
 
 export const formationSchema = defineType({
   name: "formation",
@@ -10,6 +11,8 @@ export const formationSchema = defineType({
     { name: "meta", title: "Métadonnées" },
   ],
   fields: [
+    orderRankField({ type: "formation" }),
+
     // ── Identifiants ──────────────────────────────────────────────────────
     defineField({
       name: "slug",
@@ -37,10 +40,10 @@ export const formationSchema = defineType({
       options: {
         list: [
           { title: "CATIA V5", value: "catia-v5" },
-          { title: "CATIA V5 Métier", value: "catia-metier" },
-          { title: "CATIA V5 DMU", value: "catia-dmu" },
+{ title: "CATIA V5 DMU", value: "catia-dmu" },
           { title: "3DEXPERIENCE", value: "3dexperience" },
           { title: "CATIA COMPOSER / 3DVIA", value: "composer" },
+          { title: "SolidWorks", value: "solidworks" },
         ],
         layout: "radio",
       },

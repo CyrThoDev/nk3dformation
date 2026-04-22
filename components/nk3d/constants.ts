@@ -90,8 +90,8 @@ export const TESTIMONIALS = [
 export const CATEGORY_META: Record<CategorieFormation, { label: string; tag: string; order: number }> = {
    "3dexperience": { label: "3DEXPERIENCE",       tag: "Plateforme Dassault",       order: 1 },
   "catia-v5":     { label: "CATIA V5",          tag: "Fondamentaux & Avancé",     order: 2 },
-  "catia-metier": { label: "CATIA V5 Métier",    tag: "Électrique & Tôlerie",      order: 3 },
-  "catia-dmu":    { label: "CATIA V5 DMU",       tag: "Maquette numérique",        order: 4 },
+  "catia-dmu":    { label: "CATIA V5 DMU",       tag: "Maquette numérique",        order: 3 },
  
-  "composer":     { label: "CATIA COMPOSER / 3DVIA",           tag: "Documentation & Animation", order: 5 },
+  "composer":     { label: "CATIA COMPOSER / 3DVIA", tag: "Documentation & Animation", order: 5 },
+  "solidworks":   { label: "SolidWorks",             tag: "Conception mécanique",       order: 6 },
 };
