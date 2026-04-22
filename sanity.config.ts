@@ -43,7 +43,7 @@ export default defineConfig({
                     orderableDocumentListDeskItem({ type: "formation", title: "CATIA V5",             id: "formation-catia-v5",     filter: "categorie == $cat", params: { cat: "catia-v5"     }, S, context }),
 orderableDocumentListDeskItem({ type: "formation", title: "CATIA V5 DMU",         id: "formation-catia-dmu",    filter: "categorie == $cat", params: { cat: "catia-dmu"    }, S, context }),
                     orderableDocumentListDeskItem({ type: "formation", title: "CATIA COMPOSER",       id: "formation-composer",     filter: "categorie == $cat", params: { cat: "composer"     }, S, context }),
-                    orderableDocumentListDeskItem({ type: "formation", title: "SolidWorks",           id: "formation-solidworks",   filter: "categorie == $cat", params: { cat: "solidworks"   }, S, context }),
+                    orderableDocumentListDeskItem({ type: "formation", title: "SOLIDWORKS",           id: "formation-solidworks",   filter: "categorie == $cat", params: { cat: "solidworks"   }, S, context }),
                   ])
               ),
             S.divider(),

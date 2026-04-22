@@ -57,7 +57,7 @@ export const formationSchema = defineType({
           { title: "CATIA V5 DMU", value: "catia-dmu" },
           { title: "3DEXPERIENCE", value: "3dexperience" },
           { title: "CATIA COMPOSER / 3DVIA", value: "composer" },
-          { title: "SolidWorks", value: "solidworks" },
+          { title: "SOLIDWORKS", value: "solidworks" },
         ],
         layout: "radio",
       },
