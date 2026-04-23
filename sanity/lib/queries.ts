@@ -85,7 +85,7 @@ export const FORMATION_BY_SLUG_QUERY = groq`
     publicVise,
     prerequis,
     "pdfUrl": pdf.asset->url,
-    "formationsAssociees": formationsAssociees[]->{
+    "formationsAssociees": formationsAssociees[defined(@->)]->{
       "slug": slug.current,
       code,
       titre,

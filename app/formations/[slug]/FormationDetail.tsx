@@ -236,7 +236,7 @@ function AccordionSection({ title, children }: { title: string; children: React.
 
 // ── Main Component ────────────────────────────────────────────────────────
 export function FormationDetail({ formation }: { formation: SanityFormationDetail }) {
-  const associees = formation.formationsAssociees ?? [];
+  const associees = (formation.formationsAssociees ?? []).filter(Boolean) as SanityFormationAssociee[];
 
   return (
     <>
