@@ -29,7 +29,7 @@ export interface Formation {
   days: number | null;            // pour l'accordion home
   niveau: NiveauFormation;
   format: FormatFormation;
-  financement: string;            // ex: "OPCO · CPF · FIF-PL"
+  financement: string;            // ex: "OPCO · FAF"
   objectifs: string[];
   programme: JourProgramme[];
   publicVise: string;

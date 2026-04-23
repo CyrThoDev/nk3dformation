@@ -1,10 +1,11 @@
+import Link from "next/link";
 import type { SanityFormationCard } from "@/types/sanity";
 
 export function FormationCard({ formation }: { formation: SanityFormationCard }) {
   return (
-    <div className="block h-full">
+    <Link href={`/formations/${formation.slug}`} className="block h-full group">
       <div
-        className="h-full rounded-xl p-4 px-5 flex items-start justify-between gap-4 border bg-white border-border shadow-[0_1px_4px_rgba(10,45,92,0.05)]"
+        className="h-full rounded-xl p-4 px-5 flex items-start justify-between gap-4 border bg-white border-border shadow-[0_1px_4px_rgba(10,45,92,0.05)] transition hover:border-orange/40 hover:shadow-[0_4px_16px_rgba(232,118,42,0.1)]"
       >
         <div className="flex-1">
           <div className="font-eurostile-extended text-[11px] font-bold text-orange tracking-[0.1em] uppercase mb-1">
@@ -28,6 +29,6 @@ export function FormationCard({ formation }: { formation: SanityFormationCard })
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

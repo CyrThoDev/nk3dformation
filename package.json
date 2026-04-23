@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "migrate:sanity": "dotenv -e .env.local -- tsx scripts/migrate-to-sanity.ts"
+    "migrate:sanity": "dotenv -e .env.local -- tsx scripts/migrate-to-sanity.ts",
+    "patch:content": "dotenv -e .env.local -- tsx scripts/patch-formations-content.ts"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.3",

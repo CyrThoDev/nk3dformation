@@ -437,7 +437,7 @@ function FormationPDF({ data }: { data: FormationData }) {
                 <Text style={s.ctaBtnOutlineText}>Demander un devis gratuit</Text>
               </View>
               <View style={s.ctaDivider}>
-                {["OPCO finançable", "CPF éligible", "Accompagnement inclus"].map((t) => (
+                {["OPCO finançable", "Accompagnement inclus"].map((t) => (
                   <View key={t} style={s.ctaCheckRow}>
                     <View style={s.ctaCheckDot} />
                     <Text style={s.ctaCheckText}>{t}</Text>

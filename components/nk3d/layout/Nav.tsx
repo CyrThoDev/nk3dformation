@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "CONTACT", target: "contact" },
 ];
 
-export function Nav() {
+export function Nav({ asLinks = false }: { asLinks?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -55,24 +55,39 @@ export function Nav() {
             <ul className="m-0 flex list-none gap-9 p-0">
               {NAV_ITEMS.map((item) => (
                 <li key={item.target}>
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection(item.target)}
-                    className="bg-transparent font-montserrat text-sm font-medium capitalize text-navy transition decoration-2 underline-offset-4 hover:text-orange hover:underline"
-                  >
-                    {item.label}
-                  </button>
+                  {asLinks ? (
+                    <Link
+                      href={`/#${item.target}`}
+                      className="font-montserrat text-sm font-medium capitalize text-navy transition decoration-2 underline-offset-4 hover:text-orange hover:underline"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection(item.target)}
+                      className="bg-transparent font-montserrat text-sm font-medium capitalize text-navy transition decoration-2 underline-offset-4 hover:text-orange hover:underline"
+                    >
+                      {item.label}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={() => scrollToSection("contact")}
-              className="rounded bg-orange px-8 py-3 font-montserrat font-semibold text-white transition hover:scale-[1.02]"
-            >
-              Demander un devis
-            </button>
+            {asLinks ? (
+              <Link href="/#contact" className="rounded bg-orange px-8 py-3 font-montserrat font-semibold text-white transition hover:scale-[1.02]">
+                Demander un devis
+              </Link>
+            ) : (
+              <button
+                type="button"
+                onClick={() => scrollToSection("contact")}
+                className="rounded bg-orange px-8 py-3 font-montserrat font-semibold text-white transition hover:scale-[1.02]"
+              >
+                Demander un devis
+              </button>
+            )}
           </div>
 
           {/* Burger jusqu'à lg */}
@@ -132,13 +147,19 @@ export function Nav() {
                   ))}
                 </ul>
 
-                <button
-                  type="button"
-                  onClick={() => scrollToSection("contact")}
-                  className="mt-8 flex items-center justify-center rounded bg-orange px-5 py-3 font-montserrat font-semibold text-white"
-                >
-                  Demander un devis
-                </button>
+                {asLinks ? (
+                  <Link href="/#contact" className="mt-8 flex items-center justify-center rounded bg-orange px-5 py-3 font-montserrat font-semibold text-white">
+                    Demander un devis
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection("contact")}
+                    className="mt-8 flex items-center justify-center rounded bg-orange px-5 py-3 font-montserrat font-semibold text-white"
+                  >
+                    Demander un devis
+                  </button>
+                )}
               </div>
             </div>
           </div>
