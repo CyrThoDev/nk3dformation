@@ -18,7 +18,7 @@ export function CtaFinal() {
               Votre formation à 100% finançable
             </h2>
             <p className="font-montserrat text-[14px] text-white/60 leading-[1.75] max-w-[500px] m-0">
-              Nos formations sont éligibles aux financements OPCO, CPF et FIF-PL.
+              Nos formations sont éligibles aux financements OPCO et FAF.
               Nicolas vous accompagne dans toutes les démarches administratives.
             </p>
           </div>

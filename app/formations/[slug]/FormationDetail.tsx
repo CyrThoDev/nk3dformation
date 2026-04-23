@@ -1,27 +1,10 @@
 "use client";
 
-// app/formations/[slug]/FormationDetail.tsx
-// Client Component — contient tout le code UI interactif
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import type { Formation } from "../../../types/formation";
-import { getFormationsAssociees } from "../../../data/formations";
-
-// ── Palette ───────────────────────────────────────────────────────────────
-const C = {
-  navy:     "#0A2D5C",
-  navyMid:  "#1A4F8A",
-  navyLt:   "#E8F0FA",
-  orange:   "#E8762A",
-  orangeLt: "#FFF0E6",
-  bg:       "#F6F8FC",
-  white:    "#FFFFFF",
-  text:     "#0D1B2E",
-  textMd:   "#4A5568",
-  textLt:   "#8A9AB0",
-  border:   "#E4EAF3",
-};
+import { Nav } from "@/components/nk3d/layout/Nav";
+import { Footer } from "@/components/nk3d/layout/Footer";
+import type { SanityFormationDetail, SanityFormationAssociee } from "@/types/sanity";
 
 // ── Icons ─────────────────────────────────────────────────────────────────
 function IconDownload() {
@@ -82,51 +65,8 @@ function IconCreditCard() {
   );
 }
 
-// ── Nav ───────────────────────────────────────────────────────────────────
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
-  return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      height: 66, display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "0 36px",
-      background: "rgba(255,255,255,0.94)",
-      backdropFilter: "blur(14px)",
-      borderBottom: `1px solid ${C.border}`,
-      boxShadow: scrolled ? "0 2px 16px rgba(10,45,92,0.07)" : "none",
-      transition: "box-shadow 0.3s",
-    }}>
-      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-        <div style={{ width: 34, height: 34, borderRadius: 8, background: `linear-gradient(135deg, ${C.navy}, ${C.navyMid})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 900, fontSize: 12, color: C.white }}>NK</span>
-        </div>
-        <span style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 15, color: C.navy }}>
-          NK <span style={{ color: C.orange }}>3D</span> Formation
-        </span>
-      </Link>
-      <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-        <Link href="/#formations" style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 500, color: C.textMd, textDecoration: "none" }}>Formations</Link>
-        <Link href="/#contact" style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 500, color: C.textMd, textDecoration: "none" }}>Contact</Link>
-        <Link href="/#contact" style={{
-          padding: "9px 22px", borderRadius: 8, background: C.orange, color: C.white,
-          fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13,
-          textDecoration: "none", boxShadow: "0 3px 12px rgba(232,118,42,0.35)",
-        }}>
-          Demander un devis
-        </Link>
-      </div>
-    </nav>
-  );
-}
-
 // ── Info Cards ────────────────────────────────────────────────────────────
-function InfoCards({ formation }: { formation: Formation }) {
+function InfoCards({ formation }: { formation: SanityFormationDetail }) {
   const infos = [
     { icon: <IconClock />,      label: "Durée",       val: formation.duree ?? "À définir" },
     { icon: <IconUsers />,      label: "Niveau",      val: formation.niveau },
@@ -134,32 +74,43 @@ function InfoCards({ formation }: { formation: Formation }) {
     { icon: <IconCreditCard />, label: "Financement", val: formation.financement },
   ];
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 48 }}>
+    <div className="grid grid-cols-2 gap-3 mb-10 sm:grid-cols-4">
       {infos.map(({ icon, label, val }) => (
-        <div key={label} style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", boxShadow: "0 1px 4px rgba(10,45,92,0.05)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
-            <span style={{ color: C.orange }}>{icon}</span>
-            <span style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt }}>{label}</span>
+        <div key={label} className="bg-white border border-border rounded-xl p-4 shadow-[0_1px_4px_rgba(10,45,92,0.05)]">
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <span className="text-orange">{icon}</span>
+            <span className="font-eurostile-extended text-[10px] font-bold tracking-[0.12em] uppercase text-text-lt">{label}</span>
           </div>
-          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 600, color: C.text, lineHeight: 1.3 }}>{val}</div>
+          <div className="font-montserrat text-[13px] font-semibold text-text leading-snug">{val}</div>
         </div>
       ))}
     </div>
   );
 }
 
+const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+const LOREM_ITEMS = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  "Ut enim ad minim veniam, quis nostrud exercitation ullamco",
+  "Duis aute irure dolor in reprehenderit in voluptate velit esse",
+];
+const LOREM_PROGRAMME = [
+  { jour: "Jour 1", titre: "Lorem ipsum dolor", contenu: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+  { jour: "Jour 2", titre: "Consectetur adipiscing", contenu: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." },
+  { jour: "Jour 3", titre: "Sed do eiusmod", contenu: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum." },
+];
+
 // ── Objectifs ─────────────────────────────────────────────────────────────
 function Objectifs({ objectifs }: { objectifs: string[] }) {
+  const items = objectifs.length ? objectifs : LOREM_ITEMS;
   return (
-    <div style={{ marginBottom: 40 }}>
-      <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 18, color: C.navy, marginBottom: 16 }}>
-        Objectifs de la formation
-      </h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {objectifs.map((o, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "10px 14px", background: C.white, border: `1px solid ${C.border}`, borderRadius: 10, boxShadow: "0 1px 4px rgba(10,45,92,0.04)" }}>
-            <span style={{ color: C.orange, flexShrink: 0, marginTop: 1 }}><IconCheck /></span>
-            <span style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, color: C.textMd, lineHeight: 1.55 }}>{o}</span>
+    <div className="mb-10">
+      <div className="flex flex-col gap-2.5">
+        {items.map((o, i) => (
+          <div key={i} className="flex items-start gap-3 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
+            <span className="text-orange shrink-0 mt-0.5"><IconCheck /></span>
+            <span className="font-montserrat text-[13px] text-text-md leading-relaxed">{o}</span>
           </div>
         ))}
       </div>
@@ -168,19 +119,17 @@ function Objectifs({ objectifs }: { objectifs: string[] }) {
 }
 
 // ── Programme ─────────────────────────────────────────────────────────────
-function Programme({ programme }: { programme: Formation["programme"] }) {
+function Programme({ programme }: { programme: SanityFormationDetail["programme"] }) {
+  const items = programme?.length ? programme : LOREM_PROGRAMME;
   return (
-    <div style={{ marginBottom: 40 }}>
-      <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 18, color: C.navy, marginBottom: 16 }}>
-        Programme
-      </h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {programme.map((p, i) => (
-          <div key={i} style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 16, alignItems: "start", padding: "14px 16px", background: C.white, border: `1px solid ${C.border}`, borderRadius: 10, boxShadow: "0 1px 4px rgba(10,45,92,0.04)" }}>
-            <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 11, fontWeight: 700, color: C.orange, letterSpacing: "0.06em", textTransform: "uppercase", paddingTop: 2 }}>{p.jour}</div>
+    <div className="mb-10">
+      <div className="flex flex-col gap-2">
+        {items.map((p, i) => (
+          <div key={i} className="grid gap-4 px-4 py-3.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]" style={{ gridTemplateColumns: "80px 1fr" }}>
+            <div className="font-eurostile-extended text-[11px] font-bold text-orange tracking-[0.06em] uppercase pt-0.5">{p.jour}</div>
             <div>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 700, color: C.navy, marginBottom: 3 }}>{p.titre}</div>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.textMd, lineHeight: 1.5 }}>{p.contenu}</div>
+              <div className="font-montserrat text-[13px] font-bold text-navy mb-0.5">{p.titre}</div>
+              <div className="font-montserrat text-[12px] text-text-md leading-relaxed">{p.contenu}</div>
             </div>
           </div>
         ))}
@@ -190,20 +139,17 @@ function Programme({ programme }: { programme: Formation["programme"] }) {
 }
 
 // ── Public & Prérequis ────────────────────────────────────────────────────
-function PublicPrerequis({ formation }: { formation: Formation }) {
+function PublicPrerequis({ formation }: { formation: SanityFormationDetail }) {
   return (
-    <div style={{ marginBottom: 40 }}>
-      <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: 18, color: C.navy, marginBottom: 16 }}>
-        Public visé & prérequis
-      </h2>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+    <div className="mb-10">
+      <div className="grid gap-4 sm:grid-cols-2">
         {[
-          { label: "Public visé", val: formation.publicVise },
-          { label: "Prérequis",   val: formation.prerequis },
+          { label: "Public visé", val: formation.publicVise || LOREM },
+          { label: "Prérequis",   val: formation.prerequis  || LOREM },
         ].map(({ label, val }) => (
-          <div key={label} style={{ padding: "16px 18px", background: C.white, border: `1px solid ${C.border}`, borderRadius: 10, boxShadow: "0 1px 4px rgba(10,45,92,0.04)" }}>
-            <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLt, marginBottom: 8 }}>{label}</div>
-            <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 13, color: C.textMd, lineHeight: 1.65 }}>{val}</div>
+          <div key={label} className="px-5 py-4 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
+            <div className="font-eurostile-extended text-[10px] font-bold tracking-[0.12em] uppercase text-text-lt mb-2">{label}</div>
+            <div className="font-montserrat text-[13px] text-text-md leading-relaxed">{val}</div>
           </div>
         ))}
       </div>
@@ -211,75 +157,56 @@ function PublicPrerequis({ formation }: { formation: Formation }) {
   );
 }
 
-// ── Sidebar sticky ────────────────────────────────────────────────────────
-function Sidebar({ formation, associees }: { formation: Formation; associees: Formation[] }) {
+// ── Sidebar ───────────────────────────────────────────────────────────────
+function Sidebar({ formation, associees }: { formation: SanityFormationDetail; associees: SanityFormationAssociee[] }) {
   return (
-    <div style={{ position: "sticky", top: 86, display: "flex", flexDirection: "column", gap: 16 }}>
-      {/* CTA card */}
-      <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24, boxShadow: "0 4px 24px rgba(10,45,92,0.07)" }}>
-        <p style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 14, color: C.navy, marginBottom: 6 }}>
-          Intéressé par cette formation ?
-        </p>
-        <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.textMd, marginBottom: 20, lineHeight: 1.6 }}>
+    <div className="sticky top-24 flex flex-col gap-4">
+      <div className="bg-white border border-border rounded-2xl p-6 shadow-[0_4px_24px_rgba(10,45,92,0.07)]">
+        <p className="font-montserrat font-bold text-[14px] text-navy mb-1.5">Intéressé par cette formation ?</p>
+        <p className="font-montserrat text-[12px] text-text-md mb-5 leading-relaxed">
           Nicolas vous répond sous 48h et établit un devis gratuit, avec accompagnement OPCO inclus.
         </p>
 
         {formation.pdfUrl ? (
-          <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer" style={{
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            padding: "12px", borderRadius: 10, background: C.orange, color: C.white,
-            fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13,
-            textDecoration: "none", marginBottom: 10,
-            boxShadow: "0 3px 12px rgba(232,118,42,0.35)",
-          }}>
+          <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+          >
             <IconDownload /> Télécharger le programme PDF
           </a>
         ) : (
-          <div style={{
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            padding: "12px", borderRadius: 10, background: C.bg, color: C.textLt,
-            fontFamily: "'Montserrat',sans-serif", fontSize: 12, marginBottom: 10,
-            border: `1px dashed ${C.border}`,
-          }}>
+          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] mb-2.5 border border-dashed border-border">
             <IconDownload /> Programme PDF — bientôt disponible
           </div>
         )}
 
-        <Link href="/#contact" style={{
-          display: "flex", alignItems: "center", justifyContent: "center",
-          padding: "12px", borderRadius: 10,
-          border: `1.5px solid ${C.navy}`, background: "transparent", color: C.navy,
-          fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13,
-          textDecoration: "none",
-        }}>
+        <Link href="/#contact"
+          className="flex items-center justify-center px-4 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline transition hover:bg-navy hover:text-white"
+        >
           Demander un devis gratuit
         </Link>
 
-        <div style={{ marginTop: 16, paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
-          {["OPCO finançable", "CPF éligible", "Accompagnement administratif inclus"].map(t => (
-            <div key={t} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-              <span style={{ color: C.orange }}><IconCheck /></span>
-              <span style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, color: C.textMd }}>{t}</span>
+        <div className="mt-4 pt-4 border-t border-border flex flex-col gap-1.5">
+          {["OPCO finançable", "Accompagnement administratif inclus"].map(t => (
+            <div key={t} className="flex items-center gap-2">
+              <span className="text-orange"><IconCheck /></span>
+              <span className="font-montserrat text-[11px] text-text-md">{t}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Formations associées */}
       {associees.length > 0 && (
-        <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 16, padding: "20px 24px", boxShadow: "0 2px 12px rgba(10,45,92,0.05)" }}>
-          <p style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textLt, marginBottom: 14 }}>
+        <div className="bg-white border border-border rounded-2xl px-6 py-5 shadow-[0_2px_12px_rgba(10,45,92,0.05)]">
+          <p className="font-eurostile-extended text-[10px] font-bold tracking-[0.15em] uppercase text-text-lt mb-3.5">
             Formations associées
           </p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div className="flex flex-col">
             {associees.map((f, i) => (
-              <Link key={f.slug} href={`/formations/${f.slug}`} style={{
-                display: "block", padding: "10px 0",
-                borderBottom: i < associees.length - 1 ? `1px solid ${C.border}` : "none",
-                textDecoration: "none",
-              }}>
-                <div style={{ fontFamily: "'Eurostile Extended',sans-serif", fontSize: 10, fontWeight: 700, color: C.orange, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 2 }}>{f.code}</div>
-                <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 12, color: C.navy, fontWeight: 500, lineHeight: 1.4 }}>{f.titre}</div>
+              <Link key={f.slug} href={`/formations/${f.slug}`}
+                className={`block py-2.5 no-underline ${i < associees.length - 1 ? "border-b border-border" : ""}`}
+              >
+                <div className="font-eurostile-extended text-[10px] font-bold text-orange tracking-[0.08em] uppercase mb-0.5">{f.code}</div>
+                <div className="font-montserrat text-[12px] text-navy font-medium leading-snug">{f.titre}</div>
               </Link>
             ))}
           </div>
@@ -289,78 +216,79 @@ function Sidebar({ formation, associees }: { formation: Formation; associees: Fo
   );
 }
 
+// ── Accordion programme mobile ────────────────────────────────────────────
+function AccordionSection({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(true);
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between font-montserrat font-extrabold text-[18px] text-navy mb-4 bg-transparent border-none cursor-pointer p-0"
+      >
+        {title}
+        <span className={`text-text-lt transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
+      </button>
+      {open && children}
+    </div>
+  );
+}
+
 // ── Main Component ────────────────────────────────────────────────────────
-export function FormationDetail({ formation }: { formation: Formation }) {
-  const associees = getFormationsAssociees(formation.formationsAssociees);
+export function FormationDetail({ formation }: { formation: SanityFormationDetail }) {
+  const associees = (formation.formationsAssociees ?? []).filter(Boolean) as SanityFormationAssociee[];
 
   return (
     <>
-      <style>{`
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { background: ${C.bg}; }
-        a { transition: opacity 0.2s; }
-        a:hover { opacity: 0.85; }
-      `}</style>
+      <Nav asLinks />
 
-      <Nav />
-
-      <main style={{ paddingTop: 66, minHeight: "100vh" }}>
-
+      <main className="min-h-screen bg-bg">
         {/* Hero */}
-        <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, padding: "40px 0 0" }}>
-          <div >
-
+        <div className="bg-white border-b border-border py-10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: C.textLt, marginBottom: 28 }}>
-              <Link href="/" style={{ color: C.textLt, textDecoration: "none" }}>Accueil</Link>
+            <div className="flex items-center gap-2 font-montserrat text-[12px] text-text-lt mb-7">
+              <Link href="/" className="text-text-lt no-underline hover:text-navy transition-colors">Accueil</Link>
               <span>›</span>
-              <Link href="/#formations" style={{ color: C.textLt, textDecoration: "none" }}>Formations</Link>
+              <Link href="/#formations" className="text-text-lt no-underline hover:text-navy transition-colors">Formations</Link>
               <span>›</span>
-              <span style={{ color: C.textMd, fontWeight: 500 }}>{formation.titre}</span>
+              <span className="text-text-md font-medium">{formation.titre}</span>
             </div>
 
-            {/* Titre + boutons */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 32, alignItems: "start", marginBottom: 36, paddingBottom: 36, borderBottom: `1px solid ${C.border}` }}>
-              <div>
-                <div style={{ display: "inline-block", padding: "3px 12px", borderRadius: 20, background: C.orangeLt, color: "#B85A10", fontFamily: "'Eurostile Extended',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 14 }}>
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-lt text-[#B85A10] font-eurostile-extended text-[11px] font-bold tracking-widest uppercase mb-4">
                   {formation.categorieLabel}
+                  {formation.code && (
+                    <>
+                      <span className="opacity-40">·</span>
+                      {formation.code}
+                    </>
+                  )}
                 </div>
-                <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 900, fontSize: "clamp(22px, 3vw, 34px)", color: C.navy, lineHeight: 1.15, marginBottom: 12 }}>
+                <h1 className="font-montserrat font-black text-navy leading-tight mb-3" style={{ fontSize: "clamp(22px, 3vw, 34px)" }}>
                   {formation.titre}
                 </h1>
-                <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 15, color: C.textMd, lineHeight: 1.7, maxWidth: 620 }}>
+                <p className="font-montserrat text-[15px] text-text-md leading-relaxed max-w-2xl">
                   {formation.description}
                 </p>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, flexShrink: 0, paddingTop: 4 }}>
+
+              <div className="flex flex-col gap-2.5 shrink-0 lg:pt-1">
                 {formation.pdfUrl ? (
-                  <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer" style={{
-                    display: "flex", alignItems: "center", gap: 8, padding: "12px 20px",
-                    borderRadius: 10, background: C.orange, color: C.white,
-                    fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13,
-                    textDecoration: "none", whiteSpace: "nowrap",
-                    boxShadow: "0 3px 12px rgba(232,118,42,0.35)",
-                  }}>
+                  <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+                  >
                     <IconDownload /> Télécharger le programme PDF
                   </a>
                 ) : (
-                  <span style={{
-                    display: "flex", alignItems: "center", gap: 8, padding: "12px 20px",
-                    borderRadius: 10, background: C.bg, color: C.textLt,
-                    fontFamily: "'Montserrat',sans-serif", fontSize: 12,
-                    border: `1px dashed ${C.border}`, whiteSpace: "nowrap",
-                  }}>
+                  <span className="flex items-center gap-2 px-5 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] whitespace-nowrap border border-dashed border-border">
                     <IconDownload /> Programme PDF — bientôt disponible
                   </span>
                 )}
-                <Link href="/#contact" style={{
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  padding: "12px 20px", borderRadius: 10,
-                  border: `1.5px solid ${C.navy}`, background: "transparent", color: C.navy,
-                  fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: 13,
-                  textDecoration: "none", whiteSpace: "nowrap",
-                }}>
+                <Link href="/#contact"
+                  className="flex items-center justify-center px-5 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline whitespace-nowrap transition hover:bg-navy hover:text-white"
+                >
                   Demander un devis
                 </Link>
               </div>
@@ -369,31 +297,34 @@ export function FormationDetail({ formation }: { formation: Formation }) {
         </div>
 
         {/* Contenu */}
-        <div >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <InfoCards formation={formation} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 320px", gap: 48, alignItems: "start" }}>
+
+          <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:items-start">
             <div>
-              <Objectifs objectifs={formation.objectifs} />
-              <Programme programme={formation.programme} />
-              <PublicPrerequis formation={formation} />
-              <Link href="/#formations" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                fontFamily: "'Montserrat',sans-serif", fontSize: 13, fontWeight: 600,
-                color: C.textMd, textDecoration: "none",
-              }}>
+              <AccordionSection title="Objectifs de la formation">
+                <Objectifs objectifs={formation.objectifs ?? []} />
+              </AccordionSection>
+              <AccordionSection title="Programme">
+                <Programme programme={formation.programme} />
+              </AccordionSection>
+              <AccordionSection title="Public visé & prérequis">
+                <PublicPrerequis formation={formation} />
+              </AccordionSection>
+
+              <Link href="/#formations"
+                className="inline-flex items-center gap-2 font-montserrat text-[13px] font-semibold text-text-md no-underline mt-2 hover:text-navy transition-colors"
+              >
                 <IconArrowLeft /> Retour au catalogue
               </Link>
             </div>
+
             <Sidebar formation={formation} associees={associees} />
           </div>
         </div>
       </main>
 
-      <footer style={{ background: C.white, borderTop: `1px solid ${C.border}`, padding: "24px 28px", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, color: C.textLt, margin: 0 }}>
-          © {new Date().getFullYear()} NK 3D Formation — Nicolas Kreutz · 
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }

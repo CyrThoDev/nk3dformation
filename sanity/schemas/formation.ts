@@ -35,6 +35,7 @@ export const formationSchema = defineType({
       type: "string",
       group: "infos",
       description: "Affiché sur la carte — ex : « CATIA V5 »",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "slug",
@@ -72,6 +73,7 @@ export const formationSchema = defineType({
       rows: 3,
       group: "infos",
       description: "2-3 lignes affichées sur la carte et en SEO",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "duree",
@@ -79,12 +81,14 @@ export const formationSchema = defineType({
       type: "string",
       group: "infos",
       description: "Ex : 5 jours (35h)",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "days",
       title: "Durée (jours, numérique)",
       type: "number",
       group: "infos",
+      validation: (R) => R.required().integer().positive(),
     }),
     defineField({
       name: "niveau",
@@ -95,6 +99,7 @@ export const formationSchema = defineType({
         list: ["Débutant", "Intermédiaire", "Avancé", "Tous niveaux"],
         layout: "radio",
       },
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "format",
@@ -105,13 +110,15 @@ export const formationSchema = defineType({
         list: ["Présentiel", "Distanciel", "Présentiel / Distanciel"],
         layout: "radio",
       },
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "financement",
       title: "Financement",
       type: "string",
       group: "infos",
-      description: "Ex : OPCO · CPF · FIF-PL",
+      description: "Ex : OPCO · FAF",
+      validation: (R) => R.required(),
     }),
 
     // ── Contenu pédagogique ───────────────────────────────────────────────
