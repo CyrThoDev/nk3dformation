@@ -38,7 +38,7 @@ export function Process({
               onClick={() =>
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="w-fit px-[26px] py-3 rounded border border-navy bg-transparent text-navy font-montserrat font-bold text-[13px] hover:bg-navy hover:text-white transition-all"
+              className="w-fit px-[26px] py-3 rounded border border-navy bg-transparent text-navy font-montserrat font-bold text-base hover:bg-navy hover:text-white transition-all"
             >
               Discutons de votre projet →
             </button>
@@ -53,7 +53,7 @@ export function Process({
                   i < steps.length - 1 ? "border-b border-border" : ""
                 }`}
               >
-                <div className="shrink-0 w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-xl bg-navy-lt flex items-center justify-center font-eurostile-extended font-extrabold text-[13px] md:text-[14px] text-navy-mid">
+                <div className="shrink-0 w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-xl bg-navy-lt flex items-center justify-center font-eurostile-extended font-extrabold text-base md:text-base text-navy-mid">
                   {p.n}
                 </div>
 
@@ -62,7 +62,7 @@ export function Process({
                     {p.title}
                   </h4>
 
-                  <p className="font-montserrat text-[15px] text-text-md leading-[1.6]">
+                  <p className="font-montserrat text-base text-text-md leading-[1.6]">
                     {p.desc}
                   </p>
                 </div>

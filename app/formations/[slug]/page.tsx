@@ -1,7 +1,8 @@
 import { sanityFetch } from "@/sanity/lib/client";
-import { FORMATION_SLUGS_QUERY, FORMATION_BY_SLUG_QUERY } from "@/sanity/lib/queries";
+import { FORMATION_SLUGS_QUERY, FORMATION_BY_SLUG_QUERY, SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { FormationDetail } from "./FormationDetail";
 import { notFound } from "next/navigation";
+import type { SanitySettings } from "@/types/sanity";
 
 export async function generateStaticParams() {
   const slugs = await sanityFetch<string[]>(FORMATION_SLUGS_QUERY);
@@ -28,10 +29,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const formation = await sanityFetch<Parameters<typeof FormationDetail>[0]["formation"] | null>(
-    FORMATION_BY_SLUG_QUERY,
-    { slug }
-  );
+  const [formation, settings] = await Promise.all([
+    sanityFetch<Parameters<typeof FormationDetail>[0]["formation"] | null>(FORMATION_BY_SLUG_QUERY, { slug }),
+    sanityFetch<SanitySettings>(SITE_SETTINGS_QUERY),
+  ]);
   if (!formation) notFound();
-  return <FormationDetail formation={formation!} />;
+  return <FormationDetail formation={formation!} settings={settings} />;
 }

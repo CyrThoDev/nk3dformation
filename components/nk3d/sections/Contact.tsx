@@ -142,7 +142,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
             </p>
             <button
               onClick={() => setStatus("idle")}
-              className="mt-6 rounded border border-navy px-6 py-2.5 font-montserrat text-[15px] font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+              className="mt-6 rounded border border-navy px-6 py-2.5 font-montserrat text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
             >
               Envoyer une autre demande
             </button>
@@ -166,14 +166,14 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
             {/* Colonne gauche : Nicolas */}
-          <div className="h-full rounded-2xl border border-border bg-bg p-6 md:p-8 shadow-[0_4px_24px_rgba(10,45,92,0.05)]">
+          <div className="h-full rounded-none sm:rounded-2xl border border-border bg-bg p-6 md:p-8 shadow-[0_4px_24px_rgba(10,45,92,0.05)]">
   <div className="flex flex-col gap-6">
 
     {/* ── Header : photo + identité ── */}
     <div className="flex flex-col sm:flex-row lg:flex-row gap-5 items-center sm:items-start">
 
       {/* Image */}
-      <div className="relative w-full max-w-[160px] aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-white shrink-0">
+      <div className="relative w-full max-w-[160px] aspect-[4/5] overflow-hidden rounded-sm border border-border bg-white shrink-0">
         <Image
           src={photoSrc}
           alt={`Photo de ${contactNom}`}
@@ -185,7 +185,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
 
       {/* Identité */}
       <div className="text-center sm:text-left">
-        <p className="mb-2 font-montserrat text-[11px] font-semibold uppercase tracking-[0.12em] text-orange">
+        <p className="mb-2 font-montserrat text-base font-semibold uppercase tracking-[0.12em] text-orange">
           Votre interlocuteur
         </p>
 
@@ -258,7 +258,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="flex flex-col gap-5 rounded-2xl border border-border bg-white p-8 shadow-[0_4px_24px_rgba(10,45,92,0.07)] md:p-10"
+              className="flex flex-col gap-5 rounded-none sm:rounded-2xl border border-border bg-white p-8 shadow-[0_4px_24px_rgba(10,45,92,0.07)] md:p-10"
             >
               {/* Honeypot */}
               <div aria-hidden="true" className="hidden">
@@ -273,7 +273,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                  <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                     Nom <span className="text-orange">*</span>
                   </label>
                   <input
@@ -285,14 +285,14 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
                     className={inputCls("nom")}
                   />
                   {errors.nom && (
-                    <p className="mt-1 font-montserrat text-[11px] text-red-500">
+                    <p className="mt-1 font-montserrat text-base text-red-500">
                       {errors.nom}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                  <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                     Prénom <span className="text-orange">*</span>
                   </label>
                   <input
@@ -304,7 +304,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
                     className={inputCls("prenom")}
                   />
                   {errors.prenom && (
-                    <p className="mt-1 font-montserrat text-[11px] text-red-500">
+                    <p className="mt-1 font-montserrat text-base text-red-500">
                       {errors.prenom}
                     </p>
                   )}
@@ -313,7 +313,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
 
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                  <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                     Email <span className="text-orange">*</span>
                   </label>
                   <input
@@ -325,14 +325,14 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
                     className={inputCls("email")}
                   />
                   {errors.email && (
-                    <p className="mt-1 font-montserrat text-[11px] text-red-500">
+                    <p className="mt-1 font-montserrat text-base text-red-500">
                       {errors.email}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                  <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                     Téléphone <span className="text-orange">*</span>
                   </label>
                   <input
@@ -347,13 +347,13 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
               </div>
 
               {errors.contact && (
-                <p className="-mt-2 font-montserrat text-[11px] text-red-500">
+                <p className="-mt-2 font-montserrat text-base text-red-500">
                   {errors.contact}
                 </p>
               )}
 
               <div>
-                <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                   Objet de la demande <span className="text-orange">*</span>
                 </label>
                 <select
@@ -373,14 +373,14 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
                   ))}
                 </select>
                 {errors.sujet && (
-                  <p className="mt-1 font-montserrat text-[11px] text-red-500">
+                  <p className="mt-1 font-montserrat text-base text-red-500">
                     {errors.sujet}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="mb-2 block font-montserrat text-[11px] font-semibold uppercase tracking-[0.06em] text-text-md">
+                <label className="mb-2 block font-montserrat text-base font-semibold uppercase tracking-[0.06em] text-text-md">
                   Message{" "}
                   <span className="normal-case font-normal text-text-lt">
                     (optionnel)
@@ -396,7 +396,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
               </div>
 
               {status === "error" && (
-                <p className="text-center font-montserrat text-[15px] text-red-500">
+                <p className="text-center font-montserrat text-base text-red-500">
                   Une erreur est survenue. Réessayez ou contactez directement Nicolas.
                 </p>
               )}

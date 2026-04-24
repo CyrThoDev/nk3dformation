@@ -38,7 +38,7 @@ export default function Hero({
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/5 px-4 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-orange" />
-            <span className="font-eurostile-extended text-[10px] font-bold uppercase tracking-[0.18em] text-orange">
+            <span className="font-eurostile-extended text-[13px] font-bold uppercase tracking-[0.18em] text-orange">
               {badge}
             </span>
           </div>

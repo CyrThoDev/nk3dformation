@@ -17,7 +17,7 @@ export function CtaFinal() {
             <h2 className="font-montserrat font-black text-[clamp(22px,2.5vw,34px)] text-white leading-[1.2] mb-3">
               Votre formation à 100% finançable
             </h2>
-            <p className="font-montserrat text-[14px] text-white/60 leading-[1.75] max-w-[500px] m-0">
+            <p className="font-montserrat text-base text-white/60 leading-[1.75] max-w-[500px] m-0">
               Nos formations sont éligibles aux financements OPCO et FAF.
               Nicolas vous accompagne dans toutes les démarches administratives.
             </p>
@@ -27,11 +27,11 @@ export function CtaFinal() {
           <div className="flex flex-col gap-3 shrink-0">
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-7 py-3.5 rounded border-none bg-orange text-white font-montserrat font-bold text-[14px] cursor-pointer whitespace-nowrap shadow-[0_4px_20px_rgba(232,118,42,0.5)] hover:brightness-110 transition-all"
+              className="px-7 py-3.5 rounded border-none bg-orange text-white font-montserrat font-bold text-base cursor-pointer whitespace-nowrap shadow-[0_4px_20px_rgba(232,118,42,0.5)] hover:brightness-110 transition-all"
             >
               Demander un devis gratuit
             </button>
-            <button className="px-7 py-3 rounded border border-white/25 bg-white/10 text-white/85 font-montserrat font-semibold text-[13px] cursor-pointer hover:bg-white/15 transition-all">
+            <button className="px-7 py-3 rounded border border-white/25 bg-white/10 text-white/85 font-montserrat font-semibold text-base cursor-pointer hover:bg-white/15 transition-all">
               Appeler Nicolas
             </button>
           </div>

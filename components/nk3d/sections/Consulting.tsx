@@ -71,7 +71,7 @@ export function Consulting({ settings }: { settings?: SanitySettings | null }) {
                 <h4 className="font-montserrat font-bold text-base text-white mb-2">
                   {title}
                 </h4>
-                <p className="font-montserrat text-[15px] leading-[1.7] text-white/60">
+                <p className="font-montserrat text-base leading-[1.7] text-white/60">
                   {desc}
                 </p>
               </div>
@@ -85,7 +85,7 @@ export function Consulting({ settings }: { settings?: SanitySettings | null }) {
             onClick={() =>
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="inline-block px-8 py-3.5 rounded bg-orange text-white font-montserrat font-bold text-[13px] hover:bg-orange/90 transition-colors"
+            className="inline-block px-8 py-3.5 rounded bg-orange text-white font-montserrat font-bold text-base hover:bg-orange/90 transition-colors"
           >
             Discutons de votre besoin →
           </button>

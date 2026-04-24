@@ -70,26 +70,26 @@ export function Testimonials({ items }: { items: SanityTestimonial[] }) {
                     {/* Étoiles */}
                     <div className="flex gap-1 mb-4">
                       {Array(5).fill(0).map((_, s) => (
-                        <span key={s} className="text-orange text-[14px]">★</span>
+                        <span key={s} className="text-orange text-base">★</span>
                       ))}
                     </div>
 
                     {/* Texte */}
-                    <p className="font-montserrat text-[15px] leading-[1.8] text-text-md mb-5 italic">
+                    <p className="font-montserrat text-base leading-[1.8] text-text-md mb-5 italic">
                       « {t.text} »
                     </p>
 
                     {/* Auteur */}
                     <div className="flex items-center gap-3 pt-4 border-t border-border mt-auto">
-                      <div className="w-[38px] h-[38px] rounded-full bg-gradient-to-br from-navy to-navy-mid flex items-center justify-center font-montserrat font-bold text-[11px] text-white shrink-0">
+                      <div className="w-[38px] h-[38px] rounded-full bg-gradient-to-br from-navy to-navy-mid flex items-center justify-center font-montserrat font-bold text-base text-white shrink-0">
                         {t.initials}
                       </div>
                       <div>
-                        <p className="font-montserrat font-bold text-[15px] text-navy m-0">
+                        <p className="font-montserrat font-bold text-base text-navy m-0">
                           {t.name}
                         </p>
                         {(t.role || t.company) && (
-                          <p className="font-montserrat text-[13px] text-text-lt m-0">
+                          <p className="font-montserrat text-base text-text-lt m-0">
                             {t.role} {t.role && t.company && "·"} {t.company}
                           </p>
                         )}

@@ -15,7 +15,7 @@ export function StatsBar({ stats }: { stats: SanityStat[] }) {
               <span className="font-montserrat font-black text-[clamp(2rem,5vw,2.75rem)] leading-none text-orange">
                 {s.value}
               </span>
-              <span className="font-eurostile-extended text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">
+              <span className="font-eurostile-extended text-[13px] font-bold uppercase tracking-[0.18em] text-white/50">
                 {s.label}
               </span>
             </div>
