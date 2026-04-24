@@ -111,7 +111,7 @@ function Objectifs({ objectifs }: { objectifs: string[] }) {
         {items.map((o, i) => (
           <div key={i} className="flex items-start gap-3 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
             <span className="text-orange shrink-0 mt-0.5"><IconCheck /></span>
-            <span className="font-montserrat text-[13px] text-text-md leading-relaxed">{o}</span>
+            <span className="font-montserrat text-[15px] text-text-md leading-relaxed">{o}</span>
           </div>
         ))}
       </div>
@@ -128,11 +128,11 @@ function Programme({ programme }: { programme: SanityFormationDetail["programme"
         {items.map((p, i) => (
           <div key={i} className="px-4 py-3.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
             <div className="flex items-baseline gap-2 flex-wrap mb-1">
-              <span className="font-eurostile-extended text-[13px] font-bold text-orange uppercase shrink-0">{p.jour}</span>
+              <span className="font-eurostile-extended text-[11px] font-bold text-orange uppercase shrink-0">{p.jour}</span>
               <span className="text-orange/40 shrink-0">·</span>
-              <span className="font-montserrat text-[13px] font-bold text-navy">{p.titre}</span>
+              <span className="font-montserrat text-[15px] font-bold text-navy">{p.titre}</span>
             </div>
-            <div className="font-montserrat text-[12px] text-text-md leading-relaxed">{p.contenu}</div>
+            <div className="font-montserrat text-[15px] text-text-md leading-relaxed">{p.contenu}</div>
           </div>
         ))}
       </div>
@@ -259,7 +259,7 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
 
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
               <div className="flex-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-lt text-[#B85A10] font-eurostile-extended text-[13px] font-bold tracking-widest uppercase mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-lt text-orange font-eurostile-extended text-[11px] font-bold tracking-widest uppercase mb-4">
                   {formation.categorieLabel}
                   {formation.code && (
                     <>

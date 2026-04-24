@@ -153,7 +153,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
   }
 
   return (
-    <section id="contact" className="bg-white py-14 md:py-20 lg:py-28">
+    <section id="contact" className="bg-white  md:py-20 lg:py-28">
       <Container>
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
@@ -200,7 +200,7 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
     </div>
 
     {/* ── Description courte ── */}
-    <p className="font-montserrat text-base leading-7 text-text-md">
+    <p className="font-montserrat text-[15px] leading-7 text-text-md">
       J’accompagne les professionnels de l’industrie avec des formations
       concrètes, adaptées au niveau des participants et aux réalités du terrain.
     </p>
@@ -209,21 +209,21 @@ export function Contact({ settings }: { settings?: SanitySettings | null }) {
     <div className="space-y-3">
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-base leading-6 text-text-md">
+        <p className="font-montserrat text-[15px] leading-6 text-text-md">
           Formations 100% sur mesure
         </p>
       </div>
 
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-base leading-6 text-text-md">
+        <p className="font-montserrat text-[15px] leading-6 text-text-md">
           Présentiel ou distanciel
         </p>
       </div>
 
       <div className="flex items-start gap-3">
         <span className="mt-[6px] h-2 w-2 rounded-full bg-orange shrink-0" />
-        <p className="font-montserrat text-base leading-6 text-text-md">
+        <p className="font-montserrat text-[15px] leading-6 text-text-md">
           Réponse sous 48h
         </p>
       </div>
