@@ -34,14 +34,14 @@ export function CategorySection({ category }: { category: CategoryGroup; index: 
             <div className="font-montserrat text-[20px] font-extrabold text-navy leading-none">
               {category.label}
             </div>
-            <div className="font-eurostile-extended text-[13px] text-text-lt tracking-[0.08em] uppercase mt-1">
+            <div className="font-eurostile-extended text-[12px] text-text-lt tracking-[0.08em] uppercase mt-1">
               {category.tag}
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="bg-orange-lt border border-orange/30 rounded-full py-1 px-3 text-orange text-base font-montserrat font-semibold whitespace-nowrap">
+          <span className="bg-orange-lt border border-orange/30 rounded-full py-1 px-3 text-orange text-[12px] font-montserrat font-semibold whitespace-nowrap">
             {category.formations.length} formation{category.formations.length > 1 ? "s" : ""}
           </span>
           <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-white text-text-lt shadow-sm transition-transform duration-250 ${open ? "rotate-180" : ""}`}>

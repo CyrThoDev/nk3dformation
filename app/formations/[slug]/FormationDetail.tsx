@@ -82,7 +82,7 @@ function InfoCards({ formation }: { formation: SanityFormationDetail }) {
             <span className="text-orange">{icon}</span>
             <span className="font-eurostile-extended text-[11px] font-bold tracking-[0.12em] uppercase text-text-lt">{label}</span>
           </div>
-          <div className="font-montserrat text-base font-semibold text-text leading-snug">{val}</div>
+          <div className="font-montserrat text-[13px] font-semibold text-text leading-snug">{val}</div>
         </div>
       ))}
     </div>
@@ -111,7 +111,7 @@ function Objectifs({ objectifs }: { objectifs: string[] }) {
         {items.map((o, i) => (
           <div key={i} className="flex items-start gap-3 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
             <span className="text-orange shrink-0 mt-0.5"><IconCheck /></span>
-            <span className="font-montserrat text-base text-text-md leading-relaxed">{o}</span>
+            <span className="font-montserrat text-[13px] text-text-md leading-relaxed">{o}</span>
           </div>
         ))}
       </div>
@@ -130,9 +130,9 @@ function Programme({ programme }: { programme: SanityFormationDetail["programme"
             <div className="flex items-baseline gap-2 flex-wrap mb-1">
               <span className="font-eurostile-extended text-[13px] font-bold text-orange uppercase shrink-0">{p.jour}</span>
               <span className="text-orange/40 shrink-0">·</span>
-              <span className="font-montserrat text-base font-bold text-navy">{p.titre}</span>
+              <span className="font-montserrat text-[13px] font-bold text-navy">{p.titre}</span>
             </div>
-            <div className="font-montserrat text-base text-text-md leading-relaxed">{p.contenu}</div>
+            <div className="font-montserrat text-[12px] text-text-md leading-relaxed">{p.contenu}</div>
           </div>
         ))}
       </div>
@@ -151,7 +151,7 @@ function PublicPrerequis({ formation }: { formation: SanityFormationDetail }) {
         ].map(({ label, val }) => (
           <div key={label} className="px-5 py-4 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
             <div className="font-eurostile-extended text-[11px] font-bold tracking-[0.12em] uppercase text-text-lt mb-2">{label}</div>
-            <div className="font-montserrat text-base text-text-md leading-relaxed">{val}</div>
+            <div className="font-montserrat text-[13px] text-text-md leading-relaxed">{val}</div>
           </div>
         ))}
       </div>
@@ -164,25 +164,25 @@ function Sidebar({ formation, associees }: { formation: SanityFormationDetail; a
   return (
     <div className="sticky top-24 flex flex-col gap-4">
       <div className="bg-white border border-border rounded-2xl p-6 shadow-[0_4px_24px_rgba(10,45,92,0.07)]">
-        <p className="font-montserrat font-bold text-base text-navy mb-1.5">Intéressé par cette formation ?</p>
-        <p className="font-montserrat text-base text-text-md mb-5 leading-relaxed">
+        <p className="font-montserrat font-bold text-[14px] text-navy mb-1.5">Intéressé par cette formation ?</p>
+        <p className="font-montserrat text-[12px] text-text-md mb-5 leading-relaxed">
           Nicolas vous répond sous 48h et établit un devis gratuit, avec accompagnement OPCO inclus.
         </p>
 
         {formation.pdfUrl ? (
           <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-base no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
           >
             <IconDownload /> Télécharger le programme PDF
           </a>
         ) : (
-          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-base mb-2.5 border border-dashed border-border">
+          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] mb-2.5 border border-dashed border-border">
             <IconDownload /> Programme PDF — bientôt disponible
           </div>
         )}
 
         <Link href="#contact"
-          className="flex items-center justify-center px-4 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-base no-underline transition hover:bg-navy hover:text-white"
+          className="flex items-center justify-center px-4 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline transition hover:bg-navy hover:text-white"
         >
           Demander un devis gratuit
         </Link>
@@ -191,7 +191,7 @@ function Sidebar({ formation, associees }: { formation: SanityFormationDetail; a
           {["OPCO finançable"].map(t => (
             <div key={t} className="flex items-center gap-2">
               <span className="text-orange"><IconCheck /></span>
-              <span className="font-montserrat text-base text-text-md">{t}</span>
+              <span className="font-montserrat text-[11px] text-text-md">{t}</span>
             </div>
           ))}
         </div> */}
@@ -208,7 +208,7 @@ function Sidebar({ formation, associees }: { formation: SanityFormationDetail; a
                 className={`block py-2.5 no-underline ${i < associees.length - 1 ? "border-b border-border" : ""}`}
               >
                 <div className="font-eurostile-extended text-[13px] font-bold text-orange tracking-[0.08em] uppercase mb-0.5">{f.code}</div>
-                <div className="font-montserrat text-base text-navy font-medium leading-snug">{f.titre}</div>
+                <div className="font-montserrat text-[12px] text-navy font-medium leading-snug">{f.titre}</div>
               </Link>
             ))}
           </div>
@@ -271,7 +271,7 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
                 <h1 className="font-montserrat font-black text-navy leading-tight mb-3" style={{ fontSize: "clamp(22px, 3vw, 34px)" }}>
                   {formation.titre}
                 </h1>
-                <p className="font-montserrat text-base text-text-md leading-relaxed max-w-2xl">
+                <p className="font-montserrat text-[15px] text-text-md leading-relaxed max-w-2xl">
                   {formation.description}
                 </p>
               </div>
@@ -279,17 +279,17 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
               <div className="flex flex-col gap-2.5 shrink-0 lg:pt-1">
                 {formation.pdfUrl ? (
                   <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-base no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
                   >
                     <IconDownload /> Télécharger le programme PDF
                   </a>
                 ) : (
-                  <span className="flex items-center gap-2 px-5 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-base whitespace-nowrap border border-dashed border-border">
+                  <span className="flex items-center gap-2 px-5 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] whitespace-nowrap border border-dashed border-border">
                     <IconDownload /> Programme PDF — bientôt disponible
                   </span>
                 )}
                 <Link href="#contact"
-                  className="flex items-center justify-center px-5 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-base no-underline whitespace-nowrap transition hover:bg-navy hover:text-white"
+                  className="flex items-center justify-center px-5 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline whitespace-nowrap transition hover:bg-navy hover:text-white"
                 >
                   Demander un devis
                 </Link>
@@ -315,7 +315,7 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
               </AccordionSection>
 
               <Link href="/#formations"
-                className="inline-flex items-center gap-2 font-montserrat text-base font-semibold text-text-md no-underline mt-2 hover:text-navy transition-colors"
+                className="inline-flex items-center gap-2 font-montserrat text-[13px] font-semibold text-text-md no-underline mt-2 hover:text-navy transition-colors"
               >
                 <IconArrowLeft /> Retour au catalogue
               </Link>
