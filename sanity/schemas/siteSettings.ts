@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const siteSettingsSchema = defineType({
   name: "siteSettings",
-  title: "Contenu du site",
+  title: "Contenu de la page principale",
   type: "document",
   groups: [
     { name: "hero", title: "Hero" },
@@ -190,7 +190,7 @@ export const siteSettingsSchema = defineType({
 
   preview: {
     prepare() {
-      return { title: "Contenu du site" };
+      return { title: "Contenu de la page principale" };
     },
   },
 });

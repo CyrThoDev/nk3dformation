@@ -170,11 +170,11 @@ function Sidebar({ formation, associees }: { formation: SanityFormationDetail; a
         </p>
 
         <a
-          href={`/api/generate-pdf/${formation.slug}`}
-          download={`${formation.code}.pdf`}
+          href={formation.pdfUrl ?? `/api/generate-pdf/${formation.slug}`}
+          target="_blank" rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
         >
-          <IconDownload /> Télécharger le programme PDF
+          <IconDownload /> Voir le programme PDF
         </a>
 
         <Link href="#contact"
@@ -274,11 +274,11 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
 
               <div className="flex flex-col gap-2.5 shrink-0 lg:pt-1">
                 <a
-                  href={`/api/generate-pdf/${formation.slug}`}
-                  download={`${formation.code}.pdf`}
+                  href={formation.pdfUrl ?? `/api/generate-pdf/${formation.slug}`}
+                  target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
                 >
-                  <IconDownload /> Télécharger le programme PDF
+                  <IconDownload /> Voir le programme PDF
                 </a>
                 <Link href="#contact"
                   className="flex items-center justify-center px-5 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline whitespace-nowrap transition hover:bg-navy hover:text-white"

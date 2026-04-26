@@ -4,11 +4,13 @@ import { FORMATION_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { generateFormationPDF } from "@/lib/generatePDF";
 import type { SanityFormationDetail } from "@/types/sanity";
 
+export const revalidate = 30; // PDF mis en cache 30s par slug
+
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset:   process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: "2024-01-01",
-  useCdn: false,
+  useCdn: true,
 });
 
 export async function GET(
@@ -51,7 +53,7 @@ export async function GET(
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="${formation.code}.pdf"`,
+      "Content-Disposition": `inline; filename="${formation.code}.pdf"`,
     },
   });
 }
