@@ -70,6 +70,7 @@ export default async function NK3DFormationPage() {
         format: f.format,
         financement: f.financement,
         pdfUrl: null,
+        hasContent: f.objectifs.length > 0,
       }));
 
   // Témoignages : Sanity en priorité, sinon fallback

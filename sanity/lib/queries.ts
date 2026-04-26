@@ -54,7 +54,8 @@ export const FORMATIONS_QUERY = groq`
     niveau,
     format,
     financement,
-    "pdfUrl": pdf.asset->url
+    "pdfUrl": pdf.asset->url,
+    "hasContent": count(objectifs) > 0
   }
 `;
 

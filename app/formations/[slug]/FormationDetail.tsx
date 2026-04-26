@@ -166,20 +166,16 @@ function Sidebar({ formation, associees }: { formation: SanityFormationDetail; a
       <div className="bg-white border border-border rounded-2xl p-6 shadow-[0_4px_24px_rgba(10,45,92,0.07)]">
         <p className="font-montserrat font-bold text-[14px] text-navy mb-1.5">Intéressé par cette formation ?</p>
         <p className="font-montserrat text-[12px] text-text-md mb-5 leading-relaxed">
-          Nicolas vous répond sous 48h et établit un devis gratuit, avec accompagnement OPCO inclus.
+         Je vous réponds sous 48h et je vous établis un devis gratuit.
         </p>
 
-        {formation.pdfUrl ? (
-          <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
-          >
-            <IconDownload /> Télécharger le programme PDF
-          </a>
-        ) : (
-          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] mb-2.5 border border-dashed border-border">
-            <IconDownload /> Programme PDF — bientôt disponible
-          </div>
-        )}
+        <a
+          href={`/api/generate-pdf/${formation.slug}`}
+          download={`${formation.code}.pdf`}
+          className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline mb-2.5 shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+        >
+          <IconDownload /> Télécharger le programme PDF
+        </a>
 
         <Link href="#contact"
           className="flex items-center justify-center px-4 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline transition hover:bg-navy hover:text-white"
@@ -277,17 +273,13 @@ export function FormationDetail({ formation, settings }: { formation: SanityForm
               </div>
 
               <div className="flex flex-col gap-2.5 shrink-0 lg:pt-1">
-                {formation.pdfUrl ? (
-                  <a href={formation.pdfUrl} download target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
-                  >
-                    <IconDownload /> Télécharger le programme PDF
-                  </a>
-                ) : (
-                  <span className="flex items-center gap-2 px-5 py-3 rounded-xl bg-bg text-text-lt font-montserrat text-[12px] whitespace-nowrap border border-dashed border-border">
-                    <IconDownload /> Programme PDF — bientôt disponible
-                  </span>
-                )}
+                <a
+                  href={`/api/generate-pdf/${formation.slug}`}
+                  download={`${formation.code}.pdf`}
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl bg-orange text-white font-montserrat font-bold text-[13px] no-underline whitespace-nowrap shadow-[0_3px_12px_rgba(232,118,42,0.35)] transition hover:brightness-110"
+                >
+                  <IconDownload /> Télécharger le programme PDF
+                </a>
                 <Link href="#contact"
                   className="flex items-center justify-center px-5 py-3 rounded-xl border-[1.5px] border-navy text-navy font-montserrat font-bold text-[13px] no-underline whitespace-nowrap transition hover:bg-navy hover:text-white"
                 >
