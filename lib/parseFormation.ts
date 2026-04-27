@@ -1,3 +1,10 @@
+export interface FormationAssocieeData {
+  code: string;
+  titre: string;
+  duree: string | null;
+  niveau: string;
+}
+
 export interface FormationData {
   titre: string;
   reference: string;
@@ -10,6 +17,7 @@ export interface FormationData {
   programme: string[];
   niveau?: string;
   format?: string;
+  formationsAssociees?: FormationAssocieeData[];
 }
 
 /**

@@ -82,4 +82,5 @@ export interface SanityFormationCard {
   format: string | null;
   financement: string | null;
   pdfUrl: string | null;
+  hasContent: boolean;
 }

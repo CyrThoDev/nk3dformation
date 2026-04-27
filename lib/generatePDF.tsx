@@ -1,21 +1,37 @@
 import React from "react";
+import path from "path";
 import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  pdf,
-  Font,
+  Document, Page, Text, View, StyleSheet, Image,
+  pdf, Font, Svg, Path,
 } from "@react-pdf/renderer";
+
+const CDN = "https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.0/files";
+Font.register({
+  family: "Montserrat",
+  fonts: [
+    { src: `${CDN}/montserrat-latin-400-normal.woff`, fontWeight: 400 },
+    { src: `${CDN}/montserrat-latin-500-normal.woff`, fontWeight: 500 },
+    { src: `${CDN}/montserrat-latin-600-normal.woff`, fontWeight: 600 },
+    { src: `${CDN}/montserrat-latin-700-normal.woff`, fontWeight: 700 },
+    { src: `${CDN}/montserrat-latin-800-normal.woff`, fontWeight: 800 },
+    { src: `${CDN}/montserrat-latin-900-normal.woff`, fontWeight: 900 },
+  ],
+});
+
+Font.register({
+  family: "EurostileExtended",
+  src: path.join(process.cwd(), "public/fonts/eurostile/EurostileExtended-Roman.woff"),
+});
 import type { DocumentProps } from "@react-pdf/renderer";
 import type { FormationData } from "./parseFormation";
 
-// ── Palette exacte de FormationDetail ────────────────────────────────────
+// ── Assets ────────────────────────────────────────────────────────────────
+const LOGO = path.join(process.cwd(), "public/images/LOGO_COMBINE_FOND_CLAIR.png");
+
+// ── Palette ───────────────────────────────────────────────────────────────
 const C = {
   navy:     "#0A2D5C",
   navyMid:  "#1A4F8A",
-  navyLt:   "#E8F0FA",
   orange:   "#E8762A",
   orangeLt: "#FFF0E6",
   orangeTxt:"#B85A10",
@@ -31,20 +47,39 @@ const C = {
 const s = StyleSheet.create({
   page: {
     backgroundColor: C.bg,
-    fontFamily: "Helvetica",
+    fontFamily: "Montserrat",
     paddingBottom: 50,
   },
 
-  // Header (fond blanc + bordure basse)
-  hero: {
+  // ── Header ──
+  header: {
     backgroundColor: C.white,
     borderBottomWidth: 1,
     borderBottomColor: C.border,
     paddingHorizontal: 36,
-    paddingTop: 28,
-    paddingBottom: 28,
+    paddingVertical: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  // Badge catégorie orange pâle
+  logo: {
+    height: 36,
+    objectFit: "contain",
+  },
+  headerRef: {
+    fontFamily: "Montserrat", fontWeight: 700,
+    fontSize: 9,
+    color: C.orange,
+    letterSpacing: 1.2,
+  },
+
+  // ── Hero ──
+  hero: {
+    backgroundColor: C.white,
+    paddingHorizontal: 36,
+    paddingTop: 20,
+    paddingBottom: 24,
+  },
   badge: {
     alignSelf: "flex-start",
     backgroundColor: C.orangeLt,
@@ -52,28 +87,32 @@ const s = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 3,
     marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
   },
   badgeText: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat", fontWeight: 700,
     fontSize: 8,
     color: C.orangeTxt,
     letterSpacing: 1,
   },
   titre: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 22,
     color: C.navy,
     lineHeight: 1.2,
     marginBottom: 8,
   },
   description: {
+    fontFamily: "Montserrat",
     fontSize: 10,
     color: C.textMd,
     lineHeight: 1.6,
     maxWidth: 420,
   },
 
-  // Info cards (4 colonnes)
+  // ── Info cards ──
   infoRow: {
     flexDirection: "row",
     gap: 10,
@@ -90,15 +129,15 @@ const s = StyleSheet.create({
     padding: 12,
   },
   infoLabel: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "EurostileExtended",
     fontSize: 7,
     color: C.textLt,
     letterSpacing: 1.2,
     marginBottom: 5,
   },
   infoValue: {
-    fontFamily: "Helvetica-Bold",
-    fontSize: 11,
+    fontFamily: "Montserrat",
+    fontSize: 10,
     color: C.text,
     lineHeight: 1.3,
   },
@@ -110,33 +149,25 @@ const s = StyleSheet.create({
     marginBottom: 6,
   },
 
-  // Body (2 colonnes)
+  // ── Body ──
   body: {
     flexDirection: "row",
     gap: 24,
     paddingHorizontal: 36,
     alignItems: "flex-start",
   },
-  mainCol: {
-    flex: 1,
-  },
-  sideCol: {
-    width: 180,
-  },
+  mainCol: { flex: 1 },
 
-  // Section title style Montserrat bold
+  // ── Section ──
   sectionTitle: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 13,
     color: C.navy,
     marginBottom: 10,
-    marginTop: 0,
   },
-  section: {
-    marginBottom: 24,
-  },
+  section: { marginBottom: 24 },
 
-  // Objectifs
+  // ── Objectifs ──
   objectifItem: {
     flexDirection: "row",
     alignItems: "flex-start",
@@ -158,56 +189,91 @@ const s = StyleSheet.create({
     flexShrink: 0,
     marginTop: 1,
   },
-  objectifCheckText: {
-    fontSize: 7,
-    color: C.orange,
-    fontFamily: "Helvetica-Bold",
-  },
   objectifText: {
+    fontFamily: "Montserrat",
     fontSize: 9,
     color: C.textMd,
     lineHeight: 1.5,
     flex: 1,
   },
 
-  // Programme (style jour + titre + contenu)
+  // ── Programme ──
   programmeItem: {
-    flexDirection: "row",
-    gap: 14,
     padding: 12,
     backgroundColor: C.white,
     borderWidth: 1,
     borderColor: C.border,
     borderRadius: 8,
     marginBottom: 6,
-    alignItems: "flex-start",
+  },
+  programmeHeader: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    gap: 6,
+    marginBottom: 3,
+    flexWrap: "wrap",
   },
   programmeJour: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat", fontWeight: 700,
     fontSize: 9,
     color: C.orange,
     letterSpacing: 0.5,
-    width: 56,
     flexShrink: 0,
-    paddingTop: 1,
+  },
+  programmeSep: {
+    fontSize: 9,
+    color: C.border,
+    flexShrink: 0,
   },
   programmeTitre: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 10,
     color: C.navy,
-    marginBottom: 2,
   },
   programmeContenu: {
+    fontFamily: "Montserrat",
     fontSize: 9,
     color: C.textMd,
     lineHeight: 1.5,
   },
 
-  // Public & prérequis (2 colonnes)
-  twoCol: {
+  // ── Formations associées ──
+  assocGrid: {
     flexDirection: "row",
-    gap: 10,
+    flexWrap: "wrap",
+    gap: 8,
   },
+  assocCard: {
+    width: "31%",
+    backgroundColor: C.white,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 8,
+    padding: 10,
+  },
+  assocCode: {
+    fontFamily: "EurostileExtended",
+    fontSize: 7,
+    color: C.orange,
+    letterSpacing: 0.8,
+    marginBottom: 3,
+  },
+  assocTitre: {
+    fontFamily: "Montserrat",
+    fontWeight: 600,
+    fontSize: 8,
+    color: C.navy,
+    lineHeight: 1.4,
+    marginBottom: 4,
+  },
+  assocMeta: {
+    fontFamily: "Montserrat",
+    fontSize: 7,
+    color: C.textLt,
+  },
+
+  // ── Public & Prérequis ──
+  twoCol: { flexDirection: "row", gap: 10 },
   publicCard: {
     flex: 1,
     backgroundColor: C.white,
@@ -217,19 +283,20 @@ const s = StyleSheet.create({
     padding: 12,
   },
   publicLabel: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat", fontWeight: 700,
     fontSize: 7,
     color: C.textLt,
     letterSpacing: 1.2,
     marginBottom: 6,
   },
   publicText: {
+    fontFamily: "Montserrat",
     fontSize: 9,
     color: C.textMd,
     lineHeight: 1.6,
   },
 
-  // Sidebar CTA card
+  // ── Sidebar CTA ──
   ctaCard: {
     backgroundColor: C.white,
     borderWidth: 1,
@@ -239,12 +306,13 @@ const s = StyleSheet.create({
     marginBottom: 12,
   },
   ctaTitle: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 10,
     color: C.navy,
     marginBottom: 5,
   },
   ctaText: {
+    fontFamily: "Montserrat",
     fontSize: 8,
     color: C.textMd,
     lineHeight: 1.55,
@@ -259,7 +327,7 @@ const s = StyleSheet.create({
     marginBottom: 8,
   },
   ctaBtnText: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 9,
     color: C.white,
   },
@@ -273,7 +341,7 @@ const s = StyleSheet.create({
     marginBottom: 14,
   },
   ctaBtnOutlineText: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 9,
     color: C.navy,
   },
@@ -296,11 +364,12 @@ const s = StyleSheet.create({
     flexShrink: 0,
   },
   ctaCheckText: {
+    fontFamily: "Montserrat",
     fontSize: 7.5,
     color: C.textMd,
   },
 
-  // Footer
+  // ── Footer ──
   footer: {
     position: "absolute",
     bottom: 0,
@@ -316,33 +385,58 @@ const s = StyleSheet.create({
     alignItems: "center",
   },
   footerText: {
+    fontFamily: "Montserrat",
     fontSize: 7.5,
     color: C.textLt,
   },
   footerBrand: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Montserrat",
     fontSize: 7.5,
     color: C.navy,
   },
 });
 
+// ── Coche SVG ─────────────────────────────────────────────────────────────
+function CheckIcon() {
+  return (
+    <View style={s.objectifCheck}>
+      <Svg width={10} height={10} viewBox="0 0 24 24">
+        <Path
+          d="M20 6L9 17L4 12"
+          stroke={C.orange}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </Svg>
+    </View>
+  );
+}
+
 // ── Composant PDF ─────────────────────────────────────────────────────────
 function FormationPDF({ data }: { data: FormationData }) {
   const infos = [
-    { label: "DURÉE",       value: data.duree || "À définir" },
-    { label: "NIVEAU",      value: data.niveau || "Tous niveaux" },
-    { label: "FORMAT",      value: data.format || "Présentiel / Distanciel" },
-    { label: "FINANCEMENT", value: data.prix || "Sur devis" },
+    { label: "DURÉE",        value: data.duree  || "À définir" },
+    { label: "NIVEAU",       value: data.niveau || "Tous niveaux" },
+    { label: "FORMAT",       value: data.format || "Présentiel / Distanciel" },
+    { label: "FINANCEMENT",  value: "OPCO · FAF" },
   ];
 
   return (
     <Document>
       <Page size="A4" style={s.page}>
 
+        {/* ── EN-TÊTE avec logo ── */}
+        <View style={s.header} fixed>
+          <Image src={LOGO} style={s.logo} />
+          <Text style={s.headerRef}>{data.reference}</Text>
+        </View>
+
         {/* ── HERO ── */}
         <View style={s.hero}>
           <View style={s.badge}>
-            <Text style={s.badgeText}>{data.reference || "CATIA V5"}</Text>
+            <Text style={s.badgeText}>{data.reference}</Text>
           </View>
           <Text style={s.titre}>{data.titre}</Text>
           {data.description ? (
@@ -354,7 +448,6 @@ function FormationPDF({ data }: { data: FormationData }) {
         <View style={s.infoRow}>
           {infos.map((info) => (
             <View key={info.label} style={s.infoCard}>
-              <View style={s.infoDot} />
               <Text style={s.infoLabel}>{info.label}</Text>
               <Text style={s.infoValue}>{info.value}</Text>
             </View>
@@ -373,32 +466,30 @@ function FormationPDF({ data }: { data: FormationData }) {
                 <Text style={s.sectionTitle}>Objectifs de la formation</Text>
                 {data.objectifs.map((obj, i) => (
                   <View key={i} style={s.objectifItem}>
-                    <View style={s.objectifCheck}>
-                      <Text style={s.objectifCheckText}>✓</Text>
-                    </View>
+                    <CheckIcon />
                     <Text style={s.objectifText}>{obj}</Text>
                   </View>
                 ))}
               </View>
             )}
 
-            {/* Programme */}
+            {/* Programme — page 2 */}
             {data.programme.length > 0 && (
-              <View style={s.section}>
+              <View style={[s.section, { paddingTop: 28 }]} break>
                 <Text style={s.sectionTitle}>Programme</Text>
                 {data.programme.map((item, i) => {
-                  // Support objet {jour, titre, contenu} ou string simple
                   const isObj = typeof item === "object" && item !== null;
-                  const jour = isObj ? (item as { jour?: string }).jour ?? `Étape ${i + 1}` : `Étape ${i + 1}`;
-                  const titre = isObj ? (item as { titre?: string }).titre ?? String(item) : String(item);
+                  const jour   = isObj ? (item as { jour?: string }).jour   ?? `Étape ${i + 1}` : `Étape ${i + 1}`;
+                  const titre  = isObj ? (item as { titre?: string }).titre  ?? String(item)     : String(item);
                   const contenu = isObj ? (item as { contenu?: string }).contenu ?? "" : "";
                   return (
                     <View key={i} style={s.programmeItem}>
-                      <Text style={s.programmeJour}>{jour}</Text>
-                      <View style={{ flex: 1 }}>
+                      <View style={s.programmeHeader}>
+                        <Text style={s.programmeJour}>{jour}</Text>
+                        <Text style={s.programmeSep}>·</Text>
                         <Text style={s.programmeTitre}>{titre}</Text>
-                        {contenu ? <Text style={s.programmeContenu}>{contenu}</Text> : null}
                       </View>
+                      {contenu ? <Text style={s.programmeContenu}>{contenu}</Text> : null}
                     </View>
                   );
                 })}
@@ -421,38 +512,30 @@ function FormationPDF({ data }: { data: FormationData }) {
                 </View>
               </View>
             )}
+
+            {/* Formations associées */}
+            {data.formationsAssociees && data.formationsAssociees.length > 0 && (
+              <View style={s.section}>
+                <Text style={s.sectionTitle}>Formations associées</Text>
+                <View style={s.assocGrid}>
+                  {data.formationsAssociees.map((f, i) => (
+                    <View key={i} style={s.assocCard}>
+                      <Text style={s.assocCode}>{f.code}</Text>
+                      <Text style={s.assocTitre}>{f.titre}</Text>
+                      {f.duree && <Text style={s.assocMeta}>{f.duree}</Text>}
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
           </View>
 
-          {/* Sidebar */}
-          <View style={s.sideCol}>
-            <View style={s.ctaCard}>
-              <Text style={s.ctaTitle}>Intéressé par cette formation ?</Text>
-              <Text style={s.ctaText}>
-                Nicolas vous répond sous 48h et établit un devis gratuit, avec accompagnement OPCO inclus.
-              </Text>
-              <View style={s.ctaBtn}>
-                <Text style={s.ctaBtnText}>Télécharger le programme</Text>
-              </View>
-              <View style={s.ctaBtnOutline}>
-                <Text style={s.ctaBtnOutlineText}>Demander un devis gratuit</Text>
-              </View>
-              <View style={s.ctaDivider}>
-                {["OPCO finançable", "Accompagnement inclus"].map((t) => (
-                  <View key={t} style={s.ctaCheckRow}>
-                    <View style={s.ctaCheckDot} />
-                    <Text style={s.ctaCheckText}>{t}</Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-          </View>
         </View>
 
         {/* ── FOOTER ── */}
         <View style={s.footer} fixed>
           <Text style={s.footerText}>nk3dformation.fr</Text>
           <Text style={s.footerBrand}>NK 3D Formation — Nicolas Kreutz</Text>
-         
         </View>
       </Page>
     </Document>

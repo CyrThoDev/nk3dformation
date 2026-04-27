@@ -21,9 +21,9 @@ export default defineConfig({
         S.list()
           .title("Contenu")
           .items([
-            // Singleton : contenu du site
+            // Singleton : contenu de la page principale
             S.listItem()
-              .title("Contenu du site")
+              .title("Contenu de la page principale")
               .id("siteSettings")
               .child(
                 S.document()
