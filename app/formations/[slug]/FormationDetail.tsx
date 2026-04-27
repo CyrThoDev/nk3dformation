@@ -109,7 +109,7 @@ function Objectifs({ objectifs }: { objectifs: string[] }) {
     <div className="mb-10">
       <div className="flex flex-col gap-2.5">
         {items.map((o, i) => (
-          <div key={i} className="flex items-start gap-3 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
+          <div key={i} className="flex items-center gap-3 px-4 py-2.5 bg-white border border-border rounded-xl shadow-[0_1px_4px_rgba(10,45,92,0.04)]">
             <span className="text-orange shrink-0 mt-0.5"><IconCheck /></span>
             <span className="font-montserrat text-[15px] text-text-md leading-relaxed">{o}</span>
           </div>
