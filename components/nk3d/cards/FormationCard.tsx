@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { SanityFormationCard } from "@/types/sanity";
 
-const isProduction = process.env.NEXT_PUBLIC_SANITY_DATASET === "production";
 
 export function FormationCard({ formation }: { formation: SanityFormationCard }) {
   const inner = (
@@ -27,7 +26,7 @@ export function FormationCard({ formation }: { formation: SanityFormationCard })
         )}
       </div>
 
-      {!isProduction && formation.hasContent && (
+      {formation.hasContent && (
         <div className="flex items-center justify-between pt-2 border-t border-border">
           <span className="font-montserrat text-[11px] font-semibold text-text-lt group-hover:text-orange transition-colors uppercase tracking-wide">
             Voir le programme
@@ -43,7 +42,7 @@ export function FormationCard({ formation }: { formation: SanityFormationCard })
     </div>
   );
 
-  if (isProduction || !formation.hasContent) {
+  if (!formation.hasContent) {
     return <div className="block h-full">{inner}</div>;
   }
 
