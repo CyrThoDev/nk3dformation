@@ -39,9 +39,9 @@ const eurostileExtended = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NK 3D Formation — Expert CATIA V5 & 3DEXPERIENCE",
+  title: "NK 3D Formation — Formateur certifié CATIA V5 & 3DEXPERIENCE",
   description:
-    "Formations  en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie. ",
+    "Formations en CATIA V5, 3DEXPERIENCE et COMPOSER. Présentiel ou distanciel, finançables OPCO, conçues pour les ingénieurs et techniciens de l'industrie.",
   icons: {
     icon: "/favicon.ico",
   },
