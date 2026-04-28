@@ -88,7 +88,7 @@ export const formationSchema = defineType({
       title: "Durée (jours, numérique)",
       type: "number",
       group: "infos",
-      validation: (R) => R.required().integer().positive(),
+      validation: (R) => R.required().positive(),
     }),
     defineField({
       name: "niveau",
