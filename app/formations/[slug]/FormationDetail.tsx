@@ -73,7 +73,7 @@ function InfoCards({ formation }: { formation: SanityFormationDetail }) {
     { icon: <IconUsers />,      label: "Niveau",      val: formation.niveau },
     { icon: <IconMapPin />,     label: "Format",      val: formation.format },
     { icon: <IconCreditCard />, label: "Financement", val: formation.financement },
-  ];
+  ].filter(({ val }) => Boolean(val));
   return (
     <div className="grid grid-cols-2 gap-3 mb-10 sm:grid-cols-4">
       {infos.map(({ icon, label, val }) => (
