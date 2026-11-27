@@ -117,8 +117,7 @@ export const formationSchema = defineType({
       title: "Financement",
       type: "string",
       group: "infos",
-      description: "Ex : OPCO · FAF",
-      validation: (R) => R.required(),
+      description: "Ex : OPCO · FAF — laisser vide pour ne pas afficher ce champ sur le site",
     }),
 
     // ── Contenu pédagogique ───────────────────────────────────────────────

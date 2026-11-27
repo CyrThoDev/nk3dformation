@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
+import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "NK 3D Formation — Formateur CATIA V5 & 3DEXPERIENCE",
   description:
     "Nicolas Kreutz, formateur certifié Dassault Systèmes. Formations sur mesure en CATIA V5, 3DEXPERIENCE et CATIA COMPOSER pour les professionnels de l'industrie. Présentiel, finançables OPCO.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "NK 3D Formation — Formateur CATIA V5 & 3DEXPERIENCE",
     description:
       "Formations sur mesure en CATIA V5, 3DEXPERIENCE et CATIA COMPOSER. Certifié Dassault Systèmes, plus de 30 ans d'expérience.",
-    url: "https://nk3dformation.fr",
-    siteName: "NK 3D Formation",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "fr_FR",
     type: "website",
+    images: [{ url: "/images/hero.webp", width: 1104, height: 512, alt: SITE_NAME }],
   },
 };
 
